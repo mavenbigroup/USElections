@@ -48,8 +48,8 @@ h1{font-size:26px;font-weight:700;margin:0;letter-spacing:-.01em;font-stretch:90
 .brand{display:flex;align-items:center;text-decoration:none;color:var(--fg);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:14px}
 .brand img{height:32px;width:auto;display:block;background:transparent}
 @media (max-width:620px){.brand img{height:26px}}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .brand img{filter:brightness(0) invert(1)}}
-:root[data-theme="dark"] .brand img{filter:brightness(0) invert(1)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .brand img{background:#fff;border-radius:6px;padding:3px 6px}}
+:root[data-theme="dark"] .brand img{background:#fff;border-radius:6px;padding:3px 6px}
 .brand2{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;color:var(--mute);border-top:3px solid var(--gold);margin-top:24px;padding-top:10px}
 .brand2 b{color:var(--fg);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
 .rv{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:6px 0}
@@ -128,7 +128,7 @@ button:focus-visible,.st:focus-visible,input:focus-visible{outline:2px solid var
 </head>
 <body>
 <div class="wrap">
-<header><div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><a class="brand" href="https://mavenbigroup.com"><img src="logo.png" alt="Maven BI" onerror="this.parentNode.innerHTML='<span>Maven BI Group</span>'"></a><h1>Election Desk 2026</h1></div><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><div class="asof" id="live">live feed: waiting for first refresh · re-checks every 30 s</div><button id="actionBtn" type="button" title="Re-scrape every feed and reload">Refresh</button><span id="tokBox" hidden><input id="tokIn" type="password" placeholder="GitHub fine-grained token (Actions: write)" style="font:inherit;font-size:12px;padding:5px 8px;border:1px solid var(--line);background:var(--panel);color:var(--fg);width:260px;max-width:60vw"><button id="tokSave" type="button">Save</button><button id="tokCancel" type="button">Cancel</button></span></div></header>
+<header><div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><a class="brand" href="https://mavenbigroup.com"><img src="logo.png" alt="Maven BI" onerror="this.parentNode.innerHTML='<span>Maven BI Group</span>'"></a><h1>Election Desk 2026</h1></div><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><div class="asof" id="live">live feed: waiting for first refresh · re-checks every 30 s</div><button id="actionBtn" type="button" title="Re-scrape every feed and reload">Refresh</button><button id="themeBtn" type="button" title="Switch light / dark">Dark</button><span id="tokBox" hidden><input id="tokIn" type="password" placeholder="GitHub fine-grained token (Actions: write)" style="font:inherit;font-size:12px;padding:5px 8px;border:1px solid var(--line);background:var(--panel);color:var(--fg);width:260px;max-width:60vw"><button id="tokSave" type="button">Save</button><button id="tokCancel" type="button">Cancel</button></span></div></header>
 <button id="upd" type="button" hidden style="width:100%;margin-top:8px;padding:10px;background:var(--gold);color:#0b2a5b;border:0;font-weight:700;cursor:pointer;text-align:left"><span>New version available</span> · tap to update</button>
 <div class="asof" id="asof" style="padding:6px 0 0">first polls close 7 pm ET · poll/forecast inputs refresh with the feed · ratings and turnout assumption set 12:35 pm MST</div>
 <header style="display:none"></header>
@@ -196,7 +196,7 @@ button:focus-visible,.st:focus-visible,input:focus-visible{outline:2px solid var
 <div class="tw"><table id="gov"><thead><tr><th>State</th><th>Matchup</th><th>Held</th><th>Model call</th><th>Model margin</th><th>Reported</th><th>Market D</th><th>Polls / forecast</th></tr></thead><tbody></tbody></table></div>
 
 <div class="foot" id="foot"></div>
-<div class="brand2"><span><b>Maven BI Group</b> · Know | Run | Improve · Phoenix, AZ</span><span>Built by Alan Anolik · v<span id="ver">1103.1509</span> · <a href="#" id="ownerLink" style="color:inherit">owner</a></span></div>
+<div class="brand2"><span><b>Maven BI Group</b> · Know | Run | Improve · Phoenix, AZ</span><span>Built by Alan Anolik · v<span id="ver">1103.1523</span> · <a href="#" id="ownerLink" style="color:inherit">owner</a></span></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
@@ -406,7 +406,18 @@ document.getElementById('foot').innerHTML=`Early ballots: On Point Politics / ci
 function idle(){ if(sel) return; document.getElementById('panel').innerHTML=`<h3>Tap a state</h3><p class="note">Each state opens here: early ballots in, estimated ballots remaining, the two lenses, the model call at the current sliders, every Senate and governor race, and Cook's competitive House seats. Rows in the Senate table below also open their state.</p><div class="sub" id="natl"></div>`; }
 applyDefaults(true); idle();
 
-const APP_VERSION='1103.1509';
+(function(){
+  const root=document.documentElement, btn=document.getElementById('themeBtn');
+  const sys=()=>matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+  const cur=()=>root.dataset.theme||sys();
+  let saved=null; try{saved=localStorage.getItem('theme');}catch(e){}
+  if(saved) root.dataset.theme=saved;
+  const label=()=>{ btn.textContent=cur()==='dark'?'Light':'Dark'; };
+  label();
+  btn.addEventListener('click',()=>{ const n=cur()==='dark'?'light':'dark'; root.dataset.theme=n; try{localStorage.setItem('theme',n);}catch(e){} label(); if(typeof paint==='function') paint(); });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{ if(!root.dataset.theme) label(); });
+})();
+const APP_VERSION='1103.1523';
 const LIVE={at:null,src:{}};
 async function checkVersion(){
   try{ const r=await fetch('version.txt?t='+Date.now(),{cache:'no-store'}); if(!r.ok) return; const v=(await r.text()).trim();
