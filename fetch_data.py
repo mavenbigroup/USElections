@@ -235,6 +235,96 @@ def forecast():
     return out
 
 
+CIVIC = "https://civicapi.org/api/v1"
+RES_SEN = ["AK","AL","AR","CO","DE","FL","GA","IA","ID","IL","KS","KY","LA","MA","ME","MI","MN","MS","MT","NC","NE","NH","NJ","NM","OH","OK","OR","RI","SC","SD","TN","TX","VA","WV","WY"]
+RES_GOV = ["AL","AK","AZ","AR","CA","CO","CT","FL","GA","HI","ID","IL","IA","KS","ME","MD","MA","MI","MN","NE","NV","NH","NM","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","VT","WI","WY"]
+RES_HOUSE = ["AK","AL","AZ","AR","CA","CO","FL","IA","IL","IN","KS","KY","ME","MI","MN","MO","MT","NC","NE","NH","NJ","NM","NV","NY","OH","PA","SC","TX","VA","WA","WI"]
+
+
+def civic_races(payload):
+    """Normalise a civicAPI response (single race, list, or wrapped) to a list of race dicts."""
+    if isinstance(payload, dict):
+        if "data" in payload and isinstance(payload["data"], (dict, list)):
+            payload = payload["data"]
+        elif "races" in payload:
+            payload = payload["races"]
+    if isinstance(payload, dict):
+        return [payload]
+    return [r for r in payload if isinstance(r, dict)] if isinstance(payload, list) else []
+
+
+def civic_tally(race):
+    d = r = o = 0
+    called = None
+    for c in race.get("candidates") or []:
+        if c.get("dropped_out"):
+            continue
+        v = c.get("votes") or 0
+        try:
+            v = int(v)
+        except Exception:
+            v = 0
+        party = str(c.get("party") or "").lower()
+        if party.startswith("dem"):
+            d += v
+            if c.get("winner"): called = "D"
+        elif party.startswith("rep"):
+            r += v
+            if c.get("winner"): called = "R"
+        else:
+            o += v
+            if c.get("winner"): called = "I"
+    pct = race.get("percent_reporting")
+    try:
+        pct = round(float(pct), 1)
+    except Exception:
+        pct = None
+    out = {"d": d, "r": r, "o": o, "pct": pct, "src": "civicapi", "at": race.get("last_updated")}
+    if called:
+        out["called"] = called
+    return out
+
+
+def results_auto():
+    races = {}
+    errors = 0
+    def pull(st, typ):
+        nonlocal errors
+        try:
+            return civic_races(getj(f"{CIVIC}/race/US/{st}/{typ}/2026"))
+        except Exception:
+            errors += 1
+            return []
+    for st in RES_SEN:
+        for race in pull(st, "senate")[:1]:
+            t = civic_tally(race)
+            if t["d"] or t["r"] or t.get("called"):
+                races[st + "-SEN"] = t
+        time.sleep(0.15)
+    for st in RES_GOV:
+        for race in pull(st, "governor")[:1]:
+            t = civic_tally(race)
+            if t["d"] or t["r"] or t.get("called"):
+                races[st + "-GOV"] = t
+        time.sleep(0.15)
+    for st in RES_HOUSE:
+        for race in pull(st, "house"):
+            name = str((race.get("district_details") or {}).get("district_name") or race.get("election_name") or "")
+            if isinstance(race.get("election_name"), dict):
+                name = name or race["election_name"].get("en_US", "")
+            m = re.search(r"(\d+)", name)
+            key = f"{st}-{int(m.group(1)):02d}" if m else (f"{st}-AL" if "large" in name.lower() else None)
+            if not key:
+                continue
+            t = civic_tally(race)
+            if t["d"] or t["r"] or t.get("called"):
+                races[key] = t
+        time.sleep(0.15)
+    if not races and errors > 20:
+        raise RuntimeError(f"civicAPI unreachable ({errors} failed requests)")
+    return {"races": races, "count": len(races), "errors": errors}
+
+
 def uf_total():
     html = get("https://election.lab.ufl.edu/early-vote/2026-early-voting/")
     text = re.sub(r"<[^>]+>", " ", html)
@@ -253,7 +343,7 @@ def main():
             prev = {}
     data = {"generated": now(), "sources": {}, "baseline": prev.get("baseline") or {"senate_d": 76, "house_d": 94.5, "note": "midday Nov 3 open"}}
     for key, fn in [("kalshi", kalshi), ("polymarket", polymarket), ("predictit", predictit),
-                    ("onpoint", onpoint), ("polldesk", polldesk), ("forecast", forecast)]:
+                    ("onpoint", onpoint), ("polldesk", polldesk), ("forecast", forecast), ("results_auto", results_auto)]:
         try:
             data[key] = fn()
             data["sources"][key] = {"ok": True, "at": now()}
@@ -267,6 +357,11 @@ def main():
             data["sources"]["results"] = {"ok": True, "at": now()}
         except Exception as e:
             data["results"] = prev.get("results"); data["sources"]["results"] = {"ok": False, "error": str(e)[:200]}
+    auto = (data.get("results_auto") or {}).get("races", {})
+    manual = (data.get("results") or {}).get("races", {})
+    merged = dict(auto)
+    merged.update(manual)
+    data["results"] = {"updated": now(), "races": merged, "auto_count": len(auto), "manual_count": len(manual)}
     calls = ROOT / "calls.json"
     if calls.exists():
         try:
