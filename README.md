@@ -42,3 +42,7 @@ d3 7.8.5 and topojson-client 3.0.2 from cdnjs; Archivo and IBM Plex Mono from Go
 ## Caveats
 
 This is a what-if tool, not a forecast with error bars. The early-vote-to-vote conversion, the Election Day skew constants, and the seats-per-point figure are all judgment calls documented above.
+
+## Run full refresh (fires the Action from the page)
+
+The "Run full refresh" button dispatches `refresh.yml` via the GitHub API using a fine-grained personal access token that is stored only in your browser's localStorage (never in the repo). First click asks for it. Token scope: repository access limited to this repo, permission Actions: Read and write. A rejected token is cleared automatically. Other viewers of the page don't have the token and only get the normal 30-second refresh.
