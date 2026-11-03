@@ -156,6 +156,24 @@ def onpoint():
     return out
 
 
+def polldesk():
+    """Per-state ballots, mail returned, in person, mail requested from polling-desk.com (server-rendered table)."""
+    html = get("https://polling-desk.com/early-vote")
+    text = re.sub(r"<[^>]+>", " ", html)
+    text = re.sub(r"\s+", " ", text)
+    out = {"states": {}}
+    for name, ab in STATES.items():
+        mm = re.search(re.escape(name) + r"\s*\|?\s*([\d,]+)\s*\|?\s*([\d,–-]+)\s*\|?\s*([\d,–-]+)\s*\|?\s*([\d,–-]+)", text)
+        if mm:
+            def num(x):
+                x = x.replace(",", "")
+                return int(x) if x.isdigit() else None
+            out["states"][ab] = {"ballots": num(mm.group(1)), "mail": num(mm.group(2)), "inperson": num(mm.group(3)), "requested": num(mm.group(4))}
+    if not out["states"]:
+        raise RuntimeError("Polling Desk table parsed nothing")
+    return out
+
+
 def uf_total():
     html = get("https://election.lab.ufl.edu/early-vote/2026-early-voting/")
     text = re.sub(r"<[^>]+>", " ", html)
@@ -174,13 +192,20 @@ def main():
             prev = {}
     data = {"generated": now(), "sources": {}, "baseline": prev.get("baseline") or {"senate_d": 76, "house_d": 94.5, "note": "midday Nov 3 open"}}
     for key, fn in [("kalshi", kalshi), ("polymarket", polymarket), ("predictit", predictit),
-                    ("onpoint", onpoint), ("uf", uf_total)]:
+                    ("onpoint", onpoint), ("polldesk", polldesk), ("uf", uf_total)]:
         try:
             data[key] = fn()
             data["sources"][key] = {"ok": True, "at": now()}
         except Exception as e:
             data[key] = prev.get(key)
             data["sources"][key] = {"ok": False, "at": prev.get("sources", {}).get(key, {}).get("at"), "error": str(e)[:200]}
+    results = ROOT / "results.json"
+    if results.exists():
+        try:
+            data["results"] = json.loads(results.read_text())
+            data["sources"]["results"] = {"ok": True, "at": now()}
+        except Exception as e:
+            data["results"] = prev.get("results"); data["sources"]["results"] = {"ok": False, "error": str(e)[:200]}
     calls = ROOT / "calls.json"
     if calls.exists():
         try:

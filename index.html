@@ -27,7 +27,15 @@ body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:15px
  padding-block:0 32px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .wrap{max-width:1100px;margin:0 auto}
 header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;padding:20px 0 12px;border-bottom:2px solid var(--fg)}
-h1{font-size:26px;font-weight:700;margin:0;letter-spacing:-.01em;font-stretch:90%}
+h1{font-size:26px;
+.brand{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:2px}
+.brand img{height:18px;width:auto;display:block}
+.brand2{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;color:var(--mute);border-top:2px solid var(--fg);margin-top:24px;padding-top:10px}
+.brand2 b{color:var(--fg);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.rv{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:6px 0}
+.rv .v{font-family:var(--mono);font-size:18px;font-weight:500}
+.rv .k{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
+.called{display:inline-block;font-family:var(--mono);font-size:11px;padding:1px 6px;color:#fff;background:var(--fg);color:var(--bg)}font-weight:700;margin:0;letter-spacing:-.01em;font-stretch:90%}
 .asof{font-family:var(--mono);font-size:12px;color:var(--mute)}
 .kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
 @media (max-width:620px){.kpis{grid-template-columns:1fr}}
@@ -100,7 +108,7 @@ button:focus-visible,.st:focus-visible,input:focus-visible{outline:2px solid var
 </head>
 <body>
 <div class="wrap">
-<header><h1>Midterm Night Board</h1><div class="asof" id="asof">model inputs as of Tue Nov 3 2026, 12:35 pm MST · first polls close 7 pm ET</div></header>
+<header><div><div class="brand"><img src="logo.png" alt="" onerror="this.style.display='none'"><span>Maven BI Group</span></div><h1>Midterm Night Board</h1></div><div class="asof" id="asof">model inputs as of Tue Nov 3 2026, 12:35 pm MST · first polls close 7 pm ET</div></header>
 <div class="asof" id="live" style="padding:6px 0 0">live feed: waiting for first refresh · page re-checks every 30 s</div>
 <header style="display:none"></header>
 
@@ -147,10 +155,14 @@ button:focus-visible,.st:focus-visible,input:focus-visible{outline:2px solid var
  <div class="panel" id="panel"></div>
 </div>
 
+<h2 class="sec">Real votes</h2>
+<div class="kpi" id="rvbox"><div class="sub">No reported votes yet. Results flow from <code>results.json</code> (edited by hand or by the Action) and override the model as counts come in.</div></div>
+
 <h2 class="sec">Senate races that decide it</h2>
-<div class="tw"><table id="sen"><thead><tr><th>State</th><th>Matchup</th><th>Model call</th><th>Model margin</th><th>Market D</th><th>Polls</th></tr></thead><tbody></tbody></table></div>
+<div class="tw"><table id="sen"><thead><tr><th>State</th><th>Matchup</th><th>Model call</th><th>Model margin</th><th>Reported</th><th>Market D</th><th>Polls</th></tr></thead><tbody></tbody></table></div>
 
 <div class="foot" id="foot"></div>
+<div class="brand2"><span><b>Maven BI Group</b> · Phoenix, AZ · mavenbigroup.com</span><span>Built by Alan Anolik · model and code on GitHub</span></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
@@ -243,14 +255,16 @@ function recompute(){
   const tb=document.querySelector('#sen tbody');
   tb.innerHTML=rows.map(r=>{
     const call=r.dwins?(r.kind==='flip'?'D flip':r.kind==='ihold'?'I wins':'D hold'):(r.kind==='dhold'?'R flip':'R hold');
-    return `<tr class="rw" data-st="${r.st}"><td><b>${r.st}</b></td><td>${r.mu}</td><td class="call ${r.dwins?'d':'r'}">${call}</td><td class="call ${cls(r.m)}">${f(r.m)} <span class="sub">(${Math.round(r.p*100)}%)</span></td><td><span class="mk"><i style="width:${r.mk}%"></i></span>${r.mk}%</td><td class="call">${f(r.poll)}</td></tr>`;
+    const rr=rep(r.st+'-SEN'); const repc=rr?`<span class="call ${cls(rr.m)}">${f(rr.m)}</span> <span class="sub">${rr.pct!=null?rr.pct+'% in':''}</span>${rr.called?' <span class="called">'+rr.called+' called</span>':''}`:'<span class="sub">—</span>';
+    return `<tr class="rw" data-st="${r.st}"><td><b>${r.st}</b></td><td>${r.mu}</td><td class="call ${r.dwins?'d':'r'}">${call}</td><td class="call ${cls(r.m)}">${f(r.m)} <span class="sub">(${Math.round(r.p*100)}%)</span></td><td>${repc}</td><td><span class="mk"><i style="width:${r.mk}%"></i></span>${r.mk}%</td><td class="call">${f(r.poll)}</td></tr>`;
   }).join('');
   tb.querySelectorAll('tr').forEach(tr=>tr.addEventListener('click',()=>{show(tr.dataset.st); document.getElementById('panel').scrollIntoView({behavior:'smooth',block:'nearest'});}));
   paint(); if(sel) show(sel);
 }
 function fillFor(ab){
   const m=model(ab);
-  const v=m?m.call:env(ab);
+  const rr=rep(ab+'-SEN')||rep(ab+'-GOV');
+  const v=(rr&&rr.pct>=40)?rr.m:(m?m.call:env(ab));
   if(v===null||v===undefined) return css('--rest');
   if(Math.abs(v)<2) return css('--tossup');
   return v>0?css('--dem'):css('--rep');
@@ -265,7 +279,8 @@ function show(ab){
   let top=`<h3>${NAMES[ab]}</h3>`;
   const m=model(ab), s=M[ab];
   if(m){
-    top+=`<div class="sub"><span class="chip">${k(s.e)} early</span><span class="chip">${k(m.rem)} est. remaining</span><span class="chip">${Math.round(m.es*100)}% in</span></div>
+    const mo=s.mailOut||0;
+    top+=`<div class="sub"><span class="chip">${k(s.e)} early</span><span class="chip">${k(m.rem)} est. remaining</span>${mo?`<span class="chip">${k(mo)} mail still out · ${k(Math.max(0,m.rem-mo))} ED expected</span>`:''}<span class="chip">${Math.round(m.es*100)}% in</span></div>
     <div class="ebar"><span style="width:${m.es*s.d}%;background:var(--dem)"></span><span style="width:${m.es*s.o}%;background:var(--ind)"></span><span style="width:${m.es*s.r}%;background:var(--rep)"></span><span class="rest" style="width:${m.rs*100}%"></span></div>
     <div class="sub">Early ballots ${s.reg} by registration · vote est. <b class="${cls(m.me)}">${f(m.me)}</b> · final polls ${f(s.poll)}</div>
     <div class="lens">
@@ -282,6 +297,8 @@ function show(ab){
     top+=`<p class="note">${NOTES[ab]||'Nothing competitive statewide; uniform-swing estimate only.'}</p>`;
   }
   if(TODAY[ab]) top+=`<div class="sub" style="margin-top:6px"><b>Today:</b> ${TODAY[ab]}</div>`;
+  const rk=Object.keys(RES.races||{}).filter(x=>x.startsWith(ab+'-'));
+  if(rk.length){ top+=`<h4>Real votes</h4>`+rk.map(x=>{const r=rep(x); if(!r) return ''; const lab=x.split('-')[1]; return `<div class="rv"><div><div class="k">${lab}</div><div class="v ${cls(r.m)}">${f(r.m)}</div></div><div><div class="k">D · R</div><div class="v"><span class="d">${k(r.d)}</span> · <span class="r">${k(r.r)}</span></div></div><div><div class="k">Reporting</div><div class="v">${r.pct!=null?r.pct+'%':'—'}${r.called?' <span class="called">'+r.called+'</span>':''}</div></div></div>`;}).join(''); }
   let races='';
   if(senRace||SEN2[ab]||gov){
     races+=`<h4>Statewide</h4>`;
@@ -315,11 +332,13 @@ for(const [id,key,out,fmt] of ctl){
 document.getElementById('reset').addEventListener('click',()=>{ for(const k in TOUCHED) delete TOUCHED[k]; applyDefaults(true); });
 new MutationObserver(paint).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change',paint);
-document.getElementById('foot').innerHTML=`Early ballots: On Point Politics / civicAPI counts, state party registration where published, On Point model elsewhere (GA, MI, WI, OH, TX, VA, MN and the count-only states). ME ballot total is an approximation. AZ Election Day skew is calibrated to 2022 (Stealth Analytics / AZ Republic early-return logs). Expected 2026 turnout assumes 7% above 2022. Early-vote margin assumes 90% party loyalty plus the independents slider. Polls lens: margin the remaining ballots need for the final poll average to hold. History lens: remaining ballots skew R by the state's usual Election Day gap (22 pts mail-heavy, 12 pts in-person-early), then the two turnout sliders. Remaining-undecideds slider shifts every poll-based margin by 6% × the break (NYT/Siena final battleground poll, Oct 23–Nov 1, n=5,708: last-month deciders R+9). Model call blends the adjusted poll average with the history-lens final per the trust slider; Senate win probability is a logistic on that margin. States without a party-split early vote use an environment lens: 2024 presidential margin plus a 10.5-point national swing (generic ballot D+9 vs 2024 R+1.5), moved by the sliders; Senate and governor ratings there are from Cook, On Point and the final public polls. House seats: 230 D at a D+9 national margin, ${SEATS_PER_PT} seats per point. Markets: Kalshi and Polymarket, midday Nov 3. House ratings: Cook Political Report via 270toWin, Oct 23 2026 (Cook shifted 19 more seats toward Dems on Oct 30). This is a model, not a forecast with error bars; treat it as a what-if tool.`;
+document.getElementById('foot').innerHTML=`Early ballots: On Point Politics / civicAPI counts, state party registration where published, On Point model elsewhere (GA, MI, WI, OH, TX, VA, MN and the count-only states). ME ballot total is an approximation. AZ Election Day skew is calibrated to 2022 (Stealth Analytics / AZ Republic early-return logs). Expected 2026 turnout assumes 7% above 2022. Early-vote margin assumes 90% party loyalty plus the independents slider. Polls lens: margin the remaining ballots need for the final poll average to hold. History lens: remaining ballots skew R by the state's usual Election Day gap (22 pts mail-heavy, 12 pts in-person-early), then the two turnout sliders. Remaining-undecideds slider shifts every poll-based margin by 6% × the break (NYT/Siena final battleground poll, Oct 23–Nov 1, n=5,708: last-month deciders R+9). Model call blends the adjusted poll average with the history-lens final per the trust slider; Senate win probability is a logistic on that margin. States without a party-split early vote use an environment lens: 2024 presidential margin plus a 10.5-point national swing (generic ballot D+9 vs 2024 R+1.5), moved by the sliders; Senate and governor ratings there are from Cook, On Point and the final public polls. House seats: 230 D at a D+9 national margin, ${SEATS_PER_PT} seats per point. Outstanding mail = ballots requested − returned (Polling Desk). Real votes: results.json keyed STATE-SEN, STATE-GOV, STATE-NN with d, r, o, pct, called; a race at ≥40% reporting recolors its state by the reported margin. Markets: Kalshi and Polymarket, midday Nov 3. House ratings: Cook Political Report via 270toWin, Oct 23 2026 (Cook shifted 19 more seats toward Dems on Oct 30). This is a model, not a forecast with error bars; treat it as a what-if tool.`;
 function idle(){ if(sel) return; document.getElementById('panel').innerHTML=`<h3>Tap a state</h3><p class="note">Each state opens here: early ballots in, estimated ballots remaining, the two lenses, the model call at the current sliders, every Senate and governor race, and Cook's competitive House seats. Rows in the Senate table below also open their state.</p><div class="sub" id="natl"></div>`; }
 applyDefaults(true); idle();
 
 const LIVE={at:null,src:{}};
+let RES={races:{},states:{}};
+function rep(key){ const r=RES.races&&RES.races[key]; if(!r||!(r.d||r.r)) return null; const t=(r.d||0)+(r.r||0)+(r.o||0); return {m:((r.d||0)-(r.r||0))/t*100,pct:r.pct,called:r.called,d:r.d,r:r.r,t}; }
 function pct(v){return v==null?null:Math.round(v);}
 function applyData(d){
   if(!d) return;
@@ -331,6 +350,14 @@ function applyData(d){
   }
   if(sen.length){document.getElementById('mktSen').textContent=pct(sen.reduce((a,b)=>a+b)/sen.length)+'%';document.getElementById('mktSenSrc').textContent=names.join(' · ');}
   if(hou.length){document.getElementById('mktHou').textContent=pct(hou.reduce((a,b)=>a+b)/hou.length)+'%';document.getElementById('mktHouSrc').textContent=['kalshi','polymarket','predictit'].filter(k=>d[k]&&d[k].house_d!=null).map(k=>k[0].toUpperCase()+k.slice(1)+' '+pct(d[k].house_d)).join(' · ');}
+  if(d.results){ RES=d.results; const races=Object.entries(RES.races||{}); const n=races.filter(([k,r])=>r.d||r.r).length;
+    const sd=races.filter(([k,r])=>k.endsWith('-SEN')&&r.called==='D').length, sr=races.filter(([k,r])=>k.endsWith('-SEN')&&r.called==='R').length;
+    const hd=races.filter(([k,r])=>/-\d+$/.test(k)&&r.called==='D').length, hr=races.filter(([k,r])=>/-\d+$/.test(k)&&r.called==='R').length;
+    const box=document.getElementById('rvbox');
+    if(n){ box.innerHTML=`<div class="seats"><div><div class="lab">Races reporting</div><div class="val">${n}</div></div><div><div class="lab">Senate called</div><div class="val"><b class="d">${sd}</b> · <b class="r">${sr}</b></div></div><div><div class="lab">House called</div><div class="val"><b class="d">${hd}</b> · <b class="r">${hr}</b></div></div></div><div class="sub" style="margin-top:8px">${races.filter(([k,r])=>r.d||r.r).map(([k,r])=>{const x=rep(k);return `<span class="chip">${k} <span class="${cls(x.m)}">${f(x.m)}</span>${x.pct!=null?' '+x.pct+'%':''}${x.called?' ✓'+x.called:''}</span>`;}).join('')}</div><div class="sub">updated ${RES.updated||''}</div>`; }
+    if(!d.calls||!d.calls.senate||(d.calls.senate.d+d.calls.senate.r)===0){ d.calls=Object.assign({},d.calls||{},{senate:{d:(d.calls&&d.calls.senate&&d.calls.senate.d)||sd,r:(d.calls&&d.calls.senate&&d.calls.senate.r)||sr},house:{d:(d.calls&&d.calls.house&&d.calls.house.d)||hd,r:(d.calls&&d.calls.house&&d.calls.house.r)||hr}}); }
+  }
+  if(d.polldesk&&d.polldesk.states){ for(const [ab,row] of Object.entries(d.polldesk.states)){ if(M[ab]&&row.requested!=null&&row.mail!=null) M[ab].mailOut=Math.max(0,row.requested-row.mail); } }
   if(d.calls){const c=d.calls; if(c.senate){document.getElementById('apSenD').textContent=c.senate.d;document.getElementById('apSenR').textContent=c.senate.r;} if(c.house){document.getElementById('apHouD').textContent=c.house.d;document.getElementById('apHouR').textContent=c.house.r;}}
   if(d.onpoint&&d.onpoint.states){
     for(const [ab,row] of Object.entries(d.onpoint.states)){

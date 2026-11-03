@@ -42,3 +42,11 @@ d3 7.8.5 and topojson-client 3.0.2 from cdnjs; Archivo and IBM Plex Mono from Go
 ## Caveats
 
 This is a what-if tool, not a forecast with error bars. The early-vote-to-vote conversion, the Election Day skew constants, and the seats-per-point figure are all judgment calls documented above.
+
+## Real votes
+
+`results.json` holds reported vote counts, keyed `NC-SEN`, `AZ-GOV`, `NY-17` etc., with `d`, `r`, `o` (raw votes), `pct` (percent reporting) and optional `called` (`"D"`/`"R"`). Edit it as counts come in; the Action folds it into `data.json` and the page shows a Real votes panel, a Reported column in the Senate table, per-state vote blocks, and recolors any state whose statewide race is ≥40% reported by the real margin. Called races roll up into the AP-called tiles automatically.
+
+## Branding
+
+Drop a `logo.png` in the repo root and it appears in the masthead next to the Maven BI Group wordmark; without one the wordmark shows alone.
