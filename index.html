@@ -185,7 +185,7 @@ button:focus-visible,.st:focus-visible,input:focus-visible{outline:2px solid var
 <div class="tw"><table id="gov"><thead><tr><th>State</th><th>Matchup</th><th>Held</th><th>Model call</th><th>Model margin</th><th>Reported</th><th>Market D</th><th>Polls / forecast</th></tr></thead><tbody></tbody></table></div>
 
 <div class="foot" id="foot"></div>
-<div class="brand2"><span><b>Maven BI Group</b> · Know | Run | Improve · Phoenix, AZ</span><span>Built by Alan Anolik · v<span id="ver">1103.1456</span> · <a href="#" id="ownerLink" style="color:inherit">owner</a></span></div>
+<div class="brand2"><span><b>Maven BI Group</b> · Know | Run | Improve · Phoenix, AZ</span><span>Built by Alan Anolik · v<span id="ver">1103.1501</span> · <a href="#" id="ownerLink" style="color:inherit">owner</a></span></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
@@ -385,7 +385,7 @@ document.getElementById('foot').innerHTML=`Early ballots: On Point Politics / ci
 function idle(){ if(sel) return; document.getElementById('panel').innerHTML=`<h3>Tap a state</h3><p class="note">Each state opens here: early ballots in, estimated ballots remaining, the two lenses, the model call at the current sliders, every Senate and governor race, and Cook's competitive House seats. Rows in the Senate table below also open their state.</p><div class="sub" id="natl"></div>`; }
 applyDefaults(true); idle();
 
-const APP_VERSION='1103.1456';
+const APP_VERSION='1103.1501';
 const LIVE={at:null,src:{}};
 async function checkVersion(){
   try{ const r=await fetch('version.txt?t='+Date.now(),{cache:'no-store'}); if(!r.ok) return; const v=(await r.text()).trim();
@@ -456,18 +456,6 @@ async function direct(){
     const ho=await (await fetch('https://gamma-api.polymarket.com/events?slug=which-party-will-win-the-house-in-2026',{cache:'no-store'})).json();
     for(const mk of (ho[0]||{}).markets||[]){const q=(mk.question||mk.groupItemTitle||'').toLowerCase();const pr=JSON.parse(mk.outcomePrices||'[]');if(q.includes('democrat')&&pr.length){d.polymarket=Object.assign(d.polymarket||{},{house_d:+pr[0]*100});}}
     if(d.polymarket) d.sources.polymarket={ok:true};
-  }catch(e){}
-  try{const r=await (await fetch('https://www.predictit.org/api/marketdata/all/',{cache:'no-store'})).json();
-    for(const m of r.markets||[]){const n=(m.name||'').toLowerCase();
-      if(n.includes('senate')&&n.includes('control')&&n.includes('2026')) for(const c of m.contracts||[]) if((c.name||'').toLowerCase().includes('democrat')) d.predictit=Object.assign(d.predictit||{},{senate_d:c.lastTradePrice*100});
-      if(n.includes('house')&&n.includes('control')&&n.includes('2026')) for(const c of m.contracts||[]) if((c.name||'').toLowerCase().includes('democrat')) d.predictit=Object.assign(d.predictit||{},{house_d:c.lastTradePrice*100});}
-    if(d.predictit) d.sources.predictit={ok:true};
-  }catch(e){}
-  try{const r=await (await fetch('https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open',{cache:'no-store'})).json();
-    for(const m of r.markets||[]){const t=(m.title||'').toLowerCase();const y=m.last_price||m.yes_bid;if(!y)continue;
-      if(t.includes('control the senate')&&t.includes('democrat')) d.kalshi=Object.assign(d.kalshi||{},{senate_d:y});
-      if(t.includes('control the house')&&t.includes('democrat')) d.kalshi=Object.assign(d.kalshi||{},{house_d:y});}
-    if(d.kalshi) d.sources.kalshi={ok:true};
   }catch(e){}
   return Object.keys(d.sources).length?d:null;
 }
