@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Election Desk">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Maven Election Desk</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..700&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -166,7 +170,7 @@ button:focus-visible,.st:focus-visible,input:focus-visible{outline:2px solid var
 <div class="tw"><table id="sen"><thead><tr><th>State</th><th>Matchup</th><th>Model call</th><th>Model margin</th><th>Reported</th><th>Market D</th><th>Polls</th></tr></thead><tbody></tbody></table></div>
 
 <div class="foot" id="foot"></div>
-<div class="brand2"><span><b>Maven BI Group</b> · Know | Run | Improve · Phoenix, AZ</span><span>Built by Alan Anolik · v<span id="ver">1103.1430</span> · <a href="#" id="ownerLink" style="color:inherit">owner</a></span></div>
+<div class="brand2"><span><b>Maven BI Group</b> · Know | Run | Improve · Phoenix, AZ</span><span>Built by Alan Anolik · v<span id="ver">1103.1434</span> · <a href="#" id="ownerLink" style="color:inherit">owner</a></span></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
@@ -342,11 +346,14 @@ document.getElementById('foot').innerHTML=`Early ballots: On Point Politics / ci
 function idle(){ if(sel) return; document.getElementById('panel').innerHTML=`<h3>Tap a state</h3><p class="note">Each state opens here: early ballots in, estimated ballots remaining, the two lenses, the model call at the current sliders, every Senate and governor race, and Cook's competitive House seats. Rows in the Senate table below also open their state.</p><div class="sub" id="natl"></div>`; }
 applyDefaults(true); idle();
 
-const APP_VERSION='1103.1430';
+const APP_VERSION='1103.1434';
 const LIVE={at:null,src:{}};
 async function checkVersion(){
   try{ const r=await fetch('version.txt?t='+Date.now(),{cache:'no-store'}); if(!r.ok) return; const v=(await r.text()).trim();
-    if(v&&v!==APP_VERSION){ const b=document.getElementById('upd'); b.hidden=false; b.querySelector('span').textContent='New version '+v+' available'; } }catch(e){}
+    if(v&&v!==APP_VERSION){
+      let k=''; try{k=sessionStorage.getItem('autoupd')||'';}catch(e){}
+      if(k!==v){ try{sessionStorage.setItem('autoupd',v);}catch(e){} location.replace(location.pathname+'?v='+encodeURIComponent(v)); return; }
+      const b=document.getElementById('upd'); b.hidden=false; b.querySelector('span').textContent='New version '+v+' available'; } }catch(e){}
 }
 document.getElementById('upd').addEventListener('click',()=>{ location.href=location.pathname+'?v='+Date.now(); });
 checkVersion(); setInterval(checkVersion,30000);
