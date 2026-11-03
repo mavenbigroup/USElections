@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T20:19:04+00:00",
+ "generated": "2026-11-03T20:43:59+00:00",
  "sources": {
   "kalshi": {
    "ok": false,
@@ -8,19 +8,23 @@
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-03T20:19:06+00:00"
+   "at": "2026-11-03T20:44:00+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-03T20:19:07+00:00"
+   "at": "2026-11-03T20:44:01+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-03T20:19:07+00:00"
+   "at": "2026-11-03T20:44:01+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-03T20:19:07+00:00"
+   "at": "2026-11-03T20:44:01+00:00"
+  },
+  "forecast": {
+   "ok": true,
+   "at": "2026-11-03T20:44:02+00:00"
   },
   "uf": {
    "ok": false,
@@ -29,7 +33,7 @@
   },
   "results": {
    "ok": true,
-   "at": "2026-11-03T20:19:09+00:00"
+   "at": "2026-11-03T20:44:02+00:00"
   }
  },
  "baseline": {
@@ -47,7 +51,7 @@
   "house_d": 94.5
  },
  "predictit": {
-  "senate_d": 76.0
+  "senate_d": 73.0
  },
  "onpoint": {
   "states": {
@@ -213,8 +217,8 @@
     "requested": 13552
    },
    "CA": {
-    "ballots": 7132379,
-    "mail": 6653172,
+    "ballots": 7315224,
+    "mail": 6836017,
     "inperson": 479207,
     "requested": 23451620
    },
@@ -237,9 +241,9 @@
     "requested": 8
    },
    "FL": {
-    "ballots": 5503764,
-    "mail": 2035664,
-    "inperson": 3468100,
+    "ballots": 5505989,
+    "mail": 2037890,
+    "inperson": 3468099,
     "requested": 466521
    },
    "GA": {
@@ -375,8 +379,8 @@
     "requested": 168648
    },
    "ND": {
-    "ballots": 102615,
-    "mail": 52122,
+    "ballots": 102761,
+    "mail": 52268,
     "inperson": 50493,
     "requested": 58119
    },
@@ -477,6 +481,128 @@
     "requested": 4
    }
   }
+ },
+ "forecast": {
+  "races": {
+   "TX-GOV": {
+    "margin": -0.2,
+    "leader": "Abbott",
+    "party": "R",
+    "src": "onpoint"
+   },
+   "SC-SEN": {
+    "margin": 1.1,
+    "leader": "Andrews",
+    "party": "D",
+    "src": "onpoint"
+   },
+   "FL-GOV": {
+    "margin": -1.6,
+    "leader": "Donalds",
+    "party": "R",
+    "src": "onpoint"
+   },
+   "NE-SEN": {
+    "margin": 0.0,
+    "leader": "Osborn",
+    "party": "I",
+    "src": "onpoint"
+   },
+   "NE-GOV": {
+    "margin": -3.6,
+    "leader": "Pillen",
+    "party": "R",
+    "src": "onpoint"
+   },
+   "TX-SEN": {
+    "margin": 3.7,
+    "leader": "Talarico",
+    "party": "D",
+    "src": "onpoint"
+   },
+   "FL-SEN": {
+    "margin": -3.7,
+    "leader": "Moody",
+    "party": "R",
+    "src": "onpoint",
+    "avg": -4.0
+   },
+   "IA-SEN": {
+    "margin": 3.7,
+    "leader": "Turek",
+    "party": "D",
+    "src": "onpoint"
+   },
+   "KS-GOV": {
+    "margin": 3.8,
+    "leader": "Holscher",
+    "party": "D",
+    "src": "onpoint"
+   },
+   "GA-GOV": {
+    "margin": 3.9,
+    "leader": "Bottoms",
+    "party": "D",
+    "src": "onpoint"
+   },
+   "KS-SEN": {
+    "margin": 5.0,
+    "leader": "Hamilton",
+    "party": "D",
+    "src": "onpoint"
+   },
+   "AK-SEN": {
+    "margin": 5.1,
+    "leader": "Peltola",
+    "party": "D",
+    "src": "onpoint"
+   },
+   "OH-GOV": {
+    "margin": 5.7,
+    "leader": "Acton",
+    "party": "D",
+    "src": "onpoint"
+   },
+   "ME-SEN": {
+    "margin": 5.7,
+    "leader": "Jackson",
+    "party": "D",
+    "src": "onpoint",
+    "avg": 3.0
+   },
+   "NV-GOV": {
+    "margin": 6.1,
+    "leader": "Ford",
+    "party": "D",
+    "src": "onpoint"
+   },
+   "WI-GOV": {
+    "margin": 6.5,
+    "leader": "Crowley",
+    "party": "D",
+    "src": "onpoint"
+   },
+   "CO-SEN": {
+    "avg": 16.9
+   },
+   "GA-SEN": {
+    "avg": 0.1
+   },
+   "IL-SEN": {
+    "avg": 19.6
+   },
+   "MI-SEN": {
+    "avg": 3.8
+   },
+   "NM-SEN": {
+    "avg": 7.6
+   },
+   "TN-SEN": {
+    "avg": -11.4
+   }
+  },
+  "generic": 8.1,
+  "approval_net": -25.0
  },
  "uf": {
   "total": 59000000
