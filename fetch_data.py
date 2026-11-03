@@ -174,6 +174,36 @@ def polldesk():
     return out
 
 
+def forecast():
+    """Race margins from On Point's forecast strip (server-rendered on the early-vote page) and
+    polling averages from callthemap.com/polls. Returns {races:{ST-SEN:margin,...}, generic:D+x, approval:x}."""
+    out = {"races": {}}
+    html = get("https://onpointpolitics.us/maps/early-vote")
+    text = re.sub(r"<[^>]+>", " ", html); text = re.sub(r"\s+", " ", text)
+    for st, office, who, party, num in re.findall(r"\b([A-Z]{2}) (Sen|Gov)\s+([A-Za-z.'\- ]{2,40}?)\s+([DRI]) \+([\d.]+)", text):
+        key = st + ("-SEN" if office == "Sen" else "-GOV")
+        m = float(num) * (1 if party == "D" else -1 if party == "R" else 0)
+        if key not in out["races"]:
+            out["races"][key] = {"margin": m, "leader": who.strip(), "party": party, "src": "onpoint"}
+    try:
+        html = get("https://www.callthemap.com/polls")
+        text = re.sub(r"<[^>]+>", " ", html); text = re.sub(r"\s+", " ", text)
+        m = re.search(r"Generic ballot\s*([DR])\+([\d.]+)", text)
+        if m: out["generic"] = float(m.group(2)) * (1 if m.group(1) == "D" else -1)
+        m = re.search(r"Presidential net approval\s*([−-]?[\d.]+)", text)
+        if m: out["approval_net"] = float(m.group(1).replace("−", "-"))
+        for name, party, num in re.findall(r"([A-Z][a-z]+(?: [A-Z][a-z]+)?) forecast →\s*\w+ \d+\s*([DR])\+([\d.]+)", text):
+            ab = STATES.get(name)
+            if ab:
+                out["races"].setdefault(ab + "-SEN", {})
+                out["races"][ab + "-SEN"]["avg"] = float(num) * (1 if party == "D" else -1)
+    except Exception as e:
+        out["callthemap_error"] = str(e)[:120]
+    if not out["races"]:
+        raise RuntimeError("forecast strip parsed nothing")
+    return out
+
+
 def uf_total():
     html = get("https://election.lab.ufl.edu/early-vote/2026-early-voting/")
     text = re.sub(r"<[^>]+>", " ", html)
@@ -192,7 +222,7 @@ def main():
             prev = {}
     data = {"generated": now(), "sources": {}, "baseline": prev.get("baseline") or {"senate_d": 76, "house_d": 94.5, "note": "midday Nov 3 open"}}
     for key, fn in [("kalshi", kalshi), ("polymarket", polymarket), ("predictit", predictit),
-                    ("onpoint", onpoint), ("polldesk", polldesk), ("uf", uf_total)]:
+                    ("onpoint", onpoint), ("polldesk", polldesk), ("forecast", forecast), ("uf", uf_total)]:
         try:
             data[key] = fn()
             data["sources"][key] = {"ok": True, "at": now()}
