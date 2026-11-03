@@ -1,4 +1,4 @@
-# Midterm Night Board
+# Maven Election Desk
 
 Single-file, zero-build election board for the November 3, 2026 US midterms. Open `index.html` in a browser or serve it from GitHub Pages.
 
@@ -29,7 +29,7 @@ Senate: start at 47 D; flips and holds decided by the model margin, probability 
 
 - Early ballots: On Point Politics / civicAPI, snapshot 12:10 pm MST Nov 3. State-reported party registration where available (AZ, NV, FL, NC, PA, IA, KS, ME, CO, NJ, OR); On Point model elsewhere. KS and ME totals approximate.
 - Polls: final averages from NYT/Siena, Atlas, Emerson, YouGov, CNN, Silver Bulletin, On Point forecast.
-- Markets: Kalshi and Polymarket, midday Nov 3.
+- Outstanding mail = ballots requested − returned (Polling Desk). Real votes: results.json keyed STATE-SEN, STATE-GOV, STATE-NN with d, r, o, pct, called; a race at ≥40% reporting recolors its state by the reported margin. Markets: Kalshi and Polymarket, midday Nov 3.
 - House ratings: Cook Political Report via 270toWin, Oct 23 2026.
 - Map: `us-atlas` states-albers-10m, embedded.
 
@@ -42,11 +42,3 @@ d3 7.8.5 and topojson-client 3.0.2 from cdnjs; Archivo and IBM Plex Mono from Go
 ## Caveats
 
 This is a what-if tool, not a forecast with error bars. The early-vote-to-vote conversion, the Election Day skew constants, and the seats-per-point figure are all judgment calls documented above.
-
-## Real votes
-
-`results.json` holds reported vote counts, keyed `NC-SEN`, `AZ-GOV`, `NY-17` etc., with `d`, `r`, `o` (raw votes), `pct` (percent reporting) and optional `called` (`"D"`/`"R"`). Edit it as counts come in; the Action folds it into `data.json` and the page shows a Real votes panel, a Reported column in the Senate table, per-state vote blocks, and recolors any state whose statewide race is ≥40% reported by the real margin. Called races roll up into the AP-called tiles automatically.
-
-## Branding
-
-Drop a `logo.png` in the repo root and it appears in the masthead next to the Maven BI Group wordmark; without one the wordmark shows alone.
