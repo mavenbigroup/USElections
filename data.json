@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T20:17:16+00:00",
+ "generated": "2026-11-03T20:19:04+00:00",
  "sources": {
   "kalshi": {
    "ok": false,
@@ -8,19 +8,19 @@
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-03T20:17:17+00:00"
+   "at": "2026-11-03T20:19:06+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-03T20:17:17+00:00"
+   "at": "2026-11-03T20:19:07+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-03T20:17:17+00:00"
+   "at": "2026-11-03T20:19:07+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-03T20:17:17+00:00"
+   "at": "2026-11-03T20:19:07+00:00"
   },
   "uf": {
    "ok": false,
@@ -29,7 +29,7 @@
   },
   "results": {
    "ok": true,
-   "at": "2026-11-03T20:17:18+00:00"
+   "at": "2026-11-03T20:19:09+00:00"
   }
  },
  "baseline": {
@@ -482,9 +482,26 @@
   "total": 59000000
  },
  "results": {
-  "updated": "",
+  "updated": "2026-11-03T20:20:00Z",
   "note": "Real vote counts. Key races as STATE-SEN, STATE-GOV, or STATE-NN (House district). Fields: d, r, o (raw votes), pct (percent reporting), called ('D', 'R', or omit). Edit by hand in the GitHub editor as AP/state SOS numbers come in; the next Action run folds it into data.json and the page picks it up within 30 s. Example: \"NC-SEN\": {\"d\": 1543210, \"r\": 1322100, \"o\": 21000, \"pct\": 62, \"called\": \"D\"}",
-  "races": {}
+  "races": {
+   "GU-GOV": {
+    "d": 14925,
+    "r": 15945,
+    "o": 124,
+    "pct": 100,
+    "called": "R",
+    "note": "Ada/Calvo (R) over Terlaje/Perez (D); GEC unofficial, all 59 precincts"
+   },
+   "GU-DEL": {
+    "d": 15645,
+    "r": 14983,
+    "o": 0,
+    "pct": 100,
+    "called": "D",
+    "note": "Limtiaco (D) unseats Moylan (R)"
+   }
+  }
  },
  "calls": {
   "note": "Hand-edit as AP calls races. The Action folds this into data.json; the page shows it in the AP-called tiles and marks called states on the map.",
