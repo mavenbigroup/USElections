@@ -1,17 +1,27 @@
 {
- "generated": "2026-11-03T19:35:00+00:00",
+ "generated": "2026-11-03T19:48:56+00:00",
  "sources": {
   "kalshi": {
-   "ok": true,
-   "at": "2026-11-03T19:35:00+00:00"
+   "ok": false,
+   "at": "2026-11-03T19:35:00+00:00",
+   "error": "no matching Kalshi markets"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-03T19:35:00+00:00"
+   "at": "2026-11-03T19:48:58+00:00"
+  },
+  "predictit": {
+   "ok": true,
+   "at": "2026-11-03T19:48:58+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-03T19:35:00+00:00"
+   "at": "2026-11-03T19:48:58+00:00"
+  },
+  "uf": {
+   "ok": false,
+   "at": null,
+   "error": "HTTP Error 404: Not Found"
   }
  },
  "kalshi": {
@@ -20,21 +30,158 @@
   "sweep_d": 75
  },
  "polymarket": {
-  "senate_d": 77,
-  "house_d": 95,
-  "sweep_d": 76
+  "senate_d": 75.5,
+  "house_d": 94.5
  },
- "predictit": null,
+ "predictit": {
+  "senate_d": 76.0
+ },
  "onpoint": {
-  "total": 55511359,
+  "states": {
+   "AZ": {
+    "ballots": 1655577,
+    "mail": 1655577,
+    "inperson": 0,
+    "pct2022": 63.9,
+    "dem": 37.2,
+    "rep": 38.0
+   },
+   "CA": {
+    "ballots": 6662914,
+    "mail": 6364403,
+    "inperson": 298511,
+    "pct2022": 59.8
+   },
+   "CO": {
+    "ballots": 1859900,
+    "mail": 1820924,
+    "inperson": 38976,
+    "pct2022": 73.2,
+    "dem": 30.3,
+    "rep": 24.5
+   },
+   "FL": {
+    "ballots": 5493508,
+    "mail": 2025696,
+    "inperson": 3467812,
+    "pct2022": 70.5,
+    "dem": 37.8,
+    "rep": 40.1
+   },
+   "GA": {
+    "ballots": 2513648,
+    "mail": 111365,
+    "inperson": 2402283,
+    "pct2022": 63.4
+   },
+   "IL": {
+    "ballots": 1818376,
+    "mail": 710896,
+    "inperson": 1107480,
+    "pct2022": 43.9
+   },
+   "MI": {
+    "ballots": 1745903,
+    "mail": 1745903,
+    "inperson": 0,
+    "pct2022": 38.8
+   },
+   "MN": {
+    "ballots": 983558,
+    "mail": 283743,
+    "inperson": 699815,
+    "pct2022": 38.9
+   },
+   "NJ": {
+    "ballots": 1240049,
+    "mail": 597405,
+    "inperson": 642644,
+    "pct2022": 46.9,
+    "dem": 56.7,
+    "rep": 23.6
+   },
+   "NY": {
+    "ballots": 1965043,
+    "mail": 0,
+    "inperson": 1965043,
+    "pct2022": 33.0
+   },
+   "NC": {
+    "ballots": 2828284,
+    "mail": 100019,
+    "inperson": 2728265,
+    "pct2022": 74.6,
+    "dem": 38.4,
+    "rep": 26.1
+   },
+   "OH": {
+    "ballots": 1754731,
+    "mail": 653742,
+    "inperson": 1100989,
+    "pct2022": 41.8
+   },
+   "OR": {
+    "ballots": 1505694,
+    "mail": 1505694,
+    "inperson": 0,
+    "pct2022": 75.4,
+    "dem": 40.7,
+    "rep": 30.7
+   },
+   "PA": {
+    "ballots": 1112494,
+    "mail": 1112494,
+    "inperson": 0,
+    "pct2022": 20.6,
+    "dem": 64.5,
+    "rep": 25.1
+   },
+   "SC": {
+    "ballots": 989324,
+    "mail": 40732,
+    "inperson": 948592,
+    "pct2022": 57.6
+   },
+   "TN": {
+    "ballots": 1280642,
+    "mail": 0,
+    "inperson": 1280642,
+    "pct2022": 72.9
+   },
+   "TX": {
+    "ballots": 6857566,
+    "mail": 255521,
+    "inperson": 6602045,
+    "pct2022": 84.1
+   },
+   "VA": {
+    "ballots": 1646470,
+    "mail": 333271,
+    "inperson": 1313199,
+    "pct2022": 54.5
+   },
+   "WA": {
+    "ballots": 2112413,
+    "mail": 2112413,
+    "inperson": 0,
+    "pct2022": 68.9
+   },
+   "WI": {
+    "ballots": 1261898,
+    "mail": 796607,
+    "inperson": 465291,
+    "pct2022": 47.2
+   }
+  },
+  "total": 55554240,
   "reg_d": 40.1,
-  "reg_r": 33.0,
-  "states": {}
+  "reg_r": 33.0
  },
  "uf": {
   "total": 59000000
  },
  "calls": {
+  "note": "Hand-edit as AP calls races. The Action folds this into data.json; the page shows it in the AP-called tiles and marks called states on the map.",
   "senate": {
    "d": 0,
    "r": 0
