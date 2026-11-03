@@ -128,7 +128,12 @@ button:focus-visible,.st:focus-visible,input:focus-visible{outline:2px solid var
  <div><label for="sRep">GOP turnout surge on Election Day</label><div class="row"><input type="range" id="sRep" min="0" max="10" step="0.5" value="0"><output id="oRep">+0.0</output></div><div class="hint">The "polls undercount Republicans again" scenario. 2024 was ~3.</div></div>
  <div><label for="sUnd">Remaining undecideds break</label><div class="row"><input type="range" id="sUnd" min="-25" max="10" step="1" value="-9"><output id="oUnd">R+9</output></div><div class="hint">NYT/Siena: last-month deciders went R+9 across 7 Senate battlegrounds. Applied to the ~6% still undecided.</div></div>
  <div><label for="sTrust">Trust polls vs early-vote history</label><div class="row"><input type="range" id="sTrust" min="0" max="100" step="5" value="50"><output id="oTrust">50/50</output></div><div class="hint">Blend used for the model call. 100 = polls only.</div></div>
- <div class="act"><button id="reset" type="button">Reset to baseline</button></div>
+ <div class="act"><button id="reset" type="button">Reset to signal-derived defaults</button></div>
+</div>
+
+<div class="ctl" id="sig" style="display:block">
+ <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px"><label>Slider defaults are derived from these signals</label><span class="sub" id="sigNote">move a slider to override; Reset re-derives</span></div>
+ <div class="tw"><table id="sigT" style="margin-top:6px"><thead><tr><th>Signal</th><th>Indies</th><th>Dem surge</th><th>GOP surge</th><th>Undecided</th></tr></thead><tbody></tbody></table></div>
 </div>
 
 <div class="grid">
@@ -153,6 +158,36 @@ const M={"AZ": {"e": 1655577, "t": 2772249, "d": 37.2, "o": 24.9, "r": 38.0, "ma
 const SWING24=10.5;
 const SHIFT_MAIL=22, SHIFT_IP=12, BASE_IND=13, BASE_HOUSE_D=230, SEATS_PER_PT=6.3;
 const P={ind:13,dem:2,rep:0,und:-9,trust:50};
+const TOUCHED={};
+// Static evidence. Each item: label, source, contributions to indies / dem surge / gop surge / undecided break (points).
+const SIG_STATIC=[
+ {l:'Reuters/Ipsos: independents D+13 (base)',s:'Reuters/Ipsos Oct',ind:13,dem:0,rep:0,und:0},
+ {l:'NYT/Siena: last-month deciders R+9 across 7 Senate battlegrounds',s:'NYT/Siena Oct 23–Nov 1',ind:-1.5,dem:0,rep:0,und:-9},
+ {l:'NYT/Siena: all 7 Dem Senate candidates viewed more favorably by independents',s:'NYT/Siena',ind:1.0,dem:0,rep:0,und:0},
+ {l:'Guam governor flipped R (R+3.4 vs D+11.4 in 2022); markets had Ada 62–69%, opt-in poll had Terlaje +22; delegate flipped D',s:'GEC unofficial, Polymarket, KANDIT',ind:-1.0,dem:0,rep:0.5,und:0},
+ {l:'Arizona early returns ~1.5 pts redder than election eve 2022 (R +10–12K vs D +13K)',s:'Stealth Analytics, AZ Republic 2022 log',ind:-0.5,dem:0,rep:0.75,und:0},
+ {l:'2024 precedent: final polls undercounted Republicans by ~3',s:'prior',ind:0,dem:0,rep:1.0,und:0},
+ {l:'Catalist: Dem share of early vote +3 pts vs same point 2022 across 25 states',s:'CNN/Catalist',ind:0,dem:1.0,rep:0,und:0},
+ {l:'Florida GOP early-vote lead well below its usual edge; NV, NC early vote bluer than 2022',s:'UF Election Lab, Ralston, Bitzer',ind:0,dem:0.5,rep:0,und:0},
+ {l:'Election Day reports: FL Dem counties +13–22% vs 2022 while GOP counties lag; Detroit on record pace',s:'NBC Decision Desk, CNN',ind:0,dem:0.5,rep:0,und:0},
+ {l:'Enthusiasm gap: 44% of Dems vs 26% of Republicans very enthusiastic',s:'Reuters/Ipsos',ind:0,dem:0.5,rep:0,und:0},
+ {l:'Marist: attention gap closed (46% D vs 45% R following very closely)',s:'NPR/PBS/Marist',ind:0,dem:-0.5,rep:0.25,und:0},
+];
+let SIG_LIVE=[];
+function deriveDefaults(){
+  const all=SIG_STATIC.concat(SIG_LIVE);
+  const sum=k=>all.reduce((a,x)=>a+(x[k]||0),0);
+  const d={ind:Math.round(sum('ind')),dem:Math.round(Math.max(0,sum('dem'))*2)/2,rep:Math.round(Math.max(0,sum('rep'))*2)/2,und:Math.round(sum('und')),trust:50};
+  const tb=document.querySelector('#sigT tbody');
+  const fmt=v=>v?(v>0?'+':'')+(Number.isInteger(v)?v:v.toFixed(2).replace(/0+$/,'').replace(/\.$/,'')):'';
+  tb.innerHTML=all.map(x=>`<tr><td>${x.l}<div class="sub">${x.s}</div></td><td class="call">${fmt(x.ind)}</td><td class="call">${fmt(x.dem)}</td><td class="call">${fmt(x.rep)}</td><td class="call">${fmt(x.und)}</td></tr>`).join('')+`<tr><td><b>Derived defaults</b></td><td class="call"><b>${f(d.ind)}</b></td><td class="call"><b>+${d.dem.toFixed(1)}</b></td><td class="call"><b>+${d.rep.toFixed(1)}</b></td><td class="call"><b>${f(d.und)}</b></td></tr>`;
+  return d;
+}
+function applyDefaults(force){
+  const d=deriveDefaults();
+  for(const [id,key,out,fmt] of ctl){ if(force||!TOUCHED[key]){ P[key]=d[key]; document.getElementById(id).value=d[key]; document.getElementById(out).textContent=fmt(String(d[key])); } }
+  recompute();
+}
 const UNDECIDED=0.06;
 const f=v=>(v>0?"D+":v<0?"R+":"")+Math.abs(v).toFixed(1);
 const cls=v=>v>0?"d":v<0?"r":"";
@@ -267,18 +302,14 @@ svg.selectAll('text').data(feats.filter(d=>ABBR[d.properties.name]&&ABBR[d.prope
 const ctl=[['sInd','ind','oInd',v=>f(+v)],['sUnd','und','oUnd',v=>f(+v)],['sDem','dem','oDem',v=>'+'+(+v).toFixed(1)],['sRep','rep','oRep',v=>'+'+(+v).toFixed(1)],['sTrust','trust','oTrust',v=>v+'/'+(100-v)]];
 for(const [id,key,out,fmt] of ctl){
   const el=document.getElementById(id);
-  el.addEventListener('input',()=>{P[key]=+el.value;document.getElementById(out).textContent=fmt(el.value);recompute();});
+  el.addEventListener('input',()=>{TOUCHED[key]=true;P[key]=+el.value;document.getElementById(out).textContent=fmt(el.value);recompute();});
 }
-document.getElementById('reset').addEventListener('click',()=>{
-  const d={ind:13,dem:2,rep:0,und:-9,trust:50};
-  for(const [id,key,out,fmt] of ctl){document.getElementById(id).value=d[key];P[key]=d[key];document.getElementById(out).textContent=fmt(String(d[key]));}
-  recompute();
-});
+document.getElementById('reset').addEventListener('click',()=>{ for(const k in TOUCHED) delete TOUCHED[k]; applyDefaults(true); });
 new MutationObserver(paint).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change',paint);
 document.getElementById('foot').innerHTML=`Early ballots: On Point Politics / civicAPI counts, state party registration where published, On Point model elsewhere (GA, MI, WI, OH, TX, VA, MN and the count-only states). ME ballot total is an approximation. AZ Election Day skew is calibrated to 2022 (Stealth Analytics / AZ Republic early-return logs). Expected 2026 turnout assumes 7% above 2022. Early-vote margin assumes 90% party loyalty plus the independents slider. Polls lens: margin the remaining ballots need for the final poll average to hold. History lens: remaining ballots skew R by the state's usual Election Day gap (22 pts mail-heavy, 12 pts in-person-early), then the two turnout sliders. Remaining-undecideds slider shifts every poll-based margin by 6% × the break (NYT/Siena final battleground poll, Oct 23–Nov 1, n=5,708: last-month deciders R+9). Model call blends the adjusted poll average with the history-lens final per the trust slider; Senate win probability is a logistic on that margin. States without a party-split early vote use an environment lens: 2024 presidential margin plus a 10.5-point national swing (generic ballot D+9 vs 2024 R+1.5), moved by the sliders; Senate and governor ratings there are from Cook, On Point and the final public polls. House seats: 230 D at a D+9 national margin, ${SEATS_PER_PT} seats per point. Markets: Kalshi and Polymarket, midday Nov 3. House ratings: Cook Political Report via 270toWin, Oct 23 2026 (Cook shifted 19 more seats toward Dems on Oct 30). This is a model, not a forecast with error bars; treat it as a what-if tool.`;
 function idle(){ if(sel) return; document.getElementById('panel').innerHTML=`<h3>Tap a state</h3><p class="note">Each state opens here: early ballots in, estimated ballots remaining, the two lenses, the model call at the current sliders, every Senate and governor race, and Cook's competitive House seats. Rows in the Senate table below also open their state.</p><div class="sub" id="natl"></div>`; }
-recompute(); idle();
+applyDefaults(true); idle();
 
 const LIVE={at:null,src:{}};
 function pct(v){return v==null?null:Math.round(v);}
@@ -298,8 +329,14 @@ function applyData(d){
       if(M[ab]&&row.ballots){ M[ab].e=row.ballots; if(row.dem!=null&&row.rep!=null){M[ab].d=row.dem;M[ab].r=row.rep;M[ab].o=Math.max(0,100-row.dem-row.rep);} }
       else if(EO[ab]&&row.ballots){ EO[ab][0]=row.ballots; }
     }
-    recompute();
   }
+  SIG_LIVE=[];
+  const senVals=['kalshi','polymarket','predictit'].map(k=>d[k]&&d[k].senate_d).filter(v=>v!=null);
+  if(senVals.length){ const avg=senVals.reduce((a,b)=>a+b)/senVals.length; const base=(d.baseline&&d.baseline.senate_d)||76; const delta=avg-base;
+    SIG_LIVE.push({l:`Markets intraday: Senate D ${avg.toFixed(1)}% vs ${base}% at open (${delta>=0?'+':''}${delta.toFixed(1)})`,s:'live · Kalshi/Polymarket/PredictIt',ind:+(delta*0.4).toFixed(2),dem:0,rep:+(Math.max(0,-delta)*0.2).toFixed(2),und:0}); }
+  if(d.onpoint&&d.onpoint.vs_expected!=null){ const v=d.onpoint.vs_expected;
+    SIG_LIVE.push({l:`Early vote vs On Point's forecast expectation: ${f(v)} nationally`,s:'live · On Point',ind:0,dem:+(Math.max(0,v)).toFixed(2),rep:+(Math.max(0,-v)).toFixed(2),und:0}); }
+  applyDefaults(false);
   const total=(d.onpoint&&d.onpoint.total)||(d.uf&&d.uf.total);
   const okSrc=Object.entries(d.sources||{}).filter(([k,v])=>v&&v.ok).map(([k])=>k);
   LIVE.at=d.generated;

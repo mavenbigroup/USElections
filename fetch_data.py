@@ -133,6 +133,12 @@ def onpoint():
     m = re.search(r"registered Democrats cast ([\d.]+) percent of those ballots and registered Republicans ([\d.]+) percent", text)
     if m:
         out["reg_d"], out["reg_r"] = float(m.group(1)), float(m.group(2))
+    m = re.search(r"Vs expectations\s*([DR]) \+([\d.]+)", text)
+    if m:
+        out["vs_expected"] = float(m.group(2)) * (1 if m.group(1) == "D" else -1)
+    m = re.search(r"Party model\s*([DR]) \+([\d.]+)", text)
+    if m:
+        out["party_model"] = float(m.group(2)) * (1 if m.group(1) == "D" else -1)
     # state rows: Name  ballots  mail  inperson  pct%  pace  dem%  rep%
     for name, ab in STATES.items():
         pat = re.escape(name) + r" ([\d,]+) ([\d,]+) ([\d,]+) ([\d.]+)% (?:[+\-][\d.]+%|n/a) ([\d.]+%|n/a) ([\d.]+%|n/a)"
@@ -166,7 +172,7 @@ def main():
             prev = json.loads(OUT.read_text())
         except Exception:
             prev = {}
-    data = {"generated": now(), "sources": {}}
+    data = {"generated": now(), "sources": {}, "baseline": prev.get("baseline") or {"senate_d": 76, "house_d": 94.5, "note": "midday Nov 3 open"}}
     for key, fn in [("kalshi", kalshi), ("polymarket", polymarket), ("predictit", predictit),
                     ("onpoint", onpoint), ("uf", uf_total)]:
         try:

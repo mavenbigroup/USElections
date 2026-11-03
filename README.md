@@ -5,7 +5,7 @@ Single-file, zero-build election board for the November 3, 2026 US midterms. Ope
 ## What it does
 
 - **Top strip**: Senate and House with three readings each: AP called, prediction-market odds, and the model's call.
-- **Sliders**: adjust the model live.
+- **Sliders**: adjust the model live. Their defaults are not hand-set: a signals table on the page lists every evidence item (polls, Guam, AZ vs 2022, early-vote composition, market moves) with its weighted contribution, and the live items re-derive from `data.json`. Moving a slider overrides it until Reset.
   - *Independents break*: how unaffiliated voters split (baseline D+13, Reuters/Ipsos).
   - *Dem turnout surge* / *GOP turnout surge*: points added to the remaining-ballot margin on Election Day.
   - *Remaining undecideds break*: NYT/Siena's final battleground poll found last-month deciders went R+9; applied to the ~6% still undecided (default R+9).
@@ -42,12 +42,3 @@ d3 7.8.5 and topojson-client 3.0.2 from cdnjs; Archivo and IBM Plex Mono from Go
 ## Caveats
 
 This is a what-if tool, not a forecast with error bars. The early-vote-to-vote conversion, the Election Day skew constants, and the seats-per-point figure are all judgment calls documented above.
-
-## Live refresh
-
-- `.github/workflows/refresh.yml` runs `fetch_data.py` every 5 minutes (GitHub's cron floor; real cadence is often 5–15 min) and commits `data.json` when it changes. Enable Actions on the repo; the workflow needs the default `contents: write` permission, which is set in the file.
-- `index.html` re-reads `data.json` every 30 seconds and also tries Polymarket (Gamma), PredictIt and Kalshi directly from the browser every 30 seconds. Whichever answers updates the Markets tiles and the status line under the header. If a feed blocks cross-origin requests, the page silently falls back to `data.json`.
-- `fetch_data.py` pulls: Kalshi public trade API, Polymarket Gamma API, PredictIt marketdata API, On Point Politics early-vote tracker (national total and per-state rows, which update the modeled states' ballot counts and party shares), UF Election Lab national total, and `calls.json`.
-- `calls.json`: edit by hand as AP calls races. The next Action run folds it into `data.json` and the AP-called tiles update.
-
-Every source is best-effort; a failing feed keeps its last good value and the status line names which sources answered.
