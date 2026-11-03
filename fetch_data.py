@@ -286,43 +286,48 @@ def civic_tally(race):
 
 
 def results_auto():
-    races = {}
-    errors = 0
-    def pull(st, typ):
-        nonlocal errors
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    jobs = [(st, "senate") for st in RES_SEN] + [(st, "governor") for st in RES_GOV] + [(st, "house") for st in RES_HOUSE]
+    races, errors, ok = {}, 0, 0
+    def pull(job):
+        st, typ = job
+        req = urllib.request.Request(f"{CIVIC}/race/US/{st}/{typ}/2026", headers=UA)
+        with urllib.request.urlopen(req, timeout=6) as r:
+            return job, civic_races(json.loads(r.read().decode("utf-8", "replace")))
+    t0 = time.time()
+    with ThreadPoolExecutor(max_workers=12) as ex:
+        futs = [ex.submit(pull, j) for j in jobs]
         try:
-            return civic_races(getj(f"{CIVIC}/race/US/{st}/{typ}/2026"))
+            for fu in as_completed(futs, timeout=60):
+                try:
+                    (st, typ), lst = fu.result()
+                    ok += 1
+                except Exception:
+                    errors += 1
+                    continue
+                if typ in ("senate", "governor"):
+                    for race in lst[:1]:
+                        tl = civic_tally(race)
+                        if tl["d"] or tl["r"] or tl.get("called"):
+                            races[st + ("-SEN" if typ == "senate" else "-GOV")] = tl
+                else:
+                    for race in lst:
+                        name = (race.get("district_details") or {}).get("district_name") or race.get("election_name") or ""
+                        if isinstance(name, dict):
+                            name = name.get("en_US", "")
+                        m = re.search(r"(\d+)", str(name))
+                        key = f"{st}-{int(m.group(1)):02d}" if m else (f"{st}-AL" if "large" in str(name).lower() else None)
+                        if not key:
+                            continue
+                        tl = civic_tally(race)
+                        if tl["d"] or tl["r"] or tl.get("called"):
+                            races[key] = tl
         except Exception:
-            errors += 1
-            return []
-    for st in RES_SEN:
-        for race in pull(st, "senate")[:1]:
-            t = civic_tally(race)
-            if t["d"] or t["r"] or t.get("called"):
-                races[st + "-SEN"] = t
-        time.sleep(0.15)
-    for st in RES_GOV:
-        for race in pull(st, "governor")[:1]:
-            t = civic_tally(race)
-            if t["d"] or t["r"] or t.get("called"):
-                races[st + "-GOV"] = t
-        time.sleep(0.15)
-    for st in RES_HOUSE:
-        for race in pull(st, "house"):
-            name = str((race.get("district_details") or {}).get("district_name") or race.get("election_name") or "")
-            if isinstance(race.get("election_name"), dict):
-                name = name or race["election_name"].get("en_US", "")
-            m = re.search(r"(\d+)", name)
-            key = f"{st}-{int(m.group(1)):02d}" if m else (f"{st}-AL" if "large" in name.lower() else None)
-            if not key:
-                continue
-            t = civic_tally(race)
-            if t["d"] or t["r"] or t.get("called"):
-                races[key] = t
-        time.sleep(0.15)
-    if not races and errors > 20:
-        raise RuntimeError(f"civicAPI unreachable ({errors} failed requests)")
-    return {"races": races, "count": len(races), "errors": errors}
+            errors += sum(1 for f in futs if not f.done())
+    print(f"civicAPI: {ok} ok, {errors} failed, {len(races)} races with votes, {time.time()-t0:.1f}s")
+    if ok == 0:
+        raise RuntimeError(f"civicAPI unreachable ({errors} failed)")
+    return {"races": races, "count": len(races), "ok": ok, "errors": errors}
 
 
 def uf_total():
