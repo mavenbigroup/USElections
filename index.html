@@ -421,11 +421,18 @@ async function refresh(){
   else if(!lastFile){ document.getElementById('live').textContent='live feed: no reachable source from this page (artifact sandbox or CORS). On GitHub Pages the Action refreshes data.json every ~5 min and the page re-reads it every 30 s.'; }
 }
 const REPO='MavenBIGroup/USElections';
+const RELAY_URL=''; // set to your Cloudflare Worker URL (see relay/README.md) so any viewer can fire the scrape
 function getTok(){try{return localStorage.getItem('ghtok')||'';}catch(e){return '';}}
 const ab_=document.getElementById('actionBtn'), tokBox=document.getElementById('tokBox'), tokIn=document.getElementById('tokIn');
 async function fireAction(){
   const tok=getTok();
   ab_.disabled=true; ab_.textContent='Refreshing…'; await refresh();
+  if(!tok && RELAY_URL){
+    try{ const r=await fetch(RELAY_URL,{method:'POST'}); const j=await r.json().catch(()=>({}));
+      if(j.ok){ ab_.textContent=j.skipped?('Scrape ran <1 min ago · retry in '+j.wait+' s'):'Scraping… ~45 s'; let n=0; const t=setInterval(async()=>{n++; await refresh(); if(n>=6){clearInterval(t); ab_.disabled=false; ab_.textContent='Refresh';}},15000); return; }
+    }catch(e){}
+    ab_.disabled=false; ab_.textContent='Refresh'; return;
+  }
   if(!tok){ ab_.disabled=false; ab_.textContent='Refresh'; return; }
   try{
     const r=await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/refresh.yml/dispatches`,{method:'POST',headers:{'Authorization':'Bearer '+tok,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'},body:JSON.stringify({ref:'main'})});
