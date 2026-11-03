@@ -1,27 +1,27 @@
 {
- "generated": "2026-11-03T19:48:56+00:00",
+ "generated": "2026-11-03T19:51:24+00:00",
  "sources": {
   "kalshi": {
    "ok": false,
    "at": "2026-11-03T19:35:00+00:00",
-   "error": "no matching Kalshi markets"
+   "error": "no matching Kalshi markets: "
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-03T19:48:58+00:00"
+   "at": "2026-11-03T19:51:28+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-03T19:48:58+00:00"
+   "at": "2026-11-03T19:51:29+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-03T19:48:58+00:00"
+   "at": "2026-11-03T19:51:29+00:00"
   },
   "uf": {
    "ok": false,
    "at": null,
-   "error": "HTTP Error 404: Not Found"
+   "error": "UF total not found"
   }
  },
  "kalshi": {
