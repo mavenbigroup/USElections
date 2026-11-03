@@ -421,7 +421,7 @@ async function refresh(){
   else if(!lastFile){ document.getElementById('live').textContent='live feed: no reachable source from this page (artifact sandbox or CORS). On GitHub Pages the Action refreshes data.json every ~5 min and the page re-reads it every 30 s.'; }
 }
 const REPO='MavenBIGroup/USElections';
-const RELAY_URL=''; // set to your Cloudflare Worker URL (see relay/README.md) so any viewer can fire the scrape
+const RELAY_URL='https://election-refresh.alan-anolik.workers.dev/'; // set to your Cloudflare Worker URL (see relay/README.md) so any viewer can fire the scrape
 function getTok(){try{return localStorage.getItem('ghtok')||'';}catch(e){return '';}}
 const ab_=document.getElementById('actionBtn'), tokBox=document.getElementById('tokBox'), tokIn=document.getElementById('tokIn');
 async function fireAction(){
