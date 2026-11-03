@@ -34,34 +34,40 @@ def now():
 
 # ---------- markets ----------
 def kalshi():
-    """Senate / House control and balance of power from Kalshi's public API."""
+    """Senate / House control and balance of power from Kalshi's public API.
+    Event tickers: CONTROLS-2026 (Senate), CONTROLH-2026 (House), KXBALANCEPOWERCOMBO-27FEB (combo)."""
     out = {}
-    base = "https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open"
-    data = getj(base)
-    for m in data.get("markets", []):
-        t = (m.get("title") or "").lower()
-        yes = m.get("last_price") or m.get("yes_bid") or 0
-        if "control the senate" in t and "democrat" in t:
-            out["senate_d"] = yes
-        elif "control the house" in t and "democrat" in t:
-            out["house_d"] = yes
-        elif "balance of power" in t and "democrats sweep" in t:
-            out["sweep_d"] = yes
-    # cursor through a few pages if nothing matched on page one
-    cursor = data.get("cursor")
-    pages = 0
-    while len(out) < 2 and cursor and pages < 5:
-        data = getj(base + "&cursor=" + cursor)
+    def scan(url, key, want):
+        data = getj(url)
         for m in data.get("markets", []):
-            t = (m.get("title") or "").lower()
+            t = " ".join(str(m.get(k) or "") for k in ("title", "subtitle", "yes_sub_title", "ticker")).lower()
             yes = m.get("last_price") or m.get("yes_bid") or 0
-            if "control the senate" in t and "democrat" in t:
-                out["senate_d"] = yes
-            elif "control the house" in t and "democrat" in t:
-                out["house_d"] = yes
-        cursor = data.get("cursor"); pages += 1
-    if not out:
-        raise RuntimeError("no matching Kalshi markets")
+            if want(t) and yes:
+                out[key] = yes
+    try:
+        scan("https://api.elections.kalshi.com/trade-api/v2/markets?event_ticker=CONTROLS-2026&limit=50", "senate_d", lambda t: "dem" in t)
+    except Exception as e: out.setdefault("errors", []).append(f"senate: {e}")
+    try:
+        scan("https://api.elections.kalshi.com/trade-api/v2/markets?event_ticker=CONTROLH-2026&limit=50", "house_d", lambda t: "dem" in t)
+    except Exception as e: out.setdefault("errors", []).append(f"house: {e}")
+    try:
+        scan("https://api.elections.kalshi.com/trade-api/v2/markets?event_ticker=KXBALANCEPOWERCOMBO-27FEB&limit=50", "sweep_d", lambda t: "sweep" in t and "dem" in t)
+    except Exception as e: out.setdefault("errors", []).append(f"combo: {e}")
+    if not any(k in out for k in ("senate_d", "house_d", "sweep_d")):
+        # fallback: page through open markets by title
+        base = "https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open"
+        cursor = None
+        for _ in range(5):
+            data = getj(base + (("&cursor=" + cursor) if cursor else ""))
+            for m in data.get("markets", []):
+                t = " ".join(str(m.get(k) or "") for k in ("title", "yes_sub_title")).lower()
+                yes = m.get("last_price") or m.get("yes_bid") or 0
+                if "senate" in t and "control" in t and "dem" in t: out["senate_d"] = yes
+                if "house" in t and "control" in t and "dem" in t: out["house_d"] = yes
+            cursor = data.get("cursor")
+            if len(out) >= 2 or not cursor: break
+    if not any(k in out for k in ("senate_d", "house_d", "sweep_d")):
+        raise RuntimeError("no matching Kalshi markets: " + "; ".join(out.get("errors", [])))
     return out
 
 
@@ -145,7 +151,7 @@ def onpoint():
 
 
 def uf_total():
-    html = get("https://election.lab.ufl.edu/early-vote/2026-general-election-early-vote-statistics/")
+    html = get("https://election.lab.ufl.edu/early-vote/2026-early-voting/")
     text = re.sub(r"<[^>]+>", " ", html)
     m = re.search(r"Total Early Votes:?\s*([\d,]{9,})", text)
     if not m:
