@@ -8,6 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="Election Desk">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Maven Election Desk</title>
+<!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4cbe5e150a5344838368ef9b08007cff"}'></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* layout: control-room board. KPI strip, sliders, then map left / state panel right, race table below. */
@@ -26,6 +27,16 @@
  --dem:#5b93e0; --dem-ink:#9dbff0; --rep:#e2655e; --rep-ink:#f3a39e; --ind:#6c7488; --rest:#263248; --tossup:#b89f3e;
  --accent:#f0b23a; --hover:#2a2614; color-scheme:dark}
 *{box-sizing:border-box}
+[data-tip]{cursor:pointer}
+.tipbox{font-size:13px;background:var(--hover);border:1px solid var(--line);padding:8px 10px;margin:4px 0 8px;line-height:1.45}
+.ptiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:10px 0 4px}
+.ptile{border:1px solid var(--line);padding:10px 12px;min-width:0}
+.ptile .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);font-weight:600}
+.ptile .v{font-family:var(--mono);font-size:24px;font-weight:500;line-height:1.15;margin:4px 0 2px}
+.ptile .w{font-size:13px;font-weight:600}
+.ptile .s{font-size:12px;color:var(--mute)}
+details.how{margin-top:12px;border-top:1px solid var(--line);padding-top:8px}
+details.how summary{cursor:pointer;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);font-weight:600}
 [hidden]{display:none!important}
 #tokBox{display:flex;gap:6px;align-items:center}
 html{color-scheme:light dark}
@@ -185,7 +196,7 @@ button:focus-visible,.st:focus-visible,input:focus-visible{outline:2px solid var
 <div class="tw"><table id="gov"><thead><tr><th>State</th><th>Matchup</th><th>Held</th><th>Model call</th><th>Model margin</th><th>Reported</th><th>Market D</th><th>Polls / forecast</th></tr></thead><tbody></tbody></table></div>
 
 <div class="foot" id="foot"></div>
-<div class="brand2"><span><b>Maven BI Group</b> · Know | Run | Improve · Phoenix, AZ</span><span>Built by Alan Anolik · v<span id="ver">1103.1501</span> · <a href="#" id="ownerLink" style="color:inherit">owner</a></span></div>
+<div class="brand2"><span><b>Maven BI Group</b> · Know | Run | Improve · Phoenix, AZ</span><span>Built by Alan Anolik · v<span id="ver">1103.1509</span> · <a href="#" id="ownerLink" style="color:inherit">owner</a></span></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
@@ -277,12 +288,12 @@ function recompute(){
   });
   seats=Math.max(30,Math.min(70,seats));
   document.getElementById('senD').textContent=seats; document.getElementById('senR').textContent=100-seats;
-  const sb=document.getElementById('senBar'); sb.innerHTML=`<span style="width:${seats}%;background:var(--dem)"></span><span style="width:${100-seats}%;background:var(--rep)"></span>`;
+  const sb=document.getElementById('senBar'); sb.innerHTML=`<span data-tip="Democrats ${seats}: 47 held now + ${flips.length} flip${flips.length===1?'':'s'} (${flips.join(', ')||'none'})${losses.length?' − '+losses.length+' loss ('+losses.join(', ')+')':''}. Expected value ${exp.toFixed(1)}." style="width:${seats}%;background:var(--dem)"></span><span data-tip="Republicans ${100-seats}. Vance breaks a 50–50 tie for the GOP, so Democrats need 51." style="width:${100-seats}%;background:var(--rep)"></span>`;
   document.getElementById('senSub').textContent=`Expected ${exp.toFixed(1)} D seats. Flips: ${flips.length?flips.join(', '):'none'}${losses.length?'. Dem losses: '+losses.join(', '):''}. Kalshi sits at 53.`;
   const gen=GEN_BASE+(P.ind-BASE_IND)*0.3+(P.dem-P.rep)*0.6+UNDECIDED*P.und;
   const hd=Math.round(Math.max(150,Math.min(290,BASE_HOUSE_D+(gen-9)*SEATS_PER_PT)));
   document.getElementById('houD').textContent=hd; document.getElementById('houR').textContent=435-hd;
-  document.getElementById('houBar').innerHTML=`<span style="width:${hd/4.35}%;background:var(--dem)"></span><span style="width:${(435-hd)/4.35}%;background:var(--rep)"></span>`;
+  document.getElementById('houBar').innerHTML=`<span data-tip="Democrats ${hd}: ${BASE_HOUSE_D} at a D+9 national margin, ${SEATS_PER_PT} seats per point; current implied margin ${f(gen)}. Need 218." style="width:${hd/4.35}%;background:var(--dem)"></span><span data-tip="Republicans ${435-hd}." style="width:${(435-hd)/4.35}%;background:var(--rep)"></span>`;
   document.getElementById('houSub').textContent=`Implied national margin ${f(gen)}. Dems need roughly D+5 to break even after redistricting; each point past that is worth about ${SEATS_PER_PT} seats.`;
   const tb=document.querySelector('#sen tbody');
   tb.innerHTML=rows.map(r=>{
@@ -295,7 +306,7 @@ function recompute(){
   const grows=GOVR.map(g=>{ const [st,dn,rn,held,base,mk]=g; const m=govMargin(st), p=prob(m); const dw=m>0; if(dw) gD++; else gR++; gexp+=p;
     if((dw?'D':'R')!==held) gflips.push(st+(dw?' →D':' →R')); if(mk!=null){mN++; if(mk>=50) mD++; else mR++;} return {st,dn,rn,held,base,mk,m,p,dw}; });
   document.getElementById('govD').textContent=gD; document.getElementById('govR').textContent=gR;
-  document.getElementById('govBar').innerHTML=`<span style="width:${gD*2}%;background:var(--dem)"></span><span style="width:${gR*2}%;background:var(--rep)"></span>`;
+  document.getElementById('govBar').innerHTML=`<span data-tip="Democratic governors ${gD}: ${GOVB.D-GOVR.filter(g=>g[3]==='D').length} not up this year + ${grows.filter(r=>r.dw).length} projected wins of 36. Flips: ${gflips.join(', ')||'none'}." style="width:${gD*2}%;background:var(--dem)"></span><span data-tip="Republican governors ${gR}: ${GOVB.R-GOVR.filter(g=>g[3]==='R').length} not up + ${grows.filter(r=>!r.dw).length} projected wins." style="width:${gR*2}%;background:var(--rep)"></span>`;
   document.getElementById('mktGov').innerHTML=mN?`<b class="d">${mD}</b> · <b class="r">${mR}</b>`:'—';
   document.getElementById('mktGovSrc').textContent=mN?`of ${mN} traded races`:'no live odds';
   document.getElementById('govSub').textContent=`Now R ${GOVB.R} · D ${GOVB.D}. Expected ${gexp.toFixed(1)} D. Flips: ${gflips.length?gflips.join(', '):'none'}.`;
@@ -324,12 +335,12 @@ function show(ab){
   sel=ab; d3.selectAll('.st').classed('sel',d=>ABBR[d.properties.name]===ab);
   const p=document.getElementById('panel');
   const senRace=SEN.find(x=>x[0]===ab); const gov=GOV[ab]; const hs=HOUSE[ab]||[];
-  let top=`<h3>${NAMES[ab]}</h3>`;
+  let top='';
   const m=model(ab), s=M[ab];
   if(m){
-    const mo=s.mailOut||0;
-    top+=`<div class="sub"><span class="chip">${k(s.e)} early</span><span class="chip">${k(m.rem)} est. remaining</span>${mo?`<span class="chip">${k(mo)} mail still out · ${k(Math.max(0,m.rem-mo))} ED expected</span>`:''}<span class="chip">${Math.round(m.es*100)}% in</span></div>
-    <div class="ebar"><span style="width:${m.es*s.d}%;background:var(--dem)"></span><span style="width:${m.es*s.o}%;background:var(--ind)"></span><span style="width:${m.es*s.r}%;background:var(--rep)"></span><span class="rest" style="width:${m.rs*100}%"></span></div>
+    const mo=s.mailOut||0; const late=Math.min(mo*0.4,m.rem), ed=Math.max(0,m.rem-late);
+    top+=`<div class="sub"><span class="chip">${k(s.e)} early</span><span class="chip">${k(m.rem)} est. remaining</span>${mo?`<span class="chip">${k(mo)} mail unreturned · ~${k(late)} back late · ~${k(ed)} Election Day</span>`:''}<span class="chip">${Math.round(m.es*100)}% in</span></div>
+    <div class="ebar"><span data-tip="Registered Democrats: ${k(s.e*s.d/100)} early ballots (${s.d.toFixed(1)}%)" style="width:${m.es*s.d}%;background:var(--dem)"></span><span data-tip="Independents / other: ${k(s.e*s.o/100)} early ballots (${s.o.toFixed(1)}%)" style="width:${m.es*s.o}%;background:var(--ind)"></span><span data-tip="Registered Republicans: ${k(s.e*s.r/100)} early ballots (${s.r.toFixed(1)}%)" style="width:${m.es*s.r}%;background:var(--rep)"></span><span class="rest" data-tip="Still to vote: ~${k(m.rem)} (${Math.round(m.rs*100)}% of expected turnout)${mo?`: ~${k(late)} late mail of ${k(mo)} unreturned, ~${k(ed)} Election Day`:''}. Expected total ${k(s.t)} = 2022 turnout × 1.07." style="width:${m.rs*100}%"></span></div>
     <div class="sub">Early ballots ${s.reg} by registration · vote est. <b class="${cls(m.me)}">${f(m.me)}</b> · final polls ${f(s.poll)}</div>
     <div class="lens">
       <div><div class="k">Polls lens</div><div class="v ${cls(m.need)}">${f(m.need)}</div><div class="s">remaining ballots need this for polls to hold</div></div>
@@ -346,21 +357,31 @@ function show(ab){
   }
   if(TODAY[ab]) top+=`<div class="sub" style="margin-top:6px"><b>Today:</b> ${TODAY[ab]}</div>`;
   const rk=Object.keys(RES.races||{}).filter(x=>x.startsWith(ab+'-'));
-  if(rk.length){ top+=`<h4>Real votes</h4>`+rk.map(x=>{const r=rep(x); if(!r) return ''; const lab=x.split('-')[1]; return `<div class="rv"><div><div class="k">${lab}</div><div class="v ${cls(r.m)}">${f(r.m)}</div></div><div><div class="k">D · R</div><div class="v"><span class="d">${k(r.d)}</span> · <span class="r">${k(r.r)}</span></div></div><div><div class="k">Reporting</div><div class="v">${r.pct!=null?r.pct+'%':'—'}${r.called?' <span class="called">'+r.called+'</span>':''}</div></div></div>`;}).join(''); }
-  let races=`<h4>Projection at current sliders</h4>`;
-  const prow=(lab,who,mm,extra)=>{ const pp=prob(mm); return `<div class="hr"><span class="dist">${lab}</span><span class="inc">${who}</span><span class="call ${cls(mm)}">${f(mm)} <span class="sub">${Math.round((mm>0?pp:1-pp)*100)}% ${mm>0?'D':'R'}</span>${extra||''}</span></div>`; };
-  if(senRace){ const mm=senMargin(ab,senRace[4]); const flip=(senRace[2]==='flip'&&mm>0)?' <span class="called">D flip</span>':(senRace[2]==='dhold'&&mm<=0)?' <span class="called">R flip</span>':''; races+=prow('Senate',senRace[1],mm,flip); }
-  else if(SEN2[ab]) races+=`<div class="hr"><span class="dist">Senate</span><span class="inc">${SEN2[ab][0]}</span><span class="call">${SEN2[ab][1]}</span></div>`;
+  let rvh=''; if(rk.length){ rvh+=`<h4>Real votes</h4>`+rk.map(x=>{const r=rep(x); if(!r) return ''; const lab=x.split('-')[1]; return `<div class="rv"><div><div class="k">${lab}</div><div class="v ${cls(r.m)}">${f(r.m)}</div></div><div><div class="k">D · R</div><div class="v"><span class="d">${k(r.d)}</span> · <span class="r">${k(r.r)}</span></div></div><div><div class="k">Reporting</div><div class="v">${r.pct!=null?r.pct+'%':'—'}${r.called?' <span class="called">'+r.called+'</span>':''}</div></div></div>`;}).join(''); }
+  const nm=(mu,party)=>{ const mm=mu.match(new RegExp('([A-Z][A-Za-z.\\-\' ]+?) \\('+party+'\\)')); return mm?mm[1].trim():party; };
+  const tile=(lab,mm,who,sub,flip)=>{ const pp=prob(mm), w=mm>0?'D':'R'; return `<div class="ptile"><div class="k">${lab}</div><div class="v ${cls(mm)}">${f(mm)}</div><div class="w ${cls(mm)}">${who}${flip?' · <span class="called">'+w+' flip</span>':''}</div><div class="s">${Math.round((mm>0?pp:1-pp)*100)}% to win${sub?' · '+sub:''}</div></div>`; };
+  let tiles='';
+  if(senRace){ const mm=senMargin(ab,senRace[4]); const fl=(senRace[2]==='flip'&&mm>0)||(senRace[2]==='dhold'&&mm<=0); tiles+=tile('Senate',mm,mm>0?nm(senRace[1],'D'):nm(senRace[1],senRace[2]==='ihold'?'I':'R'),'',fl); }
+  else if(SEN2[ab]) tiles+=`<div class="ptile"><div class="k">Senate</div><div class="v" style="font-size:18px">${SEN2[ab][1]}</div><div class="s">${SEN2[ab][0]}</div></div>`;
   const g=govRow(ab);
-  if(g){ const mm=govMargin(ab); const w=mm>0?'D':'R'; races+=prow('Governor',`${g[1]} (D) v ${g[2]} (R) · held ${g[3]}`,mm,w!==g[3]?` <span class="called">${w} flip</span>`:''); }
+  if(g){ const mm=govMargin(ab); tiles+=tile('Governor',mm,mm>0?g[1]:g[2],'held '+g[3],(mm>0?'D':'R')!==g[3]); }
+  let hlist='';
   if(hs.length){
-    let ed=0, fl=[]; const rows=hs.map(([d,rt,inc])=>{ const mm=distMargin(rt), pp=prob(mm); ed+=pp; const ip=incParty(inc); const w=mm>0?'D':'R'; if(ip&&ip!==w) fl.push(d+' →'+w); return {d,rt,inc,mm,pp}; });
-    races+=`<div class="hr"><span class="dist">House</span><span class="inc">${hs.length} competitive seat${hs.length>1?'s':''} · expected D ${ed.toFixed(1)} of ${hs.length}</span><span class="call">${fl.length?fl.length+' flip'+(fl.length>1?'s':''):'no flips'}</span></div>`;
-    races+=`<h4>House seats · Cook rating shifted by national environment (${f(genNow())})</h4>`+rows.map(r=>`<div class="hr"><span class="dist">${r.d}</span><span class="inc">${r.inc}</span><span class="call ${cls(r.mm)}">${f(r.mm)} <span class="sub">${Math.round((r.mm>0?r.pp:1-r.pp)*100)}%</span></span><span class="rt ${RT[r.rt]}">${r.rt}</span></div>`).join('');
-  } else races+=`<div class="hr"><span class="dist">House</span><span class="inc">No seat Cook rates competitive</span><span class="call sub">—</span></div>`;
-  p.innerHTML=top+races;
+    let ed2=0, fl=[]; const rows=hs.map(([d,rt,inc])=>{ const mm=distMargin(rt), pp=prob(mm); ed2+=pp; const ip=incParty(inc); const w=mm>0?'D':'R'; if(ip&&ip!==w) fl.push(d); return {d,rt,inc,mm,pp}; });
+    tiles+=`<div class="ptile"><div class="k">House</div><div class="v">${ed2.toFixed(1)}<span class="s"> / ${hs.length}</span></div><div class="w">expected D in competitive seats</div><div class="s">${fl.length?fl.length+' flip'+(fl.length>1?'s':'')+': '+fl.join(', '):'no flips'}</div></div>`;
+    hlist=`<h4>Competitive House seats · Cook rating shifted to ${f(genNow())} environment</h4>`+rows.map(r=>`<div class="hr"><span class="dist">${r.d}</span><span class="inc">${r.inc}</span><span class="call ${cls(r.mm)}">${f(r.mm)} <span class="sub">${Math.round((r.mm>0?r.pp:1-r.pp)*100)}%</span></span><span class="rt ${RT[r.rt]}">${r.rt}</span></div>`).join('');
+  }
+  const head=`<h3>${NAMES[ab]}</h3><h4 style="margin-top:6px">Final projection · current sliders</h4>`+(tiles?`<div class="ptiles">${tiles}</div>`:`<div class="sub">No competitive statewide race this year.</div>`);
+  p.innerHTML=head+rvh+hlist+`<details class="how"><summary>How we got here</summary>${top}</details>`;
 }
 
+document.addEventListener('click',e=>{
+  const el=e.target.closest('[data-tip]'); if(!el) return;
+  const bar=el.parentElement; let box=bar.nextElementSibling;
+  if(!box||!box.classList.contains('tipbox')){ box=document.createElement('div'); box.className='tipbox'; bar.after(box); }
+  if(box.dataset.for===el.dataset.tip&&!box.hidden){ box.hidden=true; return; }
+  box.dataset.for=el.dataset.tip; box.textContent=el.dataset.tip; box.hidden=false;
+});
 const svg=d3.select('#map');
 const feats=topojson.feature(TOPO,TOPO.objects.states).features;
 const gp=d3.geoPath();
@@ -381,11 +402,11 @@ for(const [id,key,out,fmt] of ctl){
 document.getElementById('reset').addEventListener('click',()=>{ for(const k in TOUCHED) delete TOUCHED[k]; applyDefaults(true); });
 new MutationObserver(paint).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change',paint);
-document.getElementById('foot').innerHTML=`Early ballots: On Point Politics / civicAPI counts, state party registration where published, On Point model elsewhere (GA, MI, WI, OH, TX, VA, MN and the count-only states). ME ballot total is an approximation. AZ Election Day skew is calibrated to 2022 (Stealth Analytics / AZ Republic early-return logs). Expected 2026 turnout assumes 7% above 2022. Early-vote margin assumes 90% party loyalty plus the independents slider. Poll and forecast margins refresh every cycle from On Point's forecast and callthemap's polling averages (averaged where both exist); the page's built-in values are the fallback. Polls lens: margin the remaining ballots need for the final poll average to hold. History lens: remaining ballots skew R by the state's usual Election Day gap (22 pts mail-heavy, 12 pts in-person-early), then the two turnout sliders. Remaining-undecideds slider shifts every poll-based margin by 6% × the break (NYT/Siena final battleground poll, Oct 23–Nov 1, n=5,708: last-month deciders R+9). Model call blends the adjusted poll average with the history-lens final per the trust slider; Senate win probability is a logistic on that margin. States without a party-split early vote use an environment lens: 2024 presidential margin plus a 10.5-point national swing (generic ballot D+9 vs 2024 R+1.5), moved by the sliders; Senate and governor ratings there are from Cook, On Point and the final public polls. House seats: 230 D at a D+9 national margin, ${SEATS_PER_PT} seats per point. Outstanding mail = ballots requested − returned (Polling Desk). Real votes: results.json keyed STATE-SEN, STATE-GOV, STATE-NN with d, r, o, pct, called; a race at ≥40% reporting recolors its state by the reported margin. Governors: all 36 races; baseline margins from On Point's forecast where it covers the race (refreshed each cycle), otherwise from Cook/Sabato ratings; modeled states add the early-vote signal. Market D% from Kalshi/Polymarket (DeFi Rate, Nov 2) and live Kalshi where its API answers. House seats in a state: Cook rating as a base margin (toss-up 0, lean ±4, likely ±9) shifted by the national environment minus D+8. Markets: Kalshi and Polymarket, midday Nov 3. House ratings: Cook Political Report via 270toWin, Oct 23 2026 (Cook shifted 19 more seats toward Dems on Oct 30). This is a model, not a forecast with error bars; treat it as a what-if tool.`;
+document.getElementById('foot').innerHTML=`Early ballots: On Point Politics / civicAPI counts, state party registration where published, On Point model elsewhere (GA, MI, WI, OH, TX, VA, MN and the count-only states). ME ballot total is an approximation. AZ Election Day skew is calibrated to 2022 (Stealth Analytics / AZ Republic early-return logs). Expected 2026 turnout assumes 7% above 2022. Of unreturned mail ballots, ~40% are assumed to come back on or by Election Day. Early-vote margin assumes 90% party loyalty plus the independents slider. Poll and forecast margins refresh every cycle from On Point's forecast and callthemap's polling averages (averaged where both exist); the page's built-in values are the fallback. Polls lens: margin the remaining ballots need for the final poll average to hold. History lens: remaining ballots skew R by the state's usual Election Day gap (22 pts mail-heavy, 12 pts in-person-early), then the two turnout sliders. Remaining-undecideds slider shifts every poll-based margin by 6% × the break (NYT/Siena final battleground poll, Oct 23–Nov 1, n=5,708: last-month deciders R+9). Model call blends the adjusted poll average with the history-lens final per the trust slider; Senate win probability is a logistic on that margin. States without a party-split early vote use an environment lens: 2024 presidential margin plus a 10.5-point national swing (generic ballot D+9 vs 2024 R+1.5), moved by the sliders; Senate and governor ratings there are from Cook, On Point and the final public polls. House seats: 230 D at a D+9 national margin, ${SEATS_PER_PT} seats per point. Outstanding mail = ballots requested − returned (Polling Desk). Real votes: results.json keyed STATE-SEN, STATE-GOV, STATE-NN with d, r, o, pct, called; a race at ≥40% reporting recolors its state by the reported margin. Governors: all 36 races; baseline margins from On Point's forecast where it covers the race (refreshed each cycle), otherwise from Cook/Sabato ratings; modeled states add the early-vote signal. Market D% from Kalshi/Polymarket (DeFi Rate, Nov 2) and live Kalshi where its API answers. House seats in a state: Cook rating as a base margin (toss-up 0, lean ±4, likely ±9) shifted by the national environment minus D+8. Markets: Kalshi and Polymarket, midday Nov 3. House ratings: Cook Political Report via 270toWin, Oct 23 2026 (Cook shifted 19 more seats toward Dems on Oct 30). This is a model, not a forecast with error bars; treat it as a what-if tool.`;
 function idle(){ if(sel) return; document.getElementById('panel').innerHTML=`<h3>Tap a state</h3><p class="note">Each state opens here: early ballots in, estimated ballots remaining, the two lenses, the model call at the current sliders, every Senate and governor race, and Cook's competitive House seats. Rows in the Senate table below also open their state.</p><div class="sub" id="natl"></div>`; }
 applyDefaults(true); idle();
 
-const APP_VERSION='1103.1501';
+const APP_VERSION='1103.1509';
 const LIVE={at:null,src:{}};
 async function checkVersion(){
   try{ const r=await fetch('version.txt?t='+Date.now(),{cache:'no-store'}); if(!r.ok) return; const v=(await r.text()).trim();
