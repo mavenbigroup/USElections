@@ -111,7 +111,7 @@ button:focus-visible,.st:focus-visible,input:focus-visible{outline:2px solid var
 </head>
 <body>
 <div class="wrap">
-<header><div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><a class="brand" href="https://mavenbigroup.com"><img src="logo.png" alt="Maven BI" onerror="this.parentNode.innerHTML='<span>Maven BI Group</span>'"></a><h1>Election Desk 2026</h1></div><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><div class="asof" id="live">live feed: waiting for first refresh · re-checks every 30 s</div><button id="refreshBtn" type="button" title="Re-read data.json and query the market APIs now">Refresh now</button><button id="actionBtn" type="button" title="Fire the GitHub Action for a fresh scrape (needs your token, stored only in this browser)">Run full refresh</button><span id="tokBox" hidden style="display:flex;gap:6px;align-items:center"><input id="tokIn" type="password" placeholder="GitHub fine-grained token (Actions: write)" style="font:inherit;font-size:12px;padding:5px 8px;border:1px solid var(--line);background:var(--panel);color:var(--fg);width:260px;max-width:60vw"><button id="tokSave" type="button">Save</button><button id="tokCancel" type="button">Cancel</button></span></div></header>
+<header><div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><a class="brand" href="https://mavenbigroup.com"><img src="logo.png" alt="Maven BI" onerror="this.parentNode.innerHTML='<span>Maven BI Group</span>'"></a><h1>Election Desk 2026</h1></div><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><div class="asof" id="live">live feed: waiting for first refresh · re-checks every 30 s</div><button id="refreshBtn" type="button" title="Re-read data.json and query the market APIs now">Refresh now</button><button id="actionBtn" type="button" title="Fire the GitHub Action for a fresh scrape of every feed">Run full refresh</button><span id="tokBox" hidden style="display:flex;gap:6px;align-items:center"><input id="tokIn" type="password" placeholder="GitHub fine-grained token (Actions: write)" style="font:inherit;font-size:12px;padding:5px 8px;border:1px solid var(--line);background:var(--panel);color:var(--fg);width:260px;max-width:60vw"><button id="tokSave" type="button">Save</button><button id="tokCancel" type="button">Cancel</button></span></div></header>
 <div class="asof" id="asof" style="padding:6px 0 0">first polls close 7 pm ET · poll/forecast inputs refresh with the feed · ratings and turnout assumption set 12:35 pm MST</div>
 <header style="display:none"></header>
 
@@ -420,20 +420,18 @@ async function refresh(){
   if(live){ const merged=Object.assign({},lastFile||{},live); merged.generated=new Date().toISOString(); merged.sources=Object.assign({},(lastFile||{}).sources||{},live.sources); applyData(merged); }
   else if(!lastFile){ document.getElementById('live').textContent='live feed: no reachable source from this page (artifact sandbox or CORS). On GitHub Pages the Action refreshes data.json every ~5 min and the page re-reads it every 30 s.'; }
 }
-const rb=document.getElementById('refreshBtn');
-rb.addEventListener('click',async()=>{rb.disabled=true;rb.textContent='Refreshing…';try{await refresh();}finally{rb.disabled=false;rb.textContent='Refresh now';}});
 const REPO='MavenBIGroup/USElections';
 function getTok(){try{return localStorage.getItem('ghtok')||'';}catch(e){return '';}}
 const ab_=document.getElementById('actionBtn'), tokBox=document.getElementById('tokBox'), tokIn=document.getElementById('tokIn');
 async function fireAction(){
   const tok=getTok(); if(!tok){tokBox.hidden=false;tokIn.focus();return;}
-  ab_.disabled=true; ab_.textContent='Dispatching…';
+  ab_.disabled=true; ab_.textContent='Refreshing…'; await refresh();
   try{
     const r=await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/refresh.yml/dispatches`,{method:'POST',headers:{'Authorization':'Bearer '+tok,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'},body:JSON.stringify({ref:'main'})});
-    if(r.status===204){ ab_.textContent='Action started · data in ~45 s'; let n=0; const t=setInterval(async()=>{n++; await refresh(); if(n>=6){clearInterval(t); ab_.disabled=false; ab_.textContent='Run full refresh';}},15000); }
-    else if(r.status===401||r.status===403){ try{localStorage.removeItem('ghtok');}catch(e){} ab_.disabled=false; ab_.textContent='Token rejected · click to re-enter'; }
-    else { ab_.disabled=false; ab_.textContent='Dispatch failed ('+r.status+')'; }
-  }catch(e){ ab_.disabled=false; ab_.textContent='Dispatch failed'; }
+    if(r.status===204){ ab_.textContent='Scraping… ~45 s'; let n=0; const t=setInterval(async()=>{n++; await refresh(); if(n>=6){clearInterval(t); ab_.disabled=false; ab_.textContent='Refresh';}},15000); }
+    else if(r.status===401||r.status===403){ try{localStorage.removeItem('ghtok');}catch(e){} ab_.disabled=false; ab_.textContent='Refresh'; tokBox.hidden=false; tokIn.focus(); }
+    else { ab_.disabled=false; ab_.textContent='Refresh'; }
+  }catch(e){ ab_.disabled=false; ab_.textContent='Refresh'; }
 }
 ab_.addEventListener('click',fireAction);
 document.getElementById('tokSave').addEventListener('click',()=>{const v=tokIn.value.trim(); if(!v) return; try{localStorage.setItem('ghtok',v);}catch(e){} tokIn.value=''; tokBox.hidden=true; fireAction();});
