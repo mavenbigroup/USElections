@@ -97,13 +97,15 @@ button:focus-visible,.st:focus-visible,input:focus-visible{outline:2px solid var
 </head>
 <body>
 <div class="wrap">
-<header><h1>Midterm Night Board</h1><div class="asof" id="asof">data as of Tue Nov 3 2026, 12:35 pm MST · nothing called on the mainland yet · first polls close 7 pm ET</div></header>
+<header><h1>Midterm Night Board</h1><div class="asof" id="asof">model inputs as of Tue Nov 3 2026, 12:35 pm MST · first polls close 7 pm ET</div></header>
+<div class="asof" id="live" style="padding:6px 0 0">live feed: waiting for first refresh · page re-checks every 30 s</div>
+<header style="display:none"></header>
 
 <div class="kpis">
  <div class="kpi"><h2>Senate · 51 to control</h2>
   <div class="seats">
-   <div><div class="lab">AP called</div><div class="val"><b class="d">0</b> · <b class="r">0</b></div></div>
-   <div><div class="lab">Markets</div><div class="val"><b class="d">77%</b> D</div></div>
+   <div><div class="lab">AP called</div><div class="val"><b class="d" id="apSenD">0</b> · <b class="r" id="apSenR">0</b></div></div>
+   <div><div class="lab">Markets</div><div class="val"><b class="d" id="mktSen">77%</b> D</div><div class="sub" id="mktSenSrc">Kalshi · Polymarket</div></div>
    <div><div class="lab">Model call</div><div class="val"><b class="d" id="senD">53</b> · <b class="r" id="senR">47</b></div></div>
   </div>
   <div class="bar" id="senBar"></div>
@@ -111,8 +113,8 @@ button:focus-visible,.st:focus-visible,input:focus-visible{outline:2px solid var
  </div>
  <div class="kpi"><h2>House · 218 to control</h2>
   <div class="seats">
-   <div><div class="lab">AP called</div><div class="val"><b class="d">0</b> · <b class="r">0</b></div></div>
-   <div><div class="lab">Markets</div><div class="val"><b class="d">94%</b> D</div></div>
+   <div><div class="lab">AP called</div><div class="val"><b class="d" id="apHouD">0</b> · <b class="r" id="apHouR">0</b></div></div>
+   <div><div class="lab">Markets</div><div class="val"><b class="d" id="mktHou">94%</b> D</div><div class="sub" id="mktHouSrc">Kalshi · Polymarket</div></div>
    <div><div class="lab">Model call</div><div class="val"><b class="d" id="houD">231</b> · <b class="r" id="houR">204</b></div></div>
   </div>
   <div class="bar" id="houBar"></div>
@@ -275,7 +277,67 @@ document.getElementById('reset').addEventListener('click',()=>{
 new MutationObserver(paint).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change',paint);
 document.getElementById('foot').innerHTML=`Early ballots: On Point Politics / civicAPI counts, state party registration where published, On Point model elsewhere (GA, MI, WI, OH, TX, VA, MN and the count-only states). ME ballot total is an approximation. AZ Election Day skew is calibrated to 2022 (Stealth Analytics / AZ Republic early-return logs). Expected 2026 turnout assumes 7% above 2022. Early-vote margin assumes 90% party loyalty plus the independents slider. Polls lens: margin the remaining ballots need for the final poll average to hold. History lens: remaining ballots skew R by the state's usual Election Day gap (22 pts mail-heavy, 12 pts in-person-early), then the two turnout sliders. Remaining-undecideds slider shifts every poll-based margin by 6% × the break (NYT/Siena final battleground poll, Oct 23–Nov 1, n=5,708: last-month deciders R+9). Model call blends the adjusted poll average with the history-lens final per the trust slider; Senate win probability is a logistic on that margin. States without a party-split early vote use an environment lens: 2024 presidential margin plus a 10.5-point national swing (generic ballot D+9 vs 2024 R+1.5), moved by the sliders; Senate and governor ratings there are from Cook, On Point and the final public polls. House seats: 230 D at a D+9 national margin, ${SEATS_PER_PT} seats per point. Markets: Kalshi and Polymarket, midday Nov 3. House ratings: Cook Political Report via 270toWin, Oct 23 2026 (Cook shifted 19 more seats toward Dems on Oct 30). This is a model, not a forecast with error bars; treat it as a what-if tool.`;
-recompute(); show('AZ');
+function idle(){ if(sel) return; document.getElementById('panel').innerHTML=`<h3>Tap a state</h3><p class="note">Each state opens here: early ballots in, estimated ballots remaining, the two lenses, the model call at the current sliders, every Senate and governor race, and Cook's competitive House seats. Rows in the Senate table below also open their state.</p><div class="sub" id="natl"></div>`; }
+recompute(); idle();
+
+const LIVE={at:null,src:{}};
+function pct(v){return v==null?null:Math.round(v);}
+function applyData(d){
+  if(!d) return;
+  const sen=[], hou=[], names=[];
+  for(const k of ['kalshi','polymarket','predictit']){
+    const m=d[k]; if(!m) continue;
+    if(m.senate_d!=null){sen.push(+m.senate_d);} if(m.house_d!=null){hou.push(+m.house_d);}
+    if(m.senate_d!=null||m.house_d!=null) names.push(k[0].toUpperCase()+k.slice(1)+(m.senate_d!=null?' '+pct(m.senate_d):''));
+  }
+  if(sen.length){document.getElementById('mktSen').textContent=pct(sen.reduce((a,b)=>a+b)/sen.length)+'%';document.getElementById('mktSenSrc').textContent=names.join(' · ');}
+  if(hou.length){document.getElementById('mktHou').textContent=pct(hou.reduce((a,b)=>a+b)/hou.length)+'%';document.getElementById('mktHouSrc').textContent=['kalshi','polymarket','predictit'].filter(k=>d[k]&&d[k].house_d!=null).map(k=>k[0].toUpperCase()+k.slice(1)+' '+pct(d[k].house_d)).join(' · ');}
+  if(d.calls){const c=d.calls; if(c.senate){document.getElementById('apSenD').textContent=c.senate.d;document.getElementById('apSenR').textContent=c.senate.r;} if(c.house){document.getElementById('apHouD').textContent=c.house.d;document.getElementById('apHouR').textContent=c.house.r;}}
+  if(d.onpoint&&d.onpoint.states){
+    for(const [ab,row] of Object.entries(d.onpoint.states)){
+      if(M[ab]&&row.ballots){ M[ab].e=row.ballots; if(row.dem!=null&&row.rep!=null){M[ab].d=row.dem;M[ab].r=row.rep;M[ab].o=Math.max(0,100-row.dem-row.rep);} }
+      else if(EO[ab]&&row.ballots){ EO[ab][0]=row.ballots; }
+    }
+    recompute();
+  }
+  const total=(d.onpoint&&d.onpoint.total)||(d.uf&&d.uf.total);
+  const okSrc=Object.entries(d.sources||{}).filter(([k,v])=>v&&v.ok).map(([k])=>k);
+  LIVE.at=d.generated;
+  document.getElementById('live').textContent=`live feed: data.json ${d.generated?new Date(d.generated).toLocaleTimeString():''}${total?' · '+(total/1e6).toFixed(1)+'M early ballots nationally':''}${okSrc.length?' · sources ok: '+okSrc.join(', '):''}`;
+}
+async function direct(){
+  const d={sources:{}};
+  try{const ev=await (await fetch('https://gamma-api.polymarket.com/events?slug=balance-of-power-2026-midterms',{cache:'no-store'})).json();
+    for(const mk of (ev[0]||{}).markets||[]){const q=(mk.question||mk.groupItemTitle||'').toLowerCase();const pr=JSON.parse(mk.outcomePrices||'[]');if(q.includes('democrats sweep')&&pr.length){d.polymarket={sweep_d:+pr[0]*100};}}
+    const se=await (await fetch('https://gamma-api.polymarket.com/events?slug=which-party-will-win-the-senate-in-2026',{cache:'no-store'})).json();
+    for(const mk of (se[0]||{}).markets||[]){const q=(mk.question||mk.groupItemTitle||'').toLowerCase();const pr=JSON.parse(mk.outcomePrices||'[]');if(q.includes('democrat')&&pr.length){d.polymarket=Object.assign(d.polymarket||{},{senate_d:+pr[0]*100});}}
+    const ho=await (await fetch('https://gamma-api.polymarket.com/events?slug=which-party-will-win-the-house-in-2026',{cache:'no-store'})).json();
+    for(const mk of (ho[0]||{}).markets||[]){const q=(mk.question||mk.groupItemTitle||'').toLowerCase();const pr=JSON.parse(mk.outcomePrices||'[]');if(q.includes('democrat')&&pr.length){d.polymarket=Object.assign(d.polymarket||{},{house_d:+pr[0]*100});}}
+    if(d.polymarket) d.sources.polymarket={ok:true};
+  }catch(e){}
+  try{const r=await (await fetch('https://www.predictit.org/api/marketdata/all/',{cache:'no-store'})).json();
+    for(const m of r.markets||[]){const n=(m.name||'').toLowerCase();
+      if(n.includes('senate')&&n.includes('control')&&n.includes('2026')) for(const c of m.contracts||[]) if((c.name||'').toLowerCase().includes('democrat')) d.predictit=Object.assign(d.predictit||{},{senate_d:c.lastTradePrice*100});
+      if(n.includes('house')&&n.includes('control')&&n.includes('2026')) for(const c of m.contracts||[]) if((c.name||'').toLowerCase().includes('democrat')) d.predictit=Object.assign(d.predictit||{},{house_d:c.lastTradePrice*100});}
+    if(d.predictit) d.sources.predictit={ok:true};
+  }catch(e){}
+  try{const r=await (await fetch('https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open',{cache:'no-store'})).json();
+    for(const m of r.markets||[]){const t=(m.title||'').toLowerCase();const y=m.last_price||m.yes_bid;if(!y)continue;
+      if(t.includes('control the senate')&&t.includes('democrat')) d.kalshi=Object.assign(d.kalshi||{},{senate_d:y});
+      if(t.includes('control the house')&&t.includes('democrat')) d.kalshi=Object.assign(d.kalshi||{},{house_d:y});}
+    if(d.kalshi) d.sources.kalshi={ok:true};
+  }catch(e){}
+  return Object.keys(d.sources).length?d:null;
+}
+let lastFile=null;
+async function refresh(){
+  try{const r=await fetch('data.json?t='+Date.now(),{cache:'no-store'}); if(r.ok){lastFile=await r.json(); applyData(lastFile);}}catch(e){}
+  const live=await direct();
+  if(live){ const merged=Object.assign({},lastFile||{},live); merged.generated=new Date().toISOString(); merged.sources=Object.assign({},(lastFile||{}).sources||{},live.sources); applyData(merged); }
+  else if(!lastFile){ document.getElementById('live').textContent='live feed: no reachable source from this page (artifact sandbox or CORS). On GitHub Pages the Action refreshes data.json every ~5 min and the page re-reads it every 30 s.'; }
+}
+refresh(); setInterval(refresh,30000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden) refresh();});
 </script>
 </body>
 </html>

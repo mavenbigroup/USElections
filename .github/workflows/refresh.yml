@@ -1,0 +1,29 @@
+name: Refresh board data
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # GitHub's minimum; actual cadence is often 5-15 min under load
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python fetch_data.py
+      - name: Commit if changed
+        run: |
+          git config user.name "board-bot"
+          git config user.email "board-bot@users.noreply.github.com"
+          git add data.json
+          if git diff --cached --quiet; then echo "no change"; else git commit -m "data: $(date -u +%FT%TZ)" && git push; fi

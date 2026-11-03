@@ -1,0 +1,6 @@
+{
+ "note": "Hand-edit as AP calls races. The Action folds this into data.json; the page shows it in the AP-called tiles and marks called states on the map.",
+ "senate": {"d": 0, "r": 0},
+ "house": {"d": 0, "r": 0},
+ "states": {}
+}

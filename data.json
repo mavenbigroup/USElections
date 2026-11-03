@@ -1,0 +1,48 @@
+{
+ "generated": "2026-11-03T19:35:00+00:00",
+ "sources": {
+  "kalshi": {
+   "ok": true,
+   "at": "2026-11-03T19:35:00+00:00"
+  },
+  "polymarket": {
+   "ok": true,
+   "at": "2026-11-03T19:35:00+00:00"
+  },
+  "onpoint": {
+   "ok": true,
+   "at": "2026-11-03T19:35:00+00:00"
+  }
+ },
+ "kalshi": {
+  "senate_d": 75,
+  "house_d": 94,
+  "sweep_d": 75
+ },
+ "polymarket": {
+  "senate_d": 77,
+  "house_d": 95,
+  "sweep_d": 76
+ },
+ "predictit": null,
+ "onpoint": {
+  "total": 55511359,
+  "reg_d": 40.1,
+  "reg_r": 33.0,
+  "states": {}
+ },
+ "uf": {
+  "total": 59000000
+ },
+ "calls": {
+  "senate": {
+   "d": 0,
+   "r": 0
+  },
+  "house": {
+   "d": 0,
+   "r": 0
+  },
+  "states": {}
+ }
+}
