@@ -33,42 +33,67 @@ def now():
 
 
 # ---------- markets ----------
+KAPI = "https://api.elections.kalshi.com/trade-api/v2"
+
+def kprice(m):
+    for k in ("last_price_dollars", "yes_bid_dollars", "yes_ask_dollars"):
+        v = m.get(k)
+        try:
+            if v not in (None, "", "0", "0.00", "0.0000"):
+                return round(float(v) * 100, 1)
+        except Exception:
+            pass
+    for k in ("last_price", "yes_bid"):
+        v = m.get(k)
+        if isinstance(v, (int, float)) and v > 0:
+            return float(v)
+    return None
+
+
+def kevent_dem(event_ticker):
+    """Return the Democratic YES price (0-100) for a Kalshi party-winner event, or None."""
+    data = getj(f"{KAPI}/markets?event_ticker={event_ticker}&limit=50")
+    for m in data.get("markets", []):
+        lab = " ".join(str(m.get(k) or "") for k in ("yes_sub_title", "subtitle", "title", "ticker")).lower()
+        if "democrat" in lab or lab.endswith("-d") or lab.endswith(" d"):
+            p = kprice(m)
+            if p is not None:
+                return p
+    return None
+
+
 def kalshi():
-    """Senate / House control and balance of power from Kalshi's public API.
-    Event tickers: CONTROLS-2026 (Senate), CONTROLH-2026 (House), KXBALANCEPOWERCOMBO-27FEB (combo)."""
-    out = {}
-    def scan(url, key, want):
-        data = getj(url)
-        for m in data.get("markets", []):
-            t = " ".join(str(m.get(k) or "") for k in ("title", "subtitle", "yes_sub_title", "ticker")).lower()
-            yes = m.get("last_price") or m.get("yes_bid") or 0
-            if want(t) and yes:
-                out[key] = yes
-    try:
-        scan("https://api.elections.kalshi.com/trade-api/v2/markets?event_ticker=CONTROLS-2026&limit=50", "senate_d", lambda t: "dem" in t)
-    except Exception as e: out.setdefault("errors", []).append(f"senate: {e}")
-    try:
-        scan("https://api.elections.kalshi.com/trade-api/v2/markets?event_ticker=CONTROLH-2026&limit=50", "house_d", lambda t: "dem" in t)
-    except Exception as e: out.setdefault("errors", []).append(f"house: {e}")
-    try:
-        scan("https://api.elections.kalshi.com/trade-api/v2/markets?event_ticker=KXBALANCEPOWERCOMBO-27FEB&limit=50", "sweep_d", lambda t: "sweep" in t and "dem" in t)
-    except Exception as e: out.setdefault("errors", []).append(f"combo: {e}")
-    if not any(k in out for k in ("senate_d", "house_d", "sweep_d")):
-        # fallback: page through open markets by title
-        base = "https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open"
-        cursor = None
-        for _ in range(5):
-            data = getj(base + (("&cursor=" + cursor) if cursor else ""))
-            for m in data.get("markets", []):
-                t = " ".join(str(m.get(k) or "") for k in ("title", "yes_sub_title")).lower()
-                yes = m.get("last_price") or m.get("yes_bid") or 0
-                if "senate" in t and "control" in t and "dem" in t: out["senate_d"] = yes
-                if "house" in t and "control" in t and "dem" in t: out["house_d"] = yes
-            cursor = data.get("cursor")
-            if len(out) >= 2 or not cursor: break
-    if not any(k in out for k in ("senate_d", "house_d", "sweep_d")):
-        raise RuntimeError("no matching Kalshi markets: " + "; ".join(out.get("errors", [])))
+    out = {"gov": {}, "sen": {}}
+    for key, ev in (("senate_d", "CONTROLS-2026"), ("house_d", "CONTROLH-2026")):
+        try:
+            p = kevent_dem(ev)
+            if p is not None:
+                out[key] = p
+        except Exception as e:
+            out.setdefault("errors", []).append(f"{ev}: {e}")
+    for st in GOV_STATES:
+        try:
+            p = kevent_dem(f"GOVPARTY{st}-26")
+            if p is not None:
+                out["gov"][st] = p
+        except Exception:
+            pass
+    for st in SEN_STATES:
+        for ev in (f"SENATE{st}-26", f"KXSENATE{st}-26"):
+            try:
+                p = kevent_dem(ev)
+                if p is not None:
+                    out["sen"][st] = p
+                    break
+            except Exception:
+                pass
+    if "senate_d" not in out and "house_d" not in out and not out["gov"]:
+        raise RuntimeError("no Kalshi prices parsed: " + "; ".join(out.get("errors", [])))
     return out
+
+
+GOV_STATES = ["AK","AZ","FL","GA","IA","KS","ME","MI","MN","NE","NV","NH","NM","NY","OH","OK","OR","PA","SC","TX","VT","WI"]
+SEN_STATES = ["AK","GA","IA","KS","ME","MI","MN","NC","NE","NH","OH","SC","TX","FL"]
 
 
 def polymarket():
@@ -157,18 +182,24 @@ def onpoint():
 
 
 def polldesk():
-    """Per-state ballots, mail returned, in person, mail requested from polling-desk.com (server-rendered table)."""
+    """Per-state ballots / mail returned / in person / mail requested from polling-desk.com, parsed by table row."""
     html = get("https://polling-desk.com/early-vote")
-    text = re.sub(r"<[^>]+>", " ", html)
-    text = re.sub(r"\s+", " ", text)
     out = {"states": {}}
-    for name, ab in STATES.items():
-        mm = re.search(re.escape(name) + r"\s*\|?\s*([\d,]+)\s*\|?\s*([\d,–-]+)\s*\|?\s*([\d,–-]+)\s*\|?\s*([\d,–-]+)", text)
-        if mm:
-            def num(x):
-                x = x.replace(",", "")
-                return int(x) if x.isdigit() else None
-            out["states"][ab] = {"ballots": num(mm.group(1)), "mail": num(mm.group(2)), "inperson": num(mm.group(3)), "requested": num(mm.group(4))}
+    def num(x):
+        x = re.sub(r"<[^>]+>", "", x).replace(",", "").strip()
+        return int(x) if x.isdigit() else None
+    for row in re.findall(r"<tr[^>]*>(.*?)</tr>", html, flags=re.S | re.I):
+        cells = re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", row, flags=re.S | re.I)
+        if len(cells) < 5:
+            continue
+        name = re.sub(r"<[^>]+>", "", cells[0]).strip()
+        ab = STATES.get(name)
+        if not ab:
+            continue
+        ballots, mail, inp, req = (num(c) for c in cells[1:5])
+        if ballots is None:
+            continue
+        out["states"][ab] = {"ballots": ballots, "mail": mail, "inperson": inp, "requested": req}
     if not out["states"]:
         raise RuntimeError("Polling Desk table parsed nothing")
     return out
@@ -222,7 +253,7 @@ def main():
             prev = {}
     data = {"generated": now(), "sources": {}, "baseline": prev.get("baseline") or {"senate_d": 76, "house_d": 94.5, "note": "midday Nov 3 open"}}
     for key, fn in [("kalshi", kalshi), ("polymarket", polymarket), ("predictit", predictit),
-                    ("onpoint", onpoint), ("polldesk", polldesk), ("forecast", forecast), ("uf", uf_total)]:
+                    ("onpoint", onpoint), ("polldesk", polldesk), ("forecast", forecast)]:
         try:
             data[key] = fn()
             data["sources"][key] = {"ok": True, "at": now()}
