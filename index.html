@@ -112,6 +112,7 @@ button:focus-visible,.st:focus-visible,input:focus-visible{outline:2px solid var
 <body>
 <div class="wrap">
 <header><div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><a class="brand" href="https://mavenbigroup.com"><img src="logo.png" alt="Maven BI" onerror="this.parentNode.innerHTML='<span>Maven BI Group</span>'"></a><h1>Election Desk 2026</h1></div><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><div class="asof" id="live">live feed: waiting for first refresh · re-checks every 30 s</div><button id="refreshBtn" type="button" title="Re-read data.json and query the market APIs now">Refresh now</button><button id="actionBtn" type="button" title="Fire the GitHub Action for a fresh scrape of every feed">Run full refresh</button><span id="tokBox" hidden style="display:flex;gap:6px;align-items:center"><input id="tokIn" type="password" placeholder="GitHub fine-grained token (Actions: write)" style="font:inherit;font-size:12px;padding:5px 8px;border:1px solid var(--line);background:var(--panel);color:var(--fg);width:260px;max-width:60vw"><button id="tokSave" type="button">Save</button><button id="tokCancel" type="button">Cancel</button></span></div></header>
+<button id="upd" type="button" hidden style="width:100%;margin-top:8px;padding:10px;background:var(--gold);color:#0b2a5b;border:0;font-weight:700;cursor:pointer;text-align:left"><span>New version available</span> · tap to update</button>
 <div class="asof" id="asof" style="padding:6px 0 0">first polls close 7 pm ET · poll/forecast inputs refresh with the feed · ratings and turnout assumption set 12:35 pm MST</div>
 <header style="display:none"></header>
 
@@ -165,7 +166,7 @@ button:focus-visible,.st:focus-visible,input:focus-visible{outline:2px solid var
 <div class="tw"><table id="sen"><thead><tr><th>State</th><th>Matchup</th><th>Model call</th><th>Model margin</th><th>Reported</th><th>Market D</th><th>Polls</th></tr></thead><tbody></tbody></table></div>
 
 <div class="foot" id="foot"></div>
-<div class="brand2"><span><b>Maven BI Group</b> · Know | Run | Improve · Phoenix, AZ</span><span>Built by Alan Anolik · model and code on GitHub · <a href="#" id="ownerLink" style="color:inherit">owner</a></span></div>
+<div class="brand2"><span><b>Maven BI Group</b> · Know | Run | Improve · Phoenix, AZ</span><span>Built by Alan Anolik · v<span id="ver">1103.1430</span> · <a href="#" id="ownerLink" style="color:inherit">owner</a></span></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
@@ -341,7 +342,14 @@ document.getElementById('foot').innerHTML=`Early ballots: On Point Politics / ci
 function idle(){ if(sel) return; document.getElementById('panel').innerHTML=`<h3>Tap a state</h3><p class="note">Each state opens here: early ballots in, estimated ballots remaining, the two lenses, the model call at the current sliders, every Senate and governor race, and Cook's competitive House seats. Rows in the Senate table below also open their state.</p><div class="sub" id="natl"></div>`; }
 applyDefaults(true); idle();
 
+const APP_VERSION='1103.1430';
 const LIVE={at:null,src:{}};
+async function checkVersion(){
+  try{ const r=await fetch('version.txt?t='+Date.now(),{cache:'no-store'}); if(!r.ok) return; const v=(await r.text()).trim();
+    if(v&&v!==APP_VERSION){ const b=document.getElementById('upd'); b.hidden=false; b.querySelector('span').textContent='New version '+v+' available'; } }catch(e){}
+}
+document.getElementById('upd').addEventListener('click',()=>{ location.href=location.pathname+'?v='+Date.now(); });
+checkVersion(); setInterval(checkVersion,30000);
 function rep(key){ const r=RES.races&&RES.races[key]; if(!r||!(r.d||r.r)) return null; const t=(r.d||0)+(r.r||0)+(r.o||0); return {m:((r.d||0)-(r.r||0))/t*100,pct:r.pct,called:r.called,d:r.d,r:r.r,t}; }
 function pct(v){return v==null?null:Math.round(v);}
 function applyData(d){
