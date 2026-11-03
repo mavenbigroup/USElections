@@ -8,29 +8,30 @@
 <style>
 /* layout: control-room board. KPI strip, sliders, then map left / state panel right, race table below. */
 :root{
- --bg:#f6f5f2; --panel:#ffffff; --fg:#17181c; --mute:#6b6e78; --line:#dcdbd5;
- --dem:#2e6fc4; --dem-ink:#1b4f93; --rep:#d0453f; --rep-ink:#9b2b27; --ind:#b2b0a7; --rest:#ebe9e3; --tossup:#c9b55c;
- --accent:#c9842c; --hover:#fff4e1;
+ --bg:#f5f6f8; --panel:#ffffff; --fg:#0b2a5b; --mute:#5f6b80; --line:#d9dde5; --navy:#0b2a5b; --gold:#e8a020;
+ --dem:#2e6fc4; --dem-ink:#1b4f93; --rep:#d0453f; --rep-ink:#9b2b27; --ind:#b2b0a7; --rest:#e6e9ee; --tossup:#d4b650;
+ --accent:#e8a020; --hover:#fdf3e0;
  --sans:"Archivo",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
- --bg:#141518; --panel:#1d1f24; --fg:#ecebe6; --mute:#9a9ca6; --line:#30333a;
- --dem:#5b93e0; --dem-ink:#9dbff0; --rep:#e2655e; --rep-ink:#f3a39e; --ind:#6c6e78; --rest:#2a2c33; --tossup:#a89a4a;
- --accent:#e0a04a; --hover:#2d2a22; color-scheme:dark}}
+ --bg:#0e1626; --panel:#162238; --fg:#edf0f5; --mute:#9aa6ba; --line:#2a3650; --navy:#0b2a5b; --gold:#f0b23a;
+ --dem:#5b93e0; --dem-ink:#9dbff0; --rep:#e2655e; --rep-ink:#f3a39e; --ind:#6c7488; --rest:#263248; --tossup:#b89f3e;
+ --accent:#f0b23a; --hover:#2a2614; color-scheme:dark}}
 :root[data-theme="dark"]{
- --bg:#141518; --panel:#1d1f24; --fg:#ecebe6; --mute:#9a9ca6; --line:#30333a;
- --dem:#5b93e0; --dem-ink:#9dbff0; --rep:#e2655e; --rep-ink:#f3a39e; --ind:#6c6e78; --rest:#2a2c33; --tossup:#a89a4a;
- --accent:#e0a04a; --hover:#2d2a22; color-scheme:dark}
+ --bg:#0e1626; --panel:#162238; --fg:#edf0f5; --mute:#9aa6ba; --line:#2a3650; --navy:#0b2a5b; --gold:#f0b23a;
+ --dem:#5b93e0; --dem-ink:#9dbff0; --rep:#e2655e; --rep-ink:#f3a39e; --ind:#6c7488; --rest:#263248; --tossup:#b89f3e;
+ --accent:#f0b23a; --hover:#2a2614; color-scheme:dark}
 *{box-sizing:border-box}
 html{color-scheme:light dark}
 body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:15px;line-height:1.5;margin:0;
  padding-block:0 32px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .wrap{max-width:1100px;margin:0 auto}
-header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;padding:20px 0 12px;border-bottom:2px solid var(--fg)}
+header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;padding:16px 0 12px;border-bottom:3px solid var(--gold)}
 h1{font-size:26px;
-.brand{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:2px}
-.brand img{height:18px;width:auto;display:block}
-.brand2{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;color:var(--mute);border-top:2px solid var(--fg);margin-top:24px;padding-top:10px}
+.brand{display:flex;align-items:center;text-decoration:none;color:var(--fg);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:14px}
+.brand img{height:44px;width:auto;display:block;background:#fff;border-radius:6px;padding:4px 8px}
+@media (max-width:620px){.brand img{height:36px}}
+.brand2{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;color:var(--mute);border-top:3px solid var(--gold);margin-top:24px;padding-top:10px}
 .brand2 b{color:var(--fg);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
 .rv{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:6px 0}
 .rv .v{font-family:var(--mono);font-size:18px;font-weight:500}
@@ -91,7 +92,7 @@ font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
 .rt{font-family:var(--mono);font-size:11px;padding:1px 6px;white-space:nowrap;color:#fff}
 .rt.TU{background:var(--tossup);color:#2b2600}.rt.LD{background:var(--dem)}.rt.LKD{background:var(--dem);opacity:.65}.rt.LR{background:var(--rep)}.rt.LKR{background:var(--rep);opacity:.65}
 table{width:100%;border-collapse:collapse;font-size:13px;margin-top:16px;font-variant-numeric:tabular-nums}
-th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);border-bottom:1px solid var(--fg);padding:6px 6px;font-weight:600}
+th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);border-bottom:2px solid var(--gold);padding:6px 6px;font-weight:600}
 td{padding:7px 6px;border-bottom:1px solid var(--line);vertical-align:top}
 tr.rw{cursor:pointer} tr.rw:hover{background:var(--hover)}
 .tw{overflow-x:auto}
@@ -108,7 +109,7 @@ button:focus-visible,.st:focus-visible,input:focus-visible{outline:2px solid var
 </head>
 <body>
 <div class="wrap">
-<header><div><div class="brand"><img src="logo.png" alt="" onerror="this.style.display='none'"><span>Maven BI Group</span></div><h1>Midterm Night Board</h1></div><div class="asof" id="asof">model inputs as of Tue Nov 3 2026, 12:35 pm MST · first polls close 7 pm ET</div></header>
+<header><div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><a class="brand" href="https://mavenbigroup.com"><img src="logo.png" alt="Maven BI" onerror="this.parentNode.innerHTML='<span>Maven BI Group</span>'"></a><h1>Midterm Night Board</h1></div><div class="asof" id="asof">model inputs as of Tue Nov 3 2026, 12:35 pm MST · first polls close 7 pm ET</div></header>
 <div class="asof" id="live" style="padding:6px 0 0">live feed: waiting for first refresh · page re-checks every 30 s</div>
 <header style="display:none"></header>
 
@@ -162,7 +163,7 @@ button:focus-visible,.st:focus-visible,input:focus-visible{outline:2px solid var
 <div class="tw"><table id="sen"><thead><tr><th>State</th><th>Matchup</th><th>Model call</th><th>Model margin</th><th>Reported</th><th>Market D</th><th>Polls</th></tr></thead><tbody></tbody></table></div>
 
 <div class="foot" id="foot"></div>
-<div class="brand2"><span><b>Maven BI Group</b> · Phoenix, AZ · mavenbigroup.com</span><span>Built by Alan Anolik · model and code on GitHub</span></div>
+<div class="brand2"><span><b>Maven BI Group</b> · Know | Run | Improve · Phoenix, AZ</span><span>Built by Alan Anolik · model and code on GitHub</span></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
