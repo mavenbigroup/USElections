@@ -111,7 +111,7 @@ button:focus-visible,.st:focus-visible,input:focus-visible{outline:2px solid var
 </head>
 <body>
 <div class="wrap">
-<header><div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><a class="brand" href="https://mavenbigroup.com"><img src="logo.png" alt="Maven BI" onerror="this.parentNode.innerHTML='<span>Maven BI Group</span>'"></a><h1>Election Desk 2026</h1></div><div class="asof" id="live">live feed: waiting for first refresh · re-checks every 30 s</div></header>
+<header><div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><a class="brand" href="https://mavenbigroup.com"><img src="logo.png" alt="Maven BI" onerror="this.parentNode.innerHTML='<span>Maven BI Group</span>'"></a><h1>Election Desk 2026</h1></div><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><div class="asof" id="live">live feed: waiting for first refresh · re-checks every 30 s</div><button id="refreshBtn" type="button" title="Re-read data.json and query the market APIs now">Refresh now</button></div></header>
 <div class="asof" id="asof" style="padding:6px 0 0">first polls close 7 pm ET · poll/forecast inputs refresh with the feed · ratings and turnout assumption set 12:35 pm MST</div>
 <header style="display:none"></header>
 
@@ -420,7 +420,11 @@ async function refresh(){
   if(live){ const merged=Object.assign({},lastFile||{},live); merged.generated=new Date().toISOString(); merged.sources=Object.assign({},(lastFile||{}).sources||{},live.sources); applyData(merged); }
   else if(!lastFile){ document.getElementById('live').textContent='live feed: no reachable source from this page (artifact sandbox or CORS). On GitHub Pages the Action refreshes data.json every ~5 min and the page re-reads it every 30 s.'; }
 }
+const rb=document.getElementById('refreshBtn');
+rb.addEventListener('click',async()=>{rb.disabled=true;rb.textContent='Refreshing…';try{await refresh();}finally{rb.disabled=false;rb.textContent='Refresh now';}});
 refresh(); setInterval(refresh,30000);
+window.addEventListener('pageshow',e=>{if(e.persisted) refresh();});
+window.addEventListener('focus',()=>refresh());
 document.addEventListener('visibilitychange',()=>{if(!document.hidden) refresh();});
 </script>
 </body>
