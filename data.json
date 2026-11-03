@@ -1,33 +1,33 @@
 {
- "generated": "2026-11-03T23:24:33+00:00",
+ "generated": "2026-11-03T23:50:24+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-03T23:24:38+00:00"
+   "at": "2026-11-03T23:50:28+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-03T23:24:38+00:00"
+   "at": "2026-11-03T23:50:28+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-03T23:24:38+00:00"
+   "at": "2026-11-03T23:50:28+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-03T23:24:38+00:00"
+   "at": "2026-11-03T23:50:29+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-03T23:24:39+00:00"
+   "at": "2026-11-03T23:50:29+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-03T23:24:39+00:00"
+   "at": "2026-11-03T23:50:29+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-03T23:24:39+00:00"
+   "at": "2026-11-03T23:50:29+00:00"
   }
  },
  "baseline": {
@@ -37,40 +37,35 @@
  },
  "kalshi": {
   "gov": {
-   "AZ": 92.4,
-   "FL": 34.0,
-   "GA": 72.0,
-   "IA": 90.0,
-   "ME": 97.4,
-   "MI": 93.7,
-   "MN": 98.0,
-   "NE": 11.0,
-   "NV": 85.0,
-   "NM": 95.0,
-   "NY": 97.4,
-   "OH": 78.0,
-   "OK": 7.0,
-   "OR": 82.0,
-   "PA": 98.4,
-   "SC": 6.2,
-   "WI": 85.0
+   "AZ": 94.5,
+   "FL": 37.0,
+   "GA": 75.0,
+   "IA": 90.7,
+   "ME": 96.8,
+   "MI": 96.8,
+   "MN": 97.4,
+   "NE": 13.0,
+   "NV": 86.0,
+   "NM": 95.4,
+   "NY": 97.0,
+   "OH": 85.0,
+   "PA": 99.0,
+   "VT": 38.0
   },
   "sen": {
-   "AK": 68.0,
-   "IA": 61.0,
-   "MI": 84.0,
-   "NE": 0.2,
-   "TX": 80.0
+   "IA": 63.0,
+   "MN": 93.7,
+   "NE": 0.6
   },
-  "senate_d": 79.0,
-  "house_d": 95.4
+  "senate_d": 86.0,
+  "house_d": 97.0
  },
  "polymarket": {
-  "senate_d": 80.5,
-  "house_d": 95.5
+  "senate_d": 87.5,
+  "house_d": 98.2
  },
  "predictit": {
-  "senate_d": 73.0
+  "senate_d": 89.0
  },
  "onpoint": {
   "states": {
@@ -230,9 +225,9 @@
     "requested": null
    },
    "FL": {
-    "ballots": 5517197,
-    "mail": 2049099,
-    "inperson": 3468098,
+    "ballots": 5520003,
+    "mail": 2051906,
+    "inperson": 3468097,
     "requested": 466521
    },
    "NC": {
@@ -248,10 +243,10 @@
     "requested": 156771
    },
    "CO": {
-    "ballots": 2117807,
-    "mail": 2039395,
-    "inperson": 78412,
-    "requested": 4054439
+    "ballots": 2217052,
+    "mail": 2121416,
+    "inperson": 95636,
+    "requested": 4136460
    },
    "WA": {
     "ballots": 2112413,
@@ -283,6 +278,12 @@
     "inperson": null,
     "requested": 2189090
    },
+   "OR": {
+    "ballots": 1668842,
+    "mail": 1668842,
+    "inperson": null,
+    "requested": null
+   },
    "AZ": {
     "ballots": 1655577,
     "mail": 1655577,
@@ -294,12 +295,6 @@
     "mail": 333271,
     "inperson": 1313199,
     "requested": 450449
-   },
-   "OR": {
-    "ballots": 1505694,
-    "mail": 1505694,
-    "inperson": null,
-    "requested": null
    },
    "TN": {
     "ballots": 1280642,
@@ -458,10 +453,10 @@
     "requested": 9584
    },
    "ND": {
-    "ballots": 103461,
-    "mail": 52968,
+    "ballots": 103536,
+    "mail": 53043,
     "inperson": 50493,
-    "requested": 58121
+    "requested": 58122
    },
    "AK": {
     "ballots": 99424,
