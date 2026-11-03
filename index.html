@@ -165,7 +165,7 @@ button:focus-visible,.st:focus-visible,input:focus-visible{outline:2px solid var
 <div class="tw"><table id="sen"><thead><tr><th>State</th><th>Matchup</th><th>Model call</th><th>Model margin</th><th>Reported</th><th>Market D</th><th>Polls</th></tr></thead><tbody></tbody></table></div>
 
 <div class="foot" id="foot"></div>
-<div class="brand2"><span><b>Maven BI Group</b> · Know | Run | Improve · Phoenix, AZ</span><span>Built by Alan Anolik · model and code on GitHub</span></div>
+<div class="brand2"><span><b>Maven BI Group</b> · Know | Run | Improve · Phoenix, AZ</span><span>Built by Alan Anolik · model and code on GitHub · <a href="#" id="ownerLink" style="color:inherit">owner</a></span></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
@@ -424,17 +424,19 @@ const REPO='MavenBIGroup/USElections';
 function getTok(){try{return localStorage.getItem('ghtok')||'';}catch(e){return '';}}
 const ab_=document.getElementById('actionBtn'), tokBox=document.getElementById('tokBox'), tokIn=document.getElementById('tokIn');
 async function fireAction(){
-  const tok=getTok(); if(!tok){tokBox.hidden=false;tokIn.focus();return;}
+  const tok=getTok();
   ab_.disabled=true; ab_.textContent='Refreshing…'; await refresh();
+  if(!tok){ ab_.disabled=false; ab_.textContent='Refresh'; return; }
   try{
     const r=await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/refresh.yml/dispatches`,{method:'POST',headers:{'Authorization':'Bearer '+tok,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'},body:JSON.stringify({ref:'main'})});
     if(r.status===204){ ab_.textContent='Scraping… ~45 s'; let n=0; const t=setInterval(async()=>{n++; await refresh(); if(n>=6){clearInterval(t); ab_.disabled=false; ab_.textContent='Refresh';}},15000); }
-    else if(r.status===401||r.status===403){ try{localStorage.removeItem('ghtok');}catch(e){} ab_.disabled=false; ab_.textContent='Refresh'; tokBox.hidden=false; tokIn.focus(); }
+    else if(r.status===401||r.status===403){ try{localStorage.removeItem('ghtok');}catch(e){} ab_.disabled=false; ab_.textContent='Refresh'; }
     else { ab_.disabled=false; ab_.textContent='Refresh'; }
   }catch(e){ ab_.disabled=false; ab_.textContent='Refresh'; }
 }
 ab_.addEventListener('click',fireAction);
 document.getElementById('tokSave').addEventListener('click',()=>{const v=tokIn.value.trim(); if(!v) return; try{localStorage.setItem('ghtok',v);}catch(e){} tokIn.value=''; tokBox.hidden=true; fireAction();});
+document.getElementById('ownerLink').addEventListener('click',e=>{e.preventDefault();tokBox.hidden=false;tokIn.focus();window.scrollTo({top:0,behavior:'smooth'});});
 document.getElementById('tokCancel').addEventListener('click',()=>{tokIn.value='';tokBox.hidden=true;});
 tokIn.addEventListener('keydown',e=>{if(e.key==='Enter') document.getElementById('tokSave').click();});
 refresh(); setInterval(refresh,30000);
