@@ -174,8 +174,11 @@ const SIG_STATIC=[
  {l:'Marist: attention gap closed (46% D vs 45% R following very closely)',s:'NPR/PBS/Marist',ind:0,dem:-0.5,rep:0.25,und:0},
 ];
 let SIG_LIVE=[];
+const CALIB={dem:2.0,rep:3.0};
 function deriveDefaults(){
-  const all=SIG_STATIC.concat(SIG_LIVE);
+  const st=SIG_STATIC; const sd=st.reduce((a,x)=>a+(x.dem||0),0), sr=st.reduce((a,x)=>a+(x.rep||0),0);
+  const cal={l:'Operator calibration: start Dem surge at +'+CALIB.dem.toFixed(1)+', GOP surge at +'+CALIB.rep.toFixed(1),s:'Al, Nov 3',ind:0,dem:+(CALIB.dem-sd).toFixed(2),rep:+(CALIB.rep-sr).toFixed(2),und:0};
+  const all=SIG_STATIC.concat([cal],SIG_LIVE);
   const sum=k=>all.reduce((a,x)=>a+(x[k]||0),0);
   const d={ind:Math.round(sum('ind')),dem:Math.round(Math.max(0,sum('dem'))*2)/2,rep:Math.round(Math.max(0,sum('rep'))*2)/2,und:Math.round(sum('und')),trust:50};
   const tb=document.querySelector('#sigT tbody');
