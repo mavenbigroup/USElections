@@ -1,37 +1,37 @@
 {
- "generated": "2026-11-04T15:02:05+00:00",
+ "generated": "2026-11-04T15:03:05+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T15:02:09+00:00"
+   "at": "2026-11-04T15:03:09+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T15:02:09+00:00"
+   "at": "2026-11-04T15:03:09+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T15:02:09+00:00"
+   "at": "2026-11-04T15:03:10+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T15:02:09+00:00"
+   "at": "2026-11-04T15:03:10+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T15:02:10+00:00"
+   "at": "2026-11-04T15:03:10+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T15:02:10+00:00"
+   "at": "2026-11-04T15:03:10+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T15:02:10+00:00"
+   "at": "2026-11-04T15:03:10+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T15:02:10+00:00"
+   "at": "2026-11-04T15:03:10+00:00"
   }
  },
  "baseline": {
@@ -54,14 +54,14 @@
    "NY": 99.8,
    "OH": 99.8,
    "OK": 0.4,
-   "SC": 1.9,
-   "WI": 98.6
+   "SC": 1.9
   },
   "sen": {
+   "AK": 88.0,
    "KS": 99.9,
+   "MI": 99.9,
    "NC": 99.8,
-   "NH": 99.9,
-   "SC": 99.8
+   "TX": 99.7
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -1391,9 +1391,9 @@
     "called": "D"
    },
    "MA-GOV": {
-    "d": 1441606,
-    "r": 797872,
-    "o": 78479,
+    "d": 1442188,
+    "r": 798060,
+    "o": 78519,
     "pct": 81.0,
     "src": "civicapi",
     "raceId": 87276,
@@ -5114,21 +5114,39 @@
   "count": 506,
   "matched": 506,
   "debug": {
-   "mode": "filtered",
-   "fetched": 572,
+   "mode": "full",
+   "fetched": 620,
    "total": null,
-   "updated": "2026-11-04T15:02:02+00:00",
-   "final": true,
-   "filters": {
-    "senate": "US Senate",
-    "governor": "Governor",
-    "house": "House of Representatives"
-   },
-   "started": "2026-11-04T15:01:01+00:00",
+   "updated": "2026-11-04T15:03:09+00:00",
+   "final": false,
+   "filters": {},
+   "started": "2026-11-04T15:02:17+00:00",
    "types": {
-    "House of Representatives": 456,
-    "Governor": 60,
-    "US Senate": 56
+    "Referendum": 138,
+    "State House": 66,
+    "Judicial": 60,
+    "State Senate": 45,
+    "Governor": 39,
+    "Attorney General": 32,
+    "Secretary of State": 25,
+    "State Treasurer": 18,
+    "Other": 18,
+    "State Auditor": 12,
+    "Lieutenant Governor": 11,
+    "Proposition": 10,
+    "Supreme Court": 7,
+    "Judiciary": 7,
+    "Statewide": 6,
+    "County Commission": 6,
+    "Township Trustee": 6,
+    "Comptroller": 5,
+    "Treasurer": 5,
+    "City Council": 5,
+    "School Board": 5,
+    "Superintendent of Public Instruction": 4,
+    "Insurance Commissioner": 4,
+    "State Supreme Court": 4,
+    "Mayor": 4
    },
    "matched": 506,
    "matched_keys": [
@@ -5216,7 +5234,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T15:02:10+00:00",
+  "updated": "2026-11-04T15:03:10+00:00",
   "races": {
    "LA-SEN": {
     "d": 720106,
@@ -5983,9 +6001,9 @@
     "called": "D"
    },
    "MA-GOV": {
-    "d": 1441606,
-    "r": 797872,
-    "o": 78479,
+    "d": 1442188,
+    "r": 798060,
+    "o": 78519,
     "pct": 81.0,
     "src": "civicapi",
     "raceId": 87276,
