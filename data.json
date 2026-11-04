@@ -1,37 +1,37 @@
 {
- "generated": "2026-11-04T06:00:09+00:00",
+ "generated": "2026-11-04T06:01:10+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T06:00:11+00:00"
+   "at": "2026-11-04T06:01:12+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T06:00:11+00:00"
+   "at": "2026-11-04T06:01:12+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T06:00:11+00:00"
+   "at": "2026-11-04T06:01:12+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T06:00:12+00:00"
+   "at": "2026-11-04T06:01:12+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T06:00:12+00:00"
+   "at": "2026-11-04T06:01:13+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T06:00:12+00:00"
+   "at": "2026-11-04T06:01:13+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T06:00:12+00:00"
+   "at": "2026-11-04T06:01:13+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T06:00:12+00:00"
+   "at": "2026-11-04T06:01:13+00:00"
   }
  },
  "baseline": {
@@ -48,16 +48,15 @@
    "ME": 99.7,
    "MI": 99.7,
    "MN": 99.5,
-   "NE": 0.5,
-   "NV": 98.3,
+   "NE": 0.4,
+   "NV": 98.6,
    "NM": 99.9,
    "NY": 99.8,
    "OR": 98.6
   },
   "sen": {
-   "AK": 93.1,
-   "NE": 0.1,
-   "SC": 99.8
+   "AK": 94.6,
+   "KS": 99.9
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -978,10 +977,10 @@
   "matched": 40,
   "debug": {
    "mode": "filtered",
-   "fetched": 60,
+   "fetched": 80,
    "total": null,
-   "updated": "2026-11-04T05:59:29+00:00",
-   "final": false,
+   "updated": "2026-11-04T06:00:38+00:00",
+   "final": true,
    "filters": {
     "senate": "US Senate",
     "house": "House of Representatives"
@@ -989,7 +988,7 @@
    "started": "2026-11-04T05:59:09+00:00",
    "types": {
     "US Senate": 40,
-    "House of Representatives": 20
+    "House of Representatives": 40
    },
    "matched": 40,
    "matched_keys": [
@@ -1037,7 +1036,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T06:00:12+00:00",
+  "updated": "2026-11-04T06:01:13+00:00",
   "races": {
    "RI-SEN": {
     "d": 235276,
