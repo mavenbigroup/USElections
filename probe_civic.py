@@ -1,20 +1,18 @@
-import urllib.request, re
+import urllib.request, json
 UA={"User-Agent":"Mozilla/5.0 (compatible; midterm-night-board/1.0)"}
-def get(u,t=20):
-    with urllib.request.urlopen(urllib.request.Request(u,headers=UA),timeout=t) as r: return r.read().decode("utf-8","replace")
-seen=set()
-for page in ["https://onpointpolitics.us/results/2026","https://onpointpolitics.us/results/monitor","https://onpointpolitics.us/maps/early-vote","https://civicapi.org/","https://civicapi.org/api-documentation"]:
+B="https://civicapi.org/api/v2"
+for q in ["/race/search?startDate=2026-11-03&endDate=2026-11-03","/race/search?startDate=2026-11-03&endDate=2026-11-04&country=US","/race/search?startDate=2026-11-03"]:
     try:
-        h=get(page)
+        with urllib.request.urlopen(urllib.request.Request(B+q,headers=UA),timeout=40) as r:
+            b=r.read().decode("utf-8","replace")
+        print("PROBE",q,"len",len(b))
+        try:
+            d=json.loads(b)
+            if isinstance(d,dict): print("PROBE keys",list(d.keys())[:20])
+            arr=d if isinstance(d,list) else next((v for v in d.values() if isinstance(v,list)),[])
+            print("PROBE count",len(arr))
+            for x in arr[:3]: print("PROBE item",json.dumps(x)[:900])
+        except Exception as e: print("PROBE raw",b[:600])
+        break
     except Exception as e:
-        print("PROBE page fail",page,e); continue
-    for m in set(re.findall(r'civicapi\.org/[A-Za-z0-9_\-/{}\.\?=&$`+:]*',h)): print("PROBE inline",page,m)
-    srcs=re.findall(r'<script[^>]+src="([^"]+)"',h)
-    for s in srcs:
-        u=s if s.startswith("http") else re.match(r'https://[^/]+',page).group(0)+s
-        if u in seen: continue
-        seen.add(u)
-        try: js=get(u)
-        except Exception as e: continue
-        for m in set(re.findall(r'(?:civicapi\.org)?/api/v[0-9]/[A-Za-z0-9_\-/{}\.\?=&$`+:]{2,80}',js)): print("PROBE js",u.split('/')[-1][:40],m)
-        for m in set(re.findall(r'civicapi\.org[^"\'`\s]{0,80}',js)): print("PROBE jsurl",u.split('/')[-1][:40],m)
+        print("PROBE ERR",q,str(e)[:200])
