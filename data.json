@@ -1,37 +1,37 @@
 {
- "generated": "2026-11-04T05:41:38+00:00",
+ "generated": "2026-11-04T05:42:38+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T05:41:40+00:00"
+   "at": "2026-11-04T05:42:40+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T05:41:40+00:00"
+   "at": "2026-11-04T05:42:41+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T05:41:40+00:00"
+   "at": "2026-11-04T05:42:41+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T05:41:40+00:00"
+   "at": "2026-11-04T05:42:41+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T05:41:40+00:00"
+   "at": "2026-11-04T05:42:41+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T05:41:41+00:00"
+   "at": "2026-11-04T05:42:41+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T05:41:41+00:00"
+   "at": "2026-11-04T05:42:41+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T05:41:41+00:00"
+   "at": "2026-11-04T05:42:41+00:00"
   }
  },
  "baseline": {
@@ -48,15 +48,14 @@
    "ME": 99.7,
    "MI": 99.7,
    "MN": 99.5,
-   "NE": 1.9,
+   "NE": 1.1,
    "NV": 97.3,
-   "NM": 99.9,
-   "NY": 99.8,
-   "OK": 0.4
+   "OH": 99.8,
+   "TX": 99.7
   },
   "sen": {
    "ME": 99.9,
-   "TX": 99.7
+   "SC": 99.8
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -1100,10 +1099,10 @@
   "matched": 55,
   "debug": {
    "mode": "filtered",
-   "fetched": 76,
+   "fetched": 96,
    "total": null,
-   "updated": "2026-11-04T05:41:40+00:00",
-   "final": false,
+   "updated": "2026-11-04T05:42:21+00:00",
+   "final": true,
    "filters": {
     "senate": "US Senate",
     "house": "House of Representatives"
@@ -1111,7 +1110,7 @@
    "started": "2026-11-04T05:40:38+00:00",
    "types": {
     "US Senate": 56,
-    "House of Representatives": 20
+    "House of Representatives": 40
    },
    "matched": 55,
    "matched_keys": [
@@ -1174,7 +1173,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T05:41:41+00:00",
+  "updated": "2026-11-04T05:42:41+00:00",
   "races": {
    "TX-SEN": {
     "d": 4660489,
