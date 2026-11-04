@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-04T18:05:01+00:00",
+ "generated": "2026-11-04T18:06:01+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T18:05:03+00:00"
+   "at": "2026-11-04T18:06:03+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T18:05:03+00:00"
+   "at": "2026-11-04T18:06:03+00:00"
   },
   "predictit": {
    "ok": false,
@@ -16,23 +16,23 @@
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T18:05:04+00:00"
+   "at": "2026-11-04T18:06:03+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T18:05:07+00:00"
+   "at": "2026-11-04T18:06:06+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T18:05:07+00:00"
+   "at": "2026-11-04T18:06:07+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T18:05:07+00:00"
+   "at": "2026-11-04T18:06:07+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T18:05:07+00:00"
+   "at": "2026-11-04T18:06:07+00:00"
   }
  },
  "baseline": {
@@ -51,10 +51,13 @@
    "MN": 99.5,
    "NE": 0.7,
    "NV": 99.9,
-   "PA": 99.9
+   "OR": 99.9,
+   "WI": 98.6
   },
   "sen": {
-   "ME": 99.9
+   "KS": 99.9,
+   "NC": 99.8,
+   "TX": 99.7
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -91,9 +94,9 @@
     "rep": 23.9
    },
    "FL": {
-    "ballots": 5544943,
-    "mail": 2076841,
-    "inperson": 3468102,
+    "ballots": 5545139,
+    "mail": 2077041,
+    "inperson": 3468098,
     "pct2022": 71.1,
     "dem": 37.8,
     "rep": 40.1
@@ -105,10 +108,10 @@
     "pct2022": 63.4
    },
    "IL": {
-    "ballots": 1818376,
-    "mail": 710896,
-    "inperson": 1107480,
-    "pct2022": 43.9
+    "ballots": 2052109,
+    "mail": 889281,
+    "inperson": 1162828,
+    "pct2022": 49.5
    },
    "MI": {
     "ballots": 1745903,
@@ -145,10 +148,10 @@
     "rep": 26.1
    },
    "OH": {
-    "ballots": 1754731,
-    "mail": 653742,
-    "inperson": 1100989,
-    "pct2022": 41.8
+    "ballots": 1777904,
+    "mail": 676916,
+    "inperson": 1100988,
+    "pct2022": 42.3
    },
    "OR": {
     "ballots": 1808770,
@@ -203,11 +206,11 @@
     "pct2022": 47.8
    }
   },
-  "total": 57970812,
+  "total": 58227922,
   "reg_d": 39.5,
   "reg_r": 32.5,
   "vs_expected": 1.0,
-  "party_model": 12.5
+  "party_model": 12.6
  },
  "polldesk": {
   "states": {
@@ -756,8 +759,8 @@
    "FL-GOV": {
     "d": 4024639,
     "r": 4132334,
-    "o": 113589,
-    "pct": 93.0,
+    "o": 113516,
+    "pct": 100.0,
     "src": "civicapi",
     "raceId": 87069,
     "called": "R"
@@ -5109,20 +5112,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 572,
+   "fetched": 156,
    "total": null,
-   "updated": "2026-11-04T18:05:07+00:00",
-   "final": true,
+   "updated": "2026-11-04T18:06:05+00:00",
+   "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-04T18:04:54+00:00",
+   "started": "2026-11-04T18:05:52+00:00",
    "types": {
-    "House of Representatives": 456,
     "Governor": 60,
-    "US Senate": 56
+    "US Senate": 56,
+    "House of Representatives": 40
    },
    "matched": 506,
    "matched_keys": [
@@ -5210,7 +5213,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T18:05:07+00:00",
+  "updated": "2026-11-04T18:06:07+00:00",
   "races": {
    "KS-GOV": {
     "d": 546609,
@@ -5349,8 +5352,8 @@
    "FL-GOV": {
     "d": 4024639,
     "r": 4132334,
-    "o": 113589,
-    "pct": 93.0,
+    "o": 113516,
+    "pct": 100.0,
     "src": "civicapi",
     "raceId": 87069,
     "called": "R"
