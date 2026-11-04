@@ -1,37 +1,37 @@
 {
- "generated": "2026-11-04T15:01:05+00:00",
+ "generated": "2026-11-04T15:02:05+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T15:01:09+00:00"
+   "at": "2026-11-04T15:02:09+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T15:01:09+00:00"
+   "at": "2026-11-04T15:02:09+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T15:01:10+00:00"
+   "at": "2026-11-04T15:02:09+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T15:01:10+00:00"
+   "at": "2026-11-04T15:02:09+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T15:01:10+00:00"
+   "at": "2026-11-04T15:02:10+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T15:01:11+00:00"
+   "at": "2026-11-04T15:02:10+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T15:01:11+00:00"
+   "at": "2026-11-04T15:02:10+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T15:01:11+00:00"
+   "at": "2026-11-04T15:02:10+00:00"
   }
  },
  "baseline": {
@@ -55,11 +55,13 @@
    "OH": 99.8,
    "OK": 0.4,
    "SC": 1.9,
-   "VT": 0.2
+   "WI": 98.6
   },
   "sen": {
-   "ME": 99.9,
-   "NE": 0.1
+   "KS": 99.9,
+   "NC": 99.8,
+   "NH": 99.9,
+   "SC": 99.8
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -5113,10 +5115,10 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 80,
+   "fetched": 572,
    "total": null,
-   "updated": "2026-11-04T15:01:09+00:00",
-   "final": false,
+   "updated": "2026-11-04T15:02:02+00:00",
+   "final": true,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
@@ -5124,9 +5126,9 @@
    },
    "started": "2026-11-04T15:01:01+00:00",
    "types": {
-    "US Senate": 40,
-    "House of Representatives": 20,
-    "Governor": 20
+    "House of Representatives": 456,
+    "Governor": 60,
+    "US Senate": 56
    },
    "matched": 506,
    "matched_keys": [
@@ -5214,7 +5216,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T15:01:11+00:00",
+  "updated": "2026-11-04T15:02:10+00:00",
   "races": {
    "LA-SEN": {
     "d": 720106,
