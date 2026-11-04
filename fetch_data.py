@@ -358,7 +358,7 @@ def results_auto():
         raise RuntimeError("no civicAPI results yet (background scraper starting)")
     st = json.loads(p.read_text())
     races = {k: v for k, v in (st.get("races") or {}).items() if v.get("d") or v.get("r") or v.get("called")}
-    debug = {k: st.get(k) for k in ("mode", "fetched", "total", "updated", "final")}
+    debug = {k: st.get(k) for k in ("mode", "fetched", "total", "updated", "final", "filters", "started")}
     debug["types"] = dict(sorted((st.get("types") or {}).items(), key=lambda x: -x[1])[:25])
     debug["matched"] = len(st.get("races") or {}); debug["matched_keys"] = sorted(st.get("races") or {})[:80]
     return {"races": races, "count": len(races), "matched": debug["matched"], "debug": debug}

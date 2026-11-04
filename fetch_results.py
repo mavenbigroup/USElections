@@ -14,7 +14,7 @@ SKIP = ("shadow", "state senate", "state house", "lieutenant", "referendum", "pr
 def now():
     return datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
 
-def getj(url, t=45):
+def getj(url, t=25):
     with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=t) as r:
         return json.loads(r.read().decode("utf-8", "replace"))
 
@@ -51,6 +51,11 @@ def tally(race):
     return out
 
 state = {"started": now(), "races": {}, "types": {}, "fetched": 0, "total": None, "mode": None}
+try:
+    _prev = json.loads(OUT.read_text())
+    state["races"] = _prev.get("races") or {}
+except Exception:
+    pass
 
 def absorb(lst):
     for race in lst or []:
@@ -95,27 +100,37 @@ def crawl(base, label, lim_hint=20):
 
 
 t0 = time.time()
-# 1) type filters (civicAPI honours ?type=); try name variants per office
+# 1) type filters, probed in parallel (civicAPI is slow tonight)
 filtered_ok = False
 VARIANTS = {"senate": ["Senate", "US Senate", "U.S. Senate", "United States Senate"],
             "governor": ["Governor", "Gubernatorial"],
             "house": ["House", "US House", "U.S. House", "Representative", "US Representative", "U.S. Representative", "House of Representatives"]}
-for office, names in VARIANTS.items():
-    for typ in names:
-        try:
-            probe = getj(f"{BASE}&type={urllib.request.quote(typ)}&offset=0", t=40)
-            rows = probe.get("races") or []
-            if not rows:
-                continue
-            words = ("house", "representative", "congress") if office == "house" else (office,)
-            if all(any(w in str(x.get("type") or "").lower() for w in words) for x in rows):
-                filtered_ok = True
-                state.setdefault("filters", {})[office] = typ
-                state["mode"] = "filtered"
-                crawl(f"{BASE}&type={urllib.request.quote(typ)}", typ)
-                break
-        except Exception as e:
-            print("filter probe failed", typ, str(e)[:100])
+def probe(office, typ):
+    try:
+        pg = getj(f"{BASE}&type={urllib.request.quote(typ)}&offset=0", t=20)
+    except Exception as e:
+        return office, typ, None
+    rows = pg.get("races") or []
+    words = ("house", "representative", "congress") if office == "house" else (office,)
+    good = bool(rows) and all(any(w in str(x.get("type") or "").lower() for w in words) for x in rows)
+    if good:
+        absorb(rows)
+    return office, typ, good
+chosen = {}
+with ThreadPoolExecutor(max_workers=13) as ex:
+    for office, typ, good in ex.map(lambda ot: probe(*ot), [(o, t) for o, ts in VARIANTS.items() for t in ts]):
+        if good and office not in chosen:
+            chosen[office] = typ
+flush()
+state["filters"] = chosen
+print("filters:", chosen)
+for office, typ in chosen.items():
+    filtered_ok = True
+    state["mode"] = "filtered"
+    try:
+        crawl(f"{BASE}&type={urllib.request.quote(typ)}", typ)
+    except Exception as e:
+        print("crawl failed", typ, str(e)[:100])
 # 2) fall back to crawling everything
 if not filtered_ok:
     state["mode"] = "full"
