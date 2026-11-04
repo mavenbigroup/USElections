@@ -1,21 +1,21 @@
 {
- "generated": "2026-11-04T02:00:33+00:00",
+ "generated": "2026-11-04T02:01:33+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T02:00:35+00:00"
+   "at": "2026-11-04T02:01:34+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T02:00:35+00:00"
+   "at": "2026-11-04T02:01:34+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T02:00:36+00:00"
+   "at": "2026-11-04T02:01:35+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T02:00:36+00:00"
+   "at": "2026-11-04T02:01:35+00:00"
   },
   "polldesk": {
    "ok": false,
@@ -24,15 +24,15 @@
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T02:00:36+00:00"
+   "at": "2026-11-04T02:01:35+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T02:00:36+00:00"
+   "at": "2026-11-04T02:01:35+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T02:00:36+00:00"
+   "at": "2026-11-04T02:01:35+00:00"
   }
  },
  "baseline": {
@@ -42,26 +42,26 @@
  },
  "kalshi": {
   "gov": {
-   "AZ": 96.0,
+   "AZ": 97.0,
    "FL": 1.1,
-   "GA": 97.8,
-   "IA": 96.1,
+   "GA": 96.1,
+   "IA": 94.5,
    "ME": 98.9,
    "MI": 98.1,
    "MN": 99.0,
    "NE": 40.0,
    "NV": 94.9,
-   "NM": 97.0,
-   "SC": 52.0
+   "OH": 97.0
   },
   "sen": {
-   "NE": 0.8
+   "AK": 90.0,
+   "NH": 99.9
   },
-  "senate_d": 98.5,
-  "house_d": 99.6
+  "senate_d": 98.7,
+  "house_d": 99.5
  },
  "polymarket": {
-  "senate_d": 98.7,
+  "senate_d": 99.0,
   "house_d": 99.8
  },
  "predictit": {
@@ -623,20 +623,27 @@
   "count": 0,
   "matched": 0,
   "debug": {
-   "mode": null,
-   "fetched": 0,
+   "mode": "full",
+   "fetched": 20,
    "total": null,
-   "updated": "2026-11-04T02:00:17+00:00",
-   "final": false,
-   "filters": null,
+   "updated": "2026-11-04T02:01:03+00:00",
+   "final": true,
+   "filters": {},
    "started": "2026-11-04T02:00:05+00:00",
-   "types": {},
+   "types": {
+    "Referendum": 11,
+    "State Senate": 3,
+    "State House": 3,
+    "Shadow Representative": 1,
+    "Shadow Senator": 1,
+    "Attorney General": 1
+   },
    "matched": 0,
    "matched_keys": []
   }
  },
  "results": {
-  "updated": "2026-11-04T02:00:36+00:00",
+  "updated": "2026-11-04T02:01:35+00:00",
   "races": {
    "GU-GOV": {
     "d": 14925,
