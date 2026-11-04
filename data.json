@@ -1,37 +1,37 @@
 {
- "generated": "2026-11-04T13:07:54+00:00",
+ "generated": "2026-11-04T13:08:54+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T13:07:56+00:00"
+   "at": "2026-11-04T13:08:56+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T13:07:56+00:00"
+   "at": "2026-11-04T13:08:56+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T13:07:56+00:00"
+   "at": "2026-11-04T13:08:57+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T13:07:56+00:00"
+   "at": "2026-11-04T13:08:57+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T13:07:56+00:00"
+   "at": "2026-11-04T13:08:57+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T13:07:57+00:00"
+   "at": "2026-11-04T13:08:57+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T13:07:57+00:00"
+   "at": "2026-11-04T13:08:57+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T13:07:57+00:00"
+   "at": "2026-11-04T13:08:57+00:00"
   }
  },
  "baseline": {
@@ -52,12 +52,12 @@
    "NV": 99.9,
    "NM": 99.9,
    "NY": 99.8,
-   "TX": 99.7
+   "PA": 99.9
   },
   "sen": {
-   "IA": 99.9,
-   "MN": 99.9,
-   "TX": 99.7
+   "AK": 84.0,
+   "KS": 99.9,
+   "NC": 99.8
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -67,7 +67,7 @@
   "house_d": 100.0
  },
  "predictit": {
-  "senate_d": 99.0
+  "senate_d": 98.0
  },
  "onpoint": {
   "states": {
@@ -5111,20 +5111,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 572,
+   "fetched": 156,
    "total": null,
-   "updated": "2026-11-04T13:07:43+00:00",
-   "final": true,
+   "updated": "2026-11-04T13:08:57+00:00",
+   "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-04T13:07:18+00:00",
+   "started": "2026-11-04T13:08:44+00:00",
    "types": {
-    "House of Representatives": 456,
     "Governor": 60,
-    "US Senate": 56
+    "US Senate": 56,
+    "House of Representatives": 40
    },
    "matched": 506,
    "matched_keys": [
@@ -5212,7 +5212,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T13:07:57+00:00",
+  "updated": "2026-11-04T13:08:57+00:00",
   "races": {
    "SD-SEN": {
     "d": 0,
