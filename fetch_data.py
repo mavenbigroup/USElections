@@ -323,7 +323,7 @@ def classify(race):
     if "house" in low or "congress" in low or "representative" in low:
         if "state house" in low or "house of delegates" in low:
             return None
-        m = re.search(r"(?:district|cd|-)\s*(\d{1,2})", low)
+        m = re.search(r"(\d{1,2})(?:st|nd|rd|th)\s+(?:congressional\s+)?district", low) or re.search(r"(?:district|cd|-)\s*(\d{1,2})", low)
         if m:
             return ab, "HOUSE", f"{ab}-{int(m.group(1)):02d}"
         if "at-large" in low or "at large" in low:
