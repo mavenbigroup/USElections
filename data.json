@@ -1,21 +1,21 @@
 {
- "generated": "2026-11-04T00:44:30+00:00",
+ "generated": "2026-11-04T00:45:30+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T00:44:32+00:00"
+   "at": "2026-11-04T00:45:32+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T00:44:33+00:00"
+   "at": "2026-11-04T00:45:32+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T00:44:33+00:00"
+   "at": "2026-11-04T00:45:33+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T00:44:33+00:00"
+   "at": "2026-11-04T00:45:33+00:00"
   },
   "polldesk": {
    "ok": false,
@@ -24,16 +24,15 @@
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T00:44:34+00:00"
+   "at": "2026-11-04T00:45:33+00:00"
   },
   "results_auto": {
-   "ok": false,
-   "at": "2026-11-04T00:34:45+00:00",
-   "error": "no civicAPI results yet (background scraper starting)"
+   "ok": true,
+   "at": "2026-11-04T00:45:33+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T00:44:34+00:00"
+   "at": "2026-11-04T00:45:33+00:00"
   }
  },
  "baseline": {
@@ -43,31 +42,29 @@
  },
  "kalshi": {
   "gov": {
-   "AZ": 95.1,
-   "FL": 7.3,
+   "AZ": 94.0,
+   "FL": 7.0,
    "GA": 89.0,
-   "IA": 90.0,
+   "IA": 91.3,
    "ME": 96.6,
    "MI": 97.5,
    "MN": 97.4,
    "NE": 8.9,
    "NV": 88.0,
-   "NY": 96.8,
-   "TX": 39.0
+   "OK": 11.0
   },
   "sen": {
-   "GA": 99.7,
-   "NC": 99.2
+   "AK": 71.0
   },
-  "senate_d": 89.0,
-  "house_d": 97.5
+  "senate_d": 90.0,
+  "house_d": 97.6
  },
  "polymarket": {
-  "senate_d": 87.5,
+  "senate_d": 90.5,
   "house_d": 98.5
  },
  "predictit": {
-  "senate_d": 91.0
+  "senate_d": 92.0
  },
  "onpoint": {
   "states": {
@@ -621,115 +618,25 @@
   "approval_net": -25.0
  },
  "results_auto": {
-  "races": {
-   "SC-SEN": {
-    "d": 7017,
-    "r": 5456,
-    "o": 173,
-    "pct": 1.0,
-    "src": "civicapi",
-    "raceId": 87409
-   },
-   "KY-SEN": {
-    "d": 21112,
-    "r": 35858,
-    "o": 1081,
-    "pct": 20.0,
-    "src": "civicapi",
-    "raceId": 87174
-   },
-   "FL-SEN": {
-    "d": 2644156,
-    "r": 2593782,
-    "o": 56643,
-    "pct": 59.0,
-    "src": "civicapi",
-    "raceId": 87068
-   },
-   "GA-SEN": {
-    "d": 694033,
-    "r": 329018,
-    "o": 0,
-    "pct": 22.0,
-    "src": "civicapi",
-    "raceId": 87087
-   }
-  },
-  "count": 4,
-  "matched": 20,
+  "races": {},
+  "count": 0,
+  "matched": 0,
   "debug": {
-   "mode": "filtered",
-   "fetched": 20,
+   "mode": null,
+   "fetched": 0,
    "total": null,
-   "updated": "2026-11-04T00:34:02+00:00",
+   "updated": "2026-11-04T00:45:26+00:00",
    "final": false,
-   "filters": {
-    "senate": "US Senate"
-   },
-   "started": "2026-11-04T00:32:37+00:00",
-   "types": {
-    "US Senate": 20
-   },
-   "matched": 20,
-   "matched_keys": [
-    "AK-SEN",
-    "AL-SEN",
-    "AR-SEN",
-    "FL-SEN",
-    "GA-SEN",
-    "IA-SEN",
-    "ID-SEN",
-    "IL-SEN",
-    "KS-SEN",
-    "KY-SEN",
-    "LA-SEN",
-    "ME-SEN",
-    "MS-SEN",
-    "NC-SEN",
-    "NJ-SEN",
-    "OR-SEN",
-    "RI-SEN",
-    "SC-SEN",
-    "SD-SEN",
-    "TX-SEN"
-   ]
+   "filters": null,
+   "started": "2026-11-04T00:45:06+00:00",
+   "types": {},
+   "matched": 0,
+   "matched_keys": []
   }
  },
  "results": {
-  "updated": "2026-11-04T00:44:34+00:00",
+  "updated": "2026-11-04T00:45:33+00:00",
   "races": {
-   "SC-SEN": {
-    "d": 7017,
-    "r": 5456,
-    "o": 173,
-    "pct": 1.0,
-    "src": "civicapi",
-    "raceId": 87409
-   },
-   "KY-SEN": {
-    "d": 21112,
-    "r": 35858,
-    "o": 1081,
-    "pct": 20.0,
-    "src": "civicapi",
-    "raceId": 87174
-   },
-   "FL-SEN": {
-    "d": 2644156,
-    "r": 2593782,
-    "o": 56643,
-    "pct": 59.0,
-    "src": "civicapi",
-    "raceId": 87068
-   },
-   "GA-SEN": {
-    "d": 694033,
-    "r": 329018,
-    "o": 0,
-    "pct": 22.0,
-    "src": "civicapi",
-    "raceId": 87087
-   },
    "GU-GOV": {
     "d": 14925,
     "r": 15945,
@@ -747,7 +654,7 @@
     "note": "Limtiaco (D) unseats Moylan (R)"
    }
   },
-  "auto_count": 4,
+  "auto_count": 0,
   "manual_count": 2
  },
  "calls": {
