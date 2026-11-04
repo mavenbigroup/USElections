@@ -1,37 +1,37 @@
 {
- "generated": "2026-11-04T13:09:54+00:00",
+ "generated": "2026-11-04T13:10:54+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T13:09:56+00:00"
+   "at": "2026-11-04T13:10:56+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T13:09:56+00:00"
+   "at": "2026-11-04T13:10:56+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T13:09:56+00:00"
+   "at": "2026-11-04T13:10:57+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T13:09:56+00:00"
+   "at": "2026-11-04T13:10:57+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T13:09:56+00:00"
+   "at": "2026-11-04T13:10:57+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T13:09:56+00:00"
+   "at": "2026-11-04T13:10:57+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T13:09:56+00:00"
+   "at": "2026-11-04T13:10:57+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T13:09:56+00:00"
+   "at": "2026-11-04T13:10:57+00:00"
   }
  },
  "baseline": {
@@ -52,10 +52,12 @@
    "NV": 99.9,
    "NM": 99.9,
    "OH": 99.8,
-   "WI": 98.6
+   "TX": 99.7
   },
   "sen": {
-   "MN": 99.9
+   "IA": 99.9,
+   "MI": 99.9,
+   "NE": 0.1
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -5109,20 +5111,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 572,
+   "fetched": 80,
    "total": null,
-   "updated": "2026-11-04T13:09:54+00:00",
-   "final": true,
+   "updated": "2026-11-04T13:10:55+00:00",
+   "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-04T13:09:30+00:00",
+   "started": "2026-11-04T13:10:50+00:00",
    "types": {
-    "House of Representatives": 456,
-    "Governor": 60,
-    "US Senate": 56
+    "US Senate": 40,
+    "Governor": 20,
+    "House of Representatives": 20
    },
    "matched": 506,
    "matched_keys": [
@@ -5210,7 +5212,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T13:09:56+00:00",
+  "updated": "2026-11-04T13:10:57+00:00",
   "races": {
    "SD-SEN": {
     "d": 0,
