@@ -68,34 +68,54 @@ def flush(final=False):
     state["updated"] = now(); state["final"] = final
     tmp = OUT.with_suffix(".tmp"); tmp.write_text(json.dumps(state)); tmp.replace(OUT)
 
-def crawl(base, label):
+def crawl(base, label, lim_hint=20):
+    """Page until a short/empty page. civicAPI's `count` is the page size, not the total."""
     first = getj(f"{base}&offset=0")
-    total = int(first.get("count") or 0); lim = int(first.get("limit") or 20) or 20
-    absorb(first.get("races")); flush()
-    offs = list(range(lim, min(total, 6000), lim))
-    with ThreadPoolExecutor(max_workers=8) as ex:
-        futs = {ex.submit(getj, f"{base}&offset={o}"): o for o in offs}
-        n = 0
-        for fu in as_completed(futs):
-            try: absorb(fu.result().get("races"))
-            except Exception: pass
-            n += 1
-            if n % 10 == 0: flush()
-    return total
+    rows = first.get("races") or []
+    lim = int(first.get("limit") or len(rows) or lim_hint) or lim_hint
+    absorb(rows); flush()
+    if len(rows) < lim:
+        return len(rows)
+    off = lim; got = len(rows)
+    with ThreadPoolExecutor(max_workers=6) as ex:
+        while off < 8000:
+            batch = [off + i * lim for i in range(6)]
+            res = list(ex.map(lambda o: (o, getj(f"{base}&offset={o}")), batch))
+            short = False
+            for o, pg in sorted(res):
+                r = pg.get("races") or []
+                absorb(r); got += len(r)
+                if len(r) < lim:
+                    short = True
+            flush()
+            if short:
+                break
+            off += 6 * lim
+    return got
+
 
 t0 = time.time()
-# 1) try type filters (small, fast if civicAPI honours them)
+# 1) type filters (civicAPI honours ?type=); try name variants per office
 filtered_ok = False
-for typ in ("Senate", "Governor", "Representative"):
-    try:
-        probe = getj(f"{BASE}&type={urllib.request.quote(typ)}&offset=0")
-        types = {str(x.get("type")) for x in probe.get("races") or []}
-        if probe.get("races") and all(typ.lower() in t.lower() for t in types):
-            filtered_ok = True
-            state["mode"] = "filtered"
-            crawl(f"{BASE}&type={urllib.request.quote(typ)}", typ)
-    except Exception as e:
-        print("filter probe failed", typ, str(e)[:100])
+VARIANTS = {"senate": ["Senate", "US Senate", "U.S. Senate", "United States Senate"],
+            "governor": ["Governor", "Gubernatorial"],
+            "house": ["House", "US House", "U.S. House", "Representative", "US Representative", "U.S. Representative", "House of Representatives"]}
+for office, names in VARIANTS.items():
+    for typ in names:
+        try:
+            probe = getj(f"{BASE}&type={urllib.request.quote(typ)}&offset=0", t=40)
+            rows = probe.get("races") or []
+            if not rows:
+                continue
+            words = ("house", "representative", "congress") if office == "house" else (office,)
+            if all(any(w in str(x.get("type") or "").lower() for w in words) for x in rows):
+                filtered_ok = True
+                state.setdefault("filters", {})[office] = typ
+                state["mode"] = "filtered"
+                crawl(f"{BASE}&type={urllib.request.quote(typ)}", typ)
+                break
+        except Exception as e:
+            print("filter probe failed", typ, str(e)[:100])
 # 2) fall back to crawling everything
 if not filtered_ok:
     state["mode"] = "full"
