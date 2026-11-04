@@ -1,37 +1,37 @@
 {
- "generated": "2026-11-04T06:01:10+00:00",
+ "generated": "2026-11-04T06:02:09+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T06:01:12+00:00"
+   "at": "2026-11-04T06:02:12+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T06:01:12+00:00"
+   "at": "2026-11-04T06:02:12+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T06:01:12+00:00"
+   "at": "2026-11-04T06:02:12+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T06:01:12+00:00"
+   "at": "2026-11-04T06:02:12+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T06:01:13+00:00"
+   "at": "2026-11-04T06:02:13+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T06:01:13+00:00"
+   "at": "2026-11-04T06:02:13+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T06:01:13+00:00"
+   "at": "2026-11-04T06:02:13+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T06:01:13+00:00"
+   "at": "2026-11-04T06:02:13+00:00"
   }
  },
  "baseline": {
@@ -48,15 +48,15 @@
    "ME": 99.7,
    "MI": 99.7,
    "MN": 99.5,
-   "NE": 0.4,
+   "NE": 1.7,
    "NV": 98.6,
    "NM": 99.9,
    "NY": 99.8,
-   "OR": 98.6
+   "OH": 99.8,
+   "VT": 0.2
   },
   "sen": {
-   "AK": 94.6,
-   "KS": 99.9
+   "NH": 99.9
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -976,19 +976,20 @@
   "count": 40,
   "matched": 40,
   "debug": {
-   "mode": "filtered",
-   "fetched": 80,
+   "mode": "full",
+   "fetched": 20,
    "total": null,
-   "updated": "2026-11-04T06:00:38+00:00",
+   "updated": "2026-11-04T06:02:00+00:00",
    "final": true,
-   "filters": {
-    "senate": "US Senate",
-    "house": "House of Representatives"
-   },
-   "started": "2026-11-04T05:59:09+00:00",
+   "filters": {},
+   "started": "2026-11-04T06:00:53+00:00",
    "types": {
-    "US Senate": 40,
-    "House of Representatives": 40
+    "Referendum": 11,
+    "State Senate": 3,
+    "State House": 3,
+    "Shadow Senator": 1,
+    "Attorney General": 1,
+    "Shadow Representative": 1
    },
    "matched": 40,
    "matched_keys": [
@@ -1036,7 +1037,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T06:01:13+00:00",
+  "updated": "2026-11-04T06:02:13+00:00",
   "races": {
    "RI-SEN": {
     "d": 235276,
