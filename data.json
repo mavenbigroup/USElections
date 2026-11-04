@@ -1,38 +1,37 @@
 {
- "generated": "2026-11-04T00:26:40+00:00",
+ "generated": "2026-11-04T00:27:39+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T00:26:44+00:00"
+   "at": "2026-11-04T00:27:44+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T00:26:44+00:00"
+   "at": "2026-11-04T00:27:44+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T00:26:45+00:00"
+   "at": "2026-11-04T00:27:49+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T00:26:45+00:00"
+   "at": "2026-11-04T00:27:49+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T00:26:45+00:00"
+   "at": "2026-11-04T00:27:49+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T00:26:46+00:00"
+   "at": "2026-11-04T00:27:50+00:00"
   },
   "results_auto": {
-   "ok": false,
-   "at": "2026-11-04T00:15:52+00:00",
-   "error": "no civicAPI results yet (background scraper starting)"
+   "ok": true,
+   "at": "2026-11-04T00:27:50+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T00:26:46+00:00"
+   "at": "2026-11-04T00:27:50+00:00"
   }
  },
  "baseline": {
@@ -43,13 +42,13 @@
  "kalshi": {
   "gov": {
    "AZ": 95.8,
-   "FL": 12.0,
-   "GA": 85.0,
+   "FL": 11.0,
+   "GA": 86.0,
    "IA": 90.0,
    "ME": 96.3,
-   "MI": 96.7,
+   "MI": 96.6,
    "MN": 97.3,
-   "NE": 9.0,
+   "NE": 11.0,
    "NV": 88.0,
    "NM": 95.7,
    "NY": 97.3,
@@ -57,14 +56,13 @@
    "OK": 9.5,
    "OR": 83.0,
    "PA": 98.4,
-   "VT": 44.0
+   "VT": 51.0
   },
   "sen": {
-   "AK": 70.0,
-   "IA": 60.0,
-   "ME": 72.0,
-   "MN": 93.8,
-   "SC": 35.0
+   "IA": 61.0,
+   "ME": 71.0,
+   "NC": 98.1,
+   "NH": 95.7
   },
   "senate_d": 80.0,
   "house_d": 97.0
@@ -74,7 +72,7 @@
   "house_d": 98.2
  },
  "predictit": {
-  "senate_d": 87.0
+  "senate_d": 88.0
  },
  "onpoint": {
   "states": {
@@ -628,30 +626,78 @@
   "approval_net": -25.0
  },
  "results_auto": {
-  "races": {},
-  "count": 0,
-  "ok": 0,
-  "errors": 0,
+  "races": {
+   "GA-GOV": {
+    "d": 594271,
+    "r": 280279,
+    "o": 0,
+    "pct": 19.0,
+    "src": "civicapi",
+    "raceId": 87088
+   },
+   "FL-GOV": {
+    "d": 2300133,
+    "r": 2144158,
+    "o": 54161,
+    "pct": 50.0,
+    "src": "civicapi",
+    "raceId": 87069
+   }
+  },
+  "count": 2,
+  "matched": 19,
   "debug": {
-   "top_keys": [
-    "count",
-    "offset",
-    "limit",
-    "races"
-   ],
-   "count": 20,
-   "sample": [
-    "{\"id\": 181006, \"type\": \"Shadow Representative\", \"country\": \"US\", \"province\": \"DC\", \"district\": null, \"municipality\": null, \"election_name\": \"DC Shadow US Representative\", \"election_type\": \"Statewide\", \"election_date\": \"2026-11-03T05:00:00.000Z\", \"has_breakdown\": true, \"has_map\": true, \"percent_reporting\": 0, \"candidates\": [{\"name\": \"Ciprian Ivanof\", \"candidate_id\": 23472819, \"party\": \"Republican\", \"color\": \"#c6606b\", \"votes\": 0, \"percent\": 0, \"winner\": false}, {\"name\": \"Franklin Garcia\", \"candidate_id\": 23472820, \"party\": \"Democratic\", \"color\": \"#4874a3\", \"votes\": 0, \"percent\": 0, \"winner\": false}, {\"name\": \"Write-in\", \"candidate_id\": 23472821, \"party\": \"Nonpartisan\", \"color\": \"#9A36FF\", \"vo",
-    "{\"id\": 179724, \"type\": \"Referendum\", \"country\": \"US\", \"province\": \"RI\", \"district\": null, \"municipality\": null, \"election_name\": \"Rhode Island Question 1: Higher Education Facilities - $275,000,000\", \"election_type\": \"Statewide\", \"election_date\": \"2026-11-03T05:00:00.000Z\", \"has_breakdown\": true, \"has_map\": true, \"percent_reporting\": 0, \"candidates\": [{\"name\": \"Yes\", \"candidate_id\": 22610358, \"party\": \"Nonpartisan\", \"color\": \"#63c660\", \"votes\": 0, \"percent\": 0, \"winner\": false}, {\"name\": \"No\", \"candidate_id\": 22610359, \"party\": \"Nonpartisan\", \"color\": \"#c6606b\", \"votes\": 0, \"percent\": 0, \"winner\": false}]}",
-    "{\"id\": 155920, \"type\": \"Referendum\", \"country\": \"US\", \"province\": \"MI\", \"district\": null, \"municipality\": null, \"election_name\": \"Michigan Proposal 2\", \"election_type\": \"Statewide\", \"election_date\": \"2026-11-03T05:00:00.000Z\", \"has_breakdown\": true, \"has_map\": true, \"percent_reporting\": 0, \"candidates\": [{\"name\": \"Yes\", \"candidate_id\": 376992, \"party\": \"Nonpartisan\", \"color\": \"#63c660\", \"votes\": 0, \"percent\": 0, \"winner\": false}, {\"name\": \"No\", \"candidate_id\": 376993, \"party\": \"Nonpartisan\", \"color\": \"#c6606b\", \"votes\": 0, \"percent\": 0, \"winner\": false}]}"
-   ],
-   "matched": 0,
-   "matched_keys": []
+   "mode": "filtered",
+   "fetched": 20,
+   "total": null,
+   "updated": "2026-11-04T00:27:41+00:00",
+   "final": true,
+   "types": {
+    "Governor": 20
+   },
+   "matched": 19,
+   "matched_keys": [
+    "AL-GOV",
+    "AZ-GOV",
+    "FL-GOV",
+    "GA-GOV",
+    "HI-GOV",
+    "IA-GOV",
+    "ID-GOV",
+    "IL-GOV",
+    "KS-GOV",
+    "ME-GOV",
+    "NY-GOV",
+    "OH-GOV",
+    "OK-GOV",
+    "OR-GOV",
+    "PA-GOV",
+    "RI-GOV",
+    "SC-GOV",
+    "SD-GOV",
+    "TX-GOV"
+   ]
   }
  },
  "results": {
-  "updated": "2026-11-04T00:26:46+00:00",
+  "updated": "2026-11-04T00:27:50+00:00",
   "races": {
+   "GA-GOV": {
+    "d": 594271,
+    "r": 280279,
+    "o": 0,
+    "pct": 19.0,
+    "src": "civicapi",
+    "raceId": 87088
+   },
+   "FL-GOV": {
+    "d": 2300133,
+    "r": 2144158,
+    "o": 54161,
+    "pct": 50.0,
+    "src": "civicapi",
+    "raceId": 87069
+   },
    "GU-GOV": {
     "d": 14925,
     "r": 15945,
@@ -669,7 +715,7 @@
     "note": "Limtiaco (D) unseats Moylan (R)"
    }
   },
-  "auto_count": 0,
+  "auto_count": 2,
   "manual_count": 2
  },
  "calls": {
