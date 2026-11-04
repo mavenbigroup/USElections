@@ -1,37 +1,37 @@
 {
- "generated": "2026-11-04T05:43:38+00:00",
+ "generated": "2026-11-04T05:44:38+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T05:43:40+00:00"
+   "at": "2026-11-04T05:44:40+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T05:43:40+00:00"
+   "at": "2026-11-04T05:44:40+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T05:43:40+00:00"
+   "at": "2026-11-04T05:44:40+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T05:43:40+00:00"
+   "at": "2026-11-04T05:44:40+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T05:43:40+00:00"
+   "at": "2026-11-04T05:44:40+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T05:43:41+00:00"
+   "at": "2026-11-04T05:44:41+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T05:43:41+00:00"
+   "at": "2026-11-04T05:44:41+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T05:43:41+00:00"
+   "at": "2026-11-04T05:44:41+00:00"
   }
  },
  "baseline": {
@@ -52,11 +52,11 @@
    "NV": 97.3,
    "NM": 99.9,
    "NY": 99.8,
-   "PA": 99.9
+   "SC": 1.9
   },
   "sen": {
-   "NE": 0.1,
-   "TX": 99.7
+   "MI": 99.7,
+   "NH": 99.9
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -226,8 +226,8 @@
     "requested": null
    },
    "FL": {
-    "ballots": 5538707,
-    "mail": 2070610,
+    "ballots": 5539291,
+    "mail": 2071194,
     "inperson": 3468097,
     "requested": 466521
    },
@@ -237,17 +237,17 @@
     "inperson": 2728265,
     "requested": 168648
    },
+   "CO": {
+    "ballots": 2524979,
+    "mail": 2386847,
+    "inperson": 138132,
+    "requested": 4223515
+   },
    "GA": {
     "ballots": 2513648,
     "mail": 111365,
     "inperson": 2402283,
     "requested": 156771
-   },
-   "CO": {
-    "ballots": 2448419,
-    "mail": 2310549,
-    "inperson": 137870,
-    "requested": 4147217
    },
    "WA": {
     "ballots": 2435883,
@@ -267,6 +267,12 @@
     "inperson": 1107480,
     "requested": 1194485
    },
+   "OR": {
+    "ballots": 1808770,
+    "mail": 1808770,
+    "inperson": null,
+    "requested": null
+   },
    "OH": {
     "ballots": 1754731,
     "mail": 653742,
@@ -278,12 +284,6 @@
     "mail": 1745903,
     "inperson": null,
     "requested": 2189090
-   },
-   "OR": {
-    "ballots": 1668842,
-    "mail": 1668842,
-    "inperson": null,
-    "requested": null
    },
    "AZ": {
     "ballots": 1655577,
@@ -394,10 +394,10 @@
     "requested": 658748
    },
    "MT": {
-    "ballots": 372341,
-    "mail": 372341,
+    "ballots": 381491,
+    "mail": 381491,
     "inperson": null,
-    "requested": 534928
+    "requested": 535308
    },
    "ID": {
     "ballots": 328019,
@@ -1102,10 +1102,10 @@
    "mode": "full",
    "fetched": 0,
    "total": null,
-   "updated": "2026-11-04T05:43:21+00:00",
+   "updated": "2026-11-04T05:44:22+00:00",
    "final": true,
    "filters": {},
-   "started": "2026-11-04T05:42:36+00:00",
+   "started": "2026-11-04T05:43:36+00:00",
    "types": {},
    "matched": 55,
    "matched_keys": [
@@ -1168,7 +1168,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T05:43:41+00:00",
+  "updated": "2026-11-04T05:44:41+00:00",
   "races": {
    "TX-SEN": {
     "d": 4660489,
