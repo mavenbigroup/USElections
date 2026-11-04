@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-04T22:59:15+00:00",
+ "generated": "2026-11-04T23:00:15+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T22:59:17+00:00"
+   "at": "2026-11-04T23:00:16+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T22:59:17+00:00"
+   "at": "2026-11-04T23:00:17+00:00"
   },
   "predictit": {
    "ok": false,
@@ -16,23 +16,23 @@
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T22:59:18+00:00"
+   "at": "2026-11-04T23:00:17+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T22:59:18+00:00"
+   "at": "2026-11-04T23:00:17+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T22:59:18+00:00"
+   "at": "2026-11-04T23:00:18+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T22:59:18+00:00"
+   "at": "2026-11-04T23:00:18+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T22:59:18+00:00"
+   "at": "2026-11-04T23:00:18+00:00"
   }
  },
  "baseline": {
@@ -52,11 +52,12 @@
    "NE": 0.7,
    "NV": 99.9,
    "NM": 99.9,
-   "OH": 99.8,
-   "VT": 0.2
+   "OK": 0.4,
+   "WI": 98.6
   },
   "sen": {
-   "MN": 99.9
+   "NC": 99.8,
+   "SC": 99.8
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -5123,20 +5124,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 572,
+   "fetched": 116,
    "total": null,
-   "updated": "2026-11-04T22:59:12+00:00",
-   "final": true,
+   "updated": "2026-11-04T23:00:17+00:00",
+   "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-04T22:59:02+00:00",
+   "started": "2026-11-04T23:00:14+00:00",
    "types": {
-    "House of Representatives": 456,
-    "Governor": 60,
-    "US Senate": 56
+    "US Senate": 56,
+    "Governor": 40,
+    "House of Representatives": 20
    },
    "matched": 506,
    "matched_keys": [
@@ -5224,7 +5225,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T22:59:18+00:00",
+  "updated": "2026-11-04T23:00:18+00:00",
   "races": {
    "TX-SEN": {
     "d": 5408693,
