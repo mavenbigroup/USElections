@@ -1,37 +1,37 @@
 {
- "generated": "2026-11-04T15:15:45+00:00",
+ "generated": "2026-11-04T15:16:45+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T15:15:49+00:00"
+   "at": "2026-11-04T15:16:49+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T15:15:49+00:00"
+   "at": "2026-11-04T15:16:49+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T15:15:49+00:00"
+   "at": "2026-11-04T15:16:49+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T15:15:49+00:00"
+   "at": "2026-11-04T15:16:49+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T15:15:49+00:00"
+   "at": "2026-11-04T15:16:49+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T15:15:50+00:00"
+   "at": "2026-11-04T15:16:49+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T15:15:50+00:00"
+   "at": "2026-11-04T15:16:49+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T15:15:50+00:00"
+   "at": "2026-11-04T15:16:49+00:00"
   }
  },
  "baseline": {
@@ -52,12 +52,14 @@
    "NV": 99.9,
    "NM": 99.9,
    "NY": 99.8,
-   "OH": 99.8,
    "OR": 99.9,
-   "VT": 0.2
+   "TX": 99.7
   },
   "sen": {
-   "SC": 99.8
+   "AK": 88.0,
+   "ME": 99.9,
+   "NE": 0.1,
+   "TX": 99.7
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -227,9 +229,9 @@
     "requested": null
    },
    "FL": {
-    "ballots": 5544563,
-    "mail": 2076466,
-    "inperson": 3468097,
+    "ballots": 5544837,
+    "mail": 2076736,
+    "inperson": 3468101,
     "requested": 400225
    },
    "NC": {
@@ -389,8 +391,8 @@
     "requested": 66866
    },
    "MD": {
-    "ballots": 417417,
-    "mail": 417417,
+    "ballots": 429972,
+    "mail": 429972,
     "inperson": null,
     "requested": 658748
    },
@@ -5113,14 +5115,14 @@
    "mode": "filtered",
    "fetched": 572,
    "total": null,
-   "updated": "2026-11-04T15:15:49+00:00",
+   "updated": "2026-11-04T15:16:44+00:00",
    "final": true,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-04T15:14:45+00:00",
+   "started": "2026-11-04T15:16:04+00:00",
    "types": {
     "House of Representatives": 456,
     "Governor": 60,
@@ -5212,7 +5214,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T15:15:50+00:00",
+  "updated": "2026-11-04T15:16:49+00:00",
   "races": {
    "AL-GOV": {
     "d": 803468,
