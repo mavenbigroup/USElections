@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-04T16:49:00+00:00",
+ "generated": "2026-11-04T16:50:00+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T16:49:03+00:00"
+   "at": "2026-11-04T16:50:04+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T16:49:04+00:00"
+   "at": "2026-11-04T16:50:04+00:00"
   },
   "predictit": {
    "ok": false,
@@ -16,23 +16,23 @@
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T16:49:04+00:00"
+   "at": "2026-11-04T16:50:05+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T16:49:04+00:00"
+   "at": "2026-11-04T16:50:05+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T16:49:05+00:00"
+   "at": "2026-11-04T16:50:05+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T16:49:05+00:00"
+   "at": "2026-11-04T16:50:05+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T16:49:05+00:00"
+   "at": "2026-11-04T16:50:05+00:00"
   }
  },
  "baseline": {
@@ -57,21 +57,19 @@
    "OK": 0.4,
    "OR": 99.9,
    "PA": 99.9,
-   "VT": 0.2
+   "SC": 1.9,
+   "WI": 98.6
   },
   "sen": {
-   "AK": 93.2,
+   "AK": 93.6,
    "GA": 99.8,
-   "IA": 99.9,
    "KS": 99.9,
    "ME": 99.9,
    "MI": 99.9,
    "MN": 99.9,
    "NC": 99.8,
-   "NE": 0.1,
    "NH": 99.9,
-   "SC": 99.8,
-   "TX": 99.7
+   "SC": 99.8
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -5126,20 +5124,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 572,
+   "fetched": 116,
    "total": null,
-   "updated": "2026-11-04T16:48:56+00:00",
-   "final": true,
+   "updated": "2026-11-04T16:50:04+00:00",
+   "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-04T16:48:45+00:00",
+   "started": "2026-11-04T16:50:00+00:00",
    "types": {
-    "House of Representatives": 456,
-    "Governor": 60,
-    "US Senate": 56
+    "US Senate": 56,
+    "Governor": 40,
+    "House of Representatives": 20
    },
    "matched": 506,
    "matched_keys": [
@@ -5227,7 +5225,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T16:49:05+00:00",
+  "updated": "2026-11-04T16:50:05+00:00",
   "races": {
    "AZ-GOV": {
     "d": 1193939,
