@@ -2,7 +2,7 @@ name: Refresh board data
 
 on:
   schedule:
-    - cron: "*/5 * * * *"   # GitHub's minimum; actual cadence is often 5-15 min under load
+    - cron: "*/5 * * * *"   # starts a new loop every ~5 min (GitHub may delay; each loop covers ~9 min)
   workflow_dispatch:
 
 permissions:
@@ -10,22 +10,32 @@ permissions:
 
 concurrency:
   group: refresh
-  cancel-in-progress: false
+  cancel-in-progress: false   # one loop runs, one waits; no gaps, no pile-up
 
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 6
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - run: python probe_civic.py || true
-      - run: python fetch_data.py
-      - name: Commit if changed
+        continue-on-error: true
+      - name: Refresh every ~60 s for ~9 minutes
         run: |
           git config user.name "board-bot"
           git config user.email "board-bot@users.noreply.github.com"
-          git add data.json
-          if git diff --cached --quiet; then echo "no change"; else git commit -m "data: $(date -u +%FT%TZ)" && git push; fi
+          start=$(date +%s)
+          while [ $(( $(date +%s) - start )) -lt 540 ]; do
+            t0=$(date +%s)
+            python fetch_data.py || echo "fetch failed; keeping last data"
+            git add data.json
+            if ! git diff --cached --quiet; then
+              git commit -q -m "data: $(date -u +%FT%TZ)"
+              for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 3; done
+            fi
+            el=$(( $(date +%s) - t0 ))
+            [ $el -lt 60 ] && sleep $(( 60 - el ))
+          done
