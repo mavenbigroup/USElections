@@ -198,7 +198,7 @@ button:focus-visible,.st:focus-visible,input:focus-visible{outline:2px solid var
 <div class="tw"><table id="gov"><thead><tr><th>State</th><th>Matchup</th><th>Held</th><th>Model call</th><th>Model margin</th><th>Reported</th><th>Market D</th><th>Polls / forecast</th></tr></thead><tbody></tbody></table></div>
 
 <div class="foot" id="foot"></div>
-<div class="brand2"><span><b>Maven BI Group</b> · Know | Run | Improve · Phoenix, AZ</span><span>Built by Alan Anolik · v<span id="ver">1103.1745</span> · <a href="#" id="ownerLink" style="color:inherit">owner</a></span></div>
+<div class="brand2"><span><b>Maven BI Group</b> · Know | Run | Improve · Phoenix, AZ</span><span>Built by Alan Anolik · v<span id="ver">1103.1748</span> · <a href="#" id="ownerLink" style="color:inherit">owner</a></span></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
@@ -457,10 +457,10 @@ applyDefaults(true); idle();
   btn.addEventListener('click',()=>{ const n=cur()==='dark'?'light':'dark'; root.dataset.theme=n; try{localStorage.setItem('theme',n);}catch(e){} label(); if(typeof paint==='function') paint(); });
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{ if(!root.dataset.theme) label(); });
 })();
-const APP_VERSION='1103.1745';
+const APP_VERSION='1103.1748';
 const LIVE={at:null,src:{}};
 async function checkVersion(){
-  try{ const r=await fetch('version.txt?t='+Date.now(),{cache:'no-store'}); if(!r.ok) return; const v=(await r.text()).trim();
+  try{ const r=await fetch('https://raw.githubusercontent.com/MavenBIGroup/USElections/main/version.txt?t='+Date.now(),{cache:'no-store'}).catch(()=>fetch('version.txt?t='+Date.now(),{cache:'no-store'})); if(!r.ok) return; const v=(await r.text()).trim();
     if(v&&v!==APP_VERSION){
       let k=''; try{k=sessionStorage.getItem('autoupd')||'';}catch(e){}
       if(k!==v){ try{sessionStorage.setItem('autoupd',v);}catch(e){} location.replace(location.pathname+'?v='+encodeURIComponent(v)); return; }
@@ -545,7 +545,11 @@ async function direct(){
 }
 let lastFile=null;
 async function refresh(){
-  try{const r=await fetch('data.json?t='+Date.now(),{cache:'no-store'}); if(r.ok){lastFile=await r.json(); applyData(lastFile);}}catch(e){}
+  let got=null;
+  try{const r=await fetch('https://raw.githubusercontent.com/MavenBIGroup/USElections/main/data.json?t='+Date.now(),{cache:'no-store'}); if(r.ok) got=await r.json();}catch(e){}
+  try{ if(!got){const r=await fetch('data.json?t='+Date.now(),{cache:'no-store'}); if(r.ok) got=await r.json();}
+    else { const r=await fetch('data.json?t='+Date.now(),{cache:'no-store'}); if(r.ok){ const pg=await r.json(); if(pg.generated>got.generated) got=pg; } } }catch(e){}
+  if(got&&(!lastFile||got.generated>=lastFile.generated)){ lastFile=got; applyData(lastFile); }
   const live=await direct();
   if(live){ const merged=Object.assign({},lastFile||{},live); merged.generated=new Date().toISOString(); merged.sources=Object.assign({},(lastFile||{}).sources||{},live.sources); applyData(merged); }
   else if(!lastFile){ document.getElementById('live').textContent='live feed: no reachable source from this page (artifact sandbox or CORS). On GitHub Pages the Action refreshes data.json every ~5 min and the page re-reads it every 30 s.'; }
@@ -576,7 +580,7 @@ document.getElementById('tokSave').addEventListener('click',()=>{const v=tokIn.v
 document.getElementById('ownerLink').addEventListener('click',e=>{e.preventDefault();tokBox.hidden=false;tokIn.focus();window.scrollTo({top:0,behavior:'smooth'});});
 document.getElementById('tokCancel').addEventListener('click',()=>{tokIn.value='';tokBox.hidden=true;});
 tokIn.addEventListener('keydown',e=>{if(e.key==='Enter') document.getElementById('tokSave').click();});
-refresh(); setInterval(refresh,30000);
+refresh(); setInterval(refresh,20000);
 window.addEventListener('pageshow',e=>{if(e.persisted) refresh();});
 window.addEventListener('focus',()=>refresh());
 document.addEventListener('visibilitychange',()=>{if(!document.hidden) refresh();});
