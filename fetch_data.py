@@ -285,54 +285,112 @@ def civic_tally(race):
     return out
 
 
+NAME2AB = {v.lower(): k for k, v in {**{n: a for n, a in STATES.items()}}.items()} if False else {n.lower(): a for n, a in STATES.items()}
+
+
+def _txt(x):
+    if isinstance(x, dict):
+        return x.get("en_US") or x.get("en") or next((v for v in x.values() if isinstance(v, str)), "")
+    return str(x or "")
+
+
+def classify(race):
+    """Return (state_ab, kind, district) for a civicAPI race, kind in SEN/GOV/HOUSE, or None."""
+    name = " ".join(_txt(race.get(k)) for k in ("election_name", "name", "title", "race_name", "office", "election_type", "type"))
+    dd = race.get("district_details") or {}
+    name += " " + " ".join(_txt(dd.get(k)) for k in ("district_name", "district_country", "state"))
+    name += " " + " ".join(_txt(race.get(k)) for k in ("state", "region", "subdivision", "district"))
+    low = name.lower()
+    if "primary" in low or "runoff" in low and "2026" not in low:
+        pass
+    ab = None
+    for n, a in sorted(NAME2AB.items(), key=lambda x: -len(x[0])):
+        if n in low:
+            ab = a
+            break
+    if not ab:
+        m = re.search(r"\b(?:US[-_ ])?([A-Z]{2})\b", name)
+        if m and m.group(1) in STATES.values():
+            ab = m.group(1)
+    if not ab:
+        return None
+    if "senate" in low and "state senate" not in low:
+        return ab, "SEN", None
+    if "governor" in low or "gubernatorial" in low:
+        if "lieutenant" in low:
+            return None
+        return ab, "GOV", None
+    if "house" in low or "congress" in low or "representative" in low:
+        if "state house" in low or "house of delegates" in low:
+            return None
+        m = re.search(r"(?:district|cd|-)\s*(\d{1,2})", low)
+        if m:
+            return ab, "HOUSE", f"{ab}-{int(m.group(1)):02d}"
+        if "at-large" in low or "at large" in low:
+            return ab, "HOUSE", f"{ab}-AL"
+    return None
+
+
 def results_auto():
     from concurrent.futures import ThreadPoolExecutor, as_completed
-    pri_sen = ["NC","OH","ME","AK","IA","KS","TX","MI","GA","NH","MN","SC","NE","FL","MS","LA","KY","MT"]
-    pri_gov = ["AZ","GA","NV","OH","WI","MI","KS","IA","TX","FL","OR","AK","NE","NH","ME","OK","SC","VT"]
-    jobs = [(st, "senate") for st in pri_sen] + [(st, "governor") for st in pri_gov] + [(st, "house") for st in RES_HOUSE] \
-         + [(st, "senate") for st in RES_SEN if st not in pri_sen] + [(st, "governor") for st in RES_GOV if st not in pri_gov]
-    races, errors, ok = {}, 0, 0
-    def pull(job):
-        st, typ = job
-        req = urllib.request.Request(f"{CIVIC}/race/us/{st.lower()}/{typ}/2026", headers=UA)
-        with urllib.request.urlopen(req, timeout=25) as r:
-            return job, civic_races(json.loads(r.read().decode("utf-8", "replace")))
     t0 = time.time()
-    with ThreadPoolExecutor(max_workers=12) as ex:
-        futs = [ex.submit(pull, j) for j in jobs]
+    raw = None
+    for q in ("/race/search?startDate=2026-11-03&endDate=2026-11-03", "/race/search?startDate=2026-11-03&endDate=2026-11-04&country=US", "/race/search?startDate=2026-11-03"):
         try:
-            for fu in as_completed(futs, timeout=170):
+            req = urllib.request.Request(CIVIC + q, headers=UA)
+            with urllib.request.urlopen(req, timeout=40) as r:
+                raw = json.loads(r.read().decode("utf-8", "replace"))
+            break
+        except Exception as e:
+            print("civicAPI search failed", q, str(e)[:120])
+    if raw is None:
+        raise RuntimeError("civicAPI race/search unreachable")
+    lst = raw if isinstance(raw, list) else next((v for v in raw.values() if isinstance(v, list)), []) if isinstance(raw, dict) else []
+    debug = {"top_keys": list(raw.keys())[:20] if isinstance(raw, dict) else "list", "count": len(lst), "sample": [json.dumps(x)[:700] for x in lst[:3]]}
+    wanted = {}
+    for race in lst:
+        if not isinstance(race, dict):
+            continue
+        c = classify(race)
+        if not c:
+            continue
+        ab, kind, dist = c
+        key = dist if kind == "HOUSE" else f"{ab}-{kind}"
+        rid = race.get("raceId") or race.get("race_id") or race.get("id")
+        wanted[key] = (rid, race)
+    races, ok, errors = {}, 0, 0
+    def detail(item):
+        key, (rid, race) = item
+        if race.get("candidates") and any((c.get("votes") or 0) for c in race["candidates"]):
+            return key, race
+        if rid is None:
+            return key, race
+        req = urllib.request.Request(f"{CIVIC}/race/{rid}", headers=UA)
+        with urllib.request.urlopen(req, timeout=25) as r:
+            d = json.loads(r.read().decode("utf-8", "replace"))
+        d = d.get("data", d) if isinstance(d, dict) else d
+        return key, d
+    with ThreadPoolExecutor(max_workers=12) as ex:
+        futs = [ex.submit(detail, it) for it in wanted.items()]
+        try:
+            for fu in as_completed(futs, timeout=150):
                 try:
-                    (st, typ), lst = fu.result()
-                    ok += 1
+                    key, race = fu.result(); ok += 1
                 except Exception as e:
                     errors += 1
-                    if errors <= 3:
-                        print("civicAPI error sample:", str(e)[:160])
+                    if errors <= 2: print("civicAPI race error", str(e)[:150])
                     continue
-                if typ in ("senate", "governor"):
-                    for race in lst[:1]:
-                        tl = civic_tally(race)
-                        if tl["d"] or tl["r"] or tl.get("called"):
-                            races[st + ("-SEN" if typ == "senate" else "-GOV")] = tl
-                else:
-                    for race in lst:
-                        name = (race.get("district_details") or {}).get("district_name") or race.get("election_name") or ""
-                        if isinstance(name, dict):
-                            name = name.get("en_US", "")
-                        m = re.search(r"(\d+)", str(name))
-                        key = f"{st}-{int(m.group(1)):02d}" if m else (f"{st}-AL" if "large" in str(name).lower() else None)
-                        if not key:
-                            continue
-                        tl = civic_tally(race)
-                        if tl["d"] or tl["r"] or tl.get("called"):
-                            races[key] = tl
+                tl = civic_tally(race)
+                tl["raceId"] = race.get("raceId") or race.get("race_id") or race.get("id")
+                if tl["d"] or tl["r"] or tl.get("called"):
+                    races[key] = tl
         except Exception:
-            errors += sum(1 for f in futs if not f.done())
-    print(f"civicAPI: {ok} ok, {errors} failed, {len(races)} races with votes, {time.time()-t0:.1f}s")
-    if ok == 0:
-        raise RuntimeError(f"civicAPI unreachable ({errors} failed)")
-    return {"races": races, "count": len(races), "ok": ok, "errors": errors}
+            pass
+    if lst and not debug["sample"]:
+        pass
+    debug["matched"] = len(wanted); debug["matched_keys"] = sorted(wanted)[:60]
+    print(f"civicAPI: search {len(lst)} races, matched {len(wanted)}, details ok {ok} / err {errors}, {len(races)} with votes, {time.time()-t0:.1f}s")
+    return {"races": races, "count": len(races), "ok": ok, "errors": errors, "debug": debug}
 
 
 def uf_total():
