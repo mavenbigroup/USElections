@@ -1,37 +1,37 @@
 {
- "generated": "2026-11-04T13:27:24+00:00",
+ "generated": "2026-11-04T13:28:24+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T13:27:27+00:00"
+   "at": "2026-11-04T13:28:27+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T13:27:28+00:00"
+   "at": "2026-11-04T13:28:27+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T13:27:28+00:00"
+   "at": "2026-11-04T13:28:27+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T13:27:28+00:00"
+   "at": "2026-11-04T13:28:27+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T13:27:28+00:00"
+   "at": "2026-11-04T13:28:28+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T13:27:28+00:00"
+   "at": "2026-11-04T13:28:28+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T13:27:28+00:00"
+   "at": "2026-11-04T13:28:28+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T13:27:28+00:00"
+   "at": "2026-11-04T13:28:28+00:00"
   }
  },
  "baseline": {
@@ -51,11 +51,13 @@
    "NE": 0.7,
    "NV": 99.9,
    "NM": 99.9,
-   "OH": 99.8,
-   "SC": 1.9
+   "NY": 99.8,
+   "OR": 99.9,
+   "VT": 0.2
   },
   "sen": {
-   "AK": 85.0
+   "ME": 99.9,
+   "NC": 99.8
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -3901,7 +3903,7 @@
     "d": 209882,
     "r": 54484,
     "o": 10826,
-    "pct": 75.0,
+    "pct": 100.0,
     "src": "civicapi",
     "raceId": 87213,
     "called": "D"
@@ -5109,20 +5111,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 116,
+   "fetched": 156,
    "total": null,
-   "updated": "2026-11-04T13:27:25+00:00",
+   "updated": "2026-11-04T13:28:28+00:00",
    "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-04T13:27:03+00:00",
+   "started": "2026-11-04T13:28:13+00:00",
    "types": {
+    "Governor": 60,
     "US Senate": 56,
-    "Governor": 40,
-    "House of Representatives": 20
+    "House of Representatives": 40
    },
    "matched": 506,
    "matched_keys": [
@@ -5210,7 +5212,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T13:27:28+00:00",
+  "updated": "2026-11-04T13:28:28+00:00",
   "races": {
    "RI-SEN": {
     "d": 235276,
@@ -8493,7 +8495,7 @@
     "d": 209882,
     "r": 54484,
     "o": 10826,
-    "pct": 75.0,
+    "pct": 100.0,
     "src": "civicapi",
     "raceId": 87213,
     "called": "D"
