@@ -1,21 +1,21 @@
 {
- "generated": "2026-11-04T02:01:33+00:00",
+ "generated": "2026-11-04T02:02:33+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T02:01:34+00:00"
+   "at": "2026-11-04T02:02:35+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T02:01:34+00:00"
+   "at": "2026-11-04T02:02:35+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T02:01:35+00:00"
+   "at": "2026-11-04T02:02:35+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T02:01:35+00:00"
+   "at": "2026-11-04T02:02:35+00:00"
   },
   "polldesk": {
    "ok": false,
@@ -24,15 +24,15 @@
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T02:01:35+00:00"
+   "at": "2026-11-04T02:02:35+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T02:01:35+00:00"
+   "at": "2026-11-04T02:02:35+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T02:01:35+00:00"
+   "at": "2026-11-04T02:02:35+00:00"
   }
  },
  "baseline": {
@@ -42,22 +42,22 @@
  },
  "kalshi": {
   "gov": {
-   "AZ": 97.0,
+   "AZ": 95.6,
    "FL": 1.1,
-   "GA": 96.1,
-   "IA": 94.5,
+   "GA": 96.7,
+   "IA": 94.1,
    "ME": 98.9,
-   "MI": 98.1,
+   "MI": 98.0,
    "MN": 99.0,
-   "NE": 40.0,
+   "NE": 49.0,
    "NV": 94.9,
-   "OH": 97.0
+   "NY": 99.5,
+   "WI": 92.8
   },
   "sen": {
-   "AK": 90.0,
-   "NH": 99.9
+   "ME": 89.0
   },
-  "senate_d": 98.7,
+  "senate_d": 99.1,
   "house_d": 99.5
  },
  "polymarket": {
@@ -65,7 +65,7 @@
   "house_d": 99.8
  },
  "predictit": {
-  "senate_d": 92.0
+  "senate_d": 91.0
  },
  "onpoint": {
   "states": {
@@ -92,10 +92,10 @@
     "rep": 24.5
    },
    "FL": {
-    "ballots": 5523646,
-    "mail": 2055549,
+    "ballots": 5527605,
+    "mail": 2059508,
     "inperson": 3468097,
-    "pct2022": 70.8,
+    "pct2022": 70.9,
     "dem": 37.8,
     "rep": 40.1
    },
@@ -204,7 +204,7 @@
     "pct2022": 47.2
    }
   },
-  "total": 56882510,
+  "total": 56886574,
   "reg_d": 39.8,
   "reg_r": 32.9,
   "vs_expected": 0.9,
@@ -626,24 +626,24 @@
    "mode": "full",
    "fetched": 20,
    "total": null,
-   "updated": "2026-11-04T02:01:03+00:00",
+   "updated": "2026-11-04T02:02:21+00:00",
    "final": true,
    "filters": {},
-   "started": "2026-11-04T02:00:05+00:00",
+   "started": "2026-11-04T02:01:18+00:00",
    "types": {
     "Referendum": 11,
     "State Senate": 3,
     "State House": 3,
-    "Shadow Representative": 1,
     "Shadow Senator": 1,
-    "Attorney General": 1
+    "Attorney General": 1,
+    "Shadow Representative": 1
    },
    "matched": 0,
    "matched_keys": []
   }
  },
  "results": {
-  "updated": "2026-11-04T02:01:35+00:00",
+  "updated": "2026-11-04T02:02:35+00:00",
   "races": {
    "GU-GOV": {
     "d": 14925,
