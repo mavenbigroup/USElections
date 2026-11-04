@@ -1,38 +1,38 @@
 {
- "generated": "2026-11-04T04:16:09+00:00",
+ "generated": "2026-11-04T04:26:39+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T04:16:14+00:00"
+   "at": "2026-11-04T04:26:44+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T04:16:14+00:00"
+   "at": "2026-11-04T04:26:44+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T04:16:14+00:00"
+   "at": "2026-11-04T04:26:45+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T04:16:14+00:00"
+   "at": "2026-11-04T04:26:45+00:00"
   },
   "polldesk": {
-   "ok": false,
-   "at": "2026-11-04T02:56:08+00:00",
-   "error": "Polling Desk table parsed nothing"
+   "ok": true,
+   "at": "2026-11-04T04:26:45+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T04:16:15+00:00"
+   "at": "2026-11-04T04:26:46+00:00"
   },
   "results_auto": {
-   "ok": true,
-   "at": "2026-11-04T04:16:15+00:00"
+   "ok": false,
+   "at": "2026-11-04T04:16:15+00:00",
+   "error": "no civicAPI results yet (background scraper starting)"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T04:16:15+00:00"
+   "at": "2026-11-04T04:26:46+00:00"
   }
  },
  "baseline": {
@@ -42,27 +42,29 @@
  },
  "kalshi": {
   "gov": {
-   "AZ": 99.7,
+   "AZ": 99.6,
    "FL": 0.2,
    "GA": 99.8,
    "IA": 99.8,
-   "ME": 99.6,
+   "ME": 99.9,
    "MI": 98.0,
-   "MN": 98.2,
-   "NE": 7.9,
-   "NV": 96.3,
+   "MN": 98.5,
+   "NE": 6.9,
+   "NV": 97.3,
    "NM": 99.9,
    "NY": 99.8,
    "OH": 99.8,
-   "OK": 1.6,
-   "OR": 98.5,
-   "TX": 99.9,
-   "WI": 99.8
+   "OK": 0.2,
+   "OR": 99.0,
+   "PA": 99.9,
+   "SC": 1.0,
+   "TX": 99.7,
+   "VT": 0.2,
+   "WI": 98.4
   },
   "sen": {
-   "GA": 99.8,
-   "KS": 99.7,
-   "MN": 98.6,
+   "ME": 94.9,
+   "NC": 99.8,
    "NH": 99.9,
    "SC": 99.8
   },
@@ -234,8 +236,8 @@
     "requested": null
    },
    "FL": {
-    "ballots": 5537916,
-    "mail": 2069819,
+    "ballots": 5538707,
+    "mail": 2070610,
     "inperson": 3468097,
     "requested": 466521
    },
@@ -251,17 +253,17 @@
     "inperson": 2402283,
     "requested": 156771
    },
+   "CO": {
+    "ballots": 2448419,
+    "mail": 2310549,
+    "inperson": 137870,
+    "requested": 4147217
+   },
    "WA": {
     "ballots": 2435883,
     "mail": 2435883,
     "inperson": null,
     "requested": null
-   },
-   "CO": {
-    "ballots": 2351968,
-    "mail": 2232504,
-    "inperson": 119464,
-    "requested": 4069172
    },
    "NY": {
     "ballots": 1965043,
@@ -402,10 +404,10 @@
     "requested": 658748
    },
    "MT": {
-    "ballots": 351533,
-    "mail": 351533,
+    "ballots": 372341,
+    "mail": 372341,
     "inperson": null,
-    "requested": 533647
+    "requested": 534928
    },
    "ID": {
     "ballots": 328019,
@@ -462,8 +464,8 @@
     "requested": 9584
    },
    "ND": {
-    "ballots": 103926,
-    "mail": 53433,
+    "ballots": 103959,
+    "mail": 53466,
     "inperson": 50493,
     "requested": 58122
    },
@@ -498,10 +500,10 @@
     "requested": 69378
    },
    "OK": {
-    "ballots": 44608,
-    "mail": 44608,
+    "ballots": 45799,
+    "mail": 45799,
     "inperson": null,
-    "requested": 65133
+    "requested": 65145
    }
   }
  },
@@ -645,7 +647,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T04:16:15+00:00",
+  "updated": "2026-11-04T04:26:46+00:00",
   "races": {
    "GU-GOV": {
     "d": 14925,
