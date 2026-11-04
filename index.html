@@ -27,6 +27,7 @@
  --dem:#5b93e0; --dem-ink:#9dbff0; --rep:#e2655e; --rep-ink:#f3a39e; --ind:#6c7488; --rest:#263248; --tossup:#b89f3e;
  --accent:#f0b23a; --hover:#2a2614; color-scheme:dark}
 *{box-sizing:border-box}
+#nightBody p{margin:0 0 8px} #nightBody ul{margin:4px 0 8px;padding-left:18px} #nightBody li{margin:2px 0}
 [data-tip]{cursor:pointer}
 .tipbox{font-size:13px;background:var(--hover);border:1px solid var(--line);padding:8px 10px;margin:4px 0 8px;line-height:1.45}
 .ptiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:10px 0 4px}
@@ -133,6 +134,7 @@ button:focus-visible,.st:focus-visible,input:focus-visible{outline:2px solid var
 <div class="asof" id="asof" style="padding:6px 0 0">first polls close 7 pm ET · poll/forecast inputs refresh with the feed · ratings and turnout assumption set 12:35 pm MST</div>
 <header style="display:none"></header>
 
+<div class="kpi" id="night" style="margin-top:16px"><h2>How the night is going</h2><div id="nightBody" class="note" style="margin:0">Waiting for the first results…</div></div>
 <div class="kpis">
  <div class="kpi"><h2>Senate · 51 to control</h2>
   <div class="seats">
@@ -196,7 +198,7 @@ button:focus-visible,.st:focus-visible,input:focus-visible{outline:2px solid var
 <div class="tw"><table id="gov"><thead><tr><th>State</th><th>Matchup</th><th>Held</th><th>Model call</th><th>Model margin</th><th>Reported</th><th>Market D</th><th>Polls / forecast</th></tr></thead><tbody></tbody></table></div>
 
 <div class="foot" id="foot"></div>
-<div class="brand2"><span><b>Maven BI Group</b> · Know | Run | Improve · Phoenix, AZ</span><span>Built by Alan Anolik · v<span id="ver">1103.1728</span> · <a href="#" id="ownerLink" style="color:inherit">owner</a></span></div>
+<div class="brand2"><span><b>Maven BI Group</b> · Know | Run | Improve · Phoenix, AZ</span><span>Built by Alan Anolik · v<span id="ver">1103.1745</span> · <a href="#" id="ownerLink" style="color:inherit">owner</a></span></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
@@ -322,7 +324,41 @@ function recompute(){
   gt.querySelectorAll('tr').forEach(tr=>tr.addEventListener('click',()=>{show(tr.dataset.st); document.getElementById('panel').scrollIntoView({behavior:'smooth',block:'nearest'});}));
   const gc=Object.entries(RES.races||{}).filter(([k2,r])=>k2.endsWith('-GOV')&&r.called);
   document.getElementById('apGovD').textContent=gc.filter(([k2,r])=>r.called==='D').length; document.getElementById('apGovR').textContent=gc.filter(([k2,r])=>r.called==='R').length;
+  buildNight(rows,grows,seats,hd,gD,gR,gen);
   paint(); if(sel) show(sel);
+}
+function buildNight(rows,grows,seats,hd,gD,gR,gen){
+  const el=document.getElementById('nightBody'); if(!el) return;
+  const R=Object.entries(RES.races||{}).filter(([k2,r])=>(r.d||r.r)&&!k2.startsWith('GU'));
+  const called=R.filter(([k2,r])=>r.called);
+  const lab=k2=>{const [st,t]=k2.split('-'); return (NAMES[st]||st)+' '+(t==='SEN'?'Senate':t==='GOV'?'governor':st+'-'+t);};
+  const out=[];
+  // headline
+  const senTxt=seats>=51?`Democrats on track to flip the Senate, ${seats}–${100-seats}`:seats===50?`Senate on a knife's edge at 50–50 (Vance breaks ties for the GOP)`:`Republicans on track to hold the Senate, ${100-seats}–${seats}`;
+  const houTxt=hd>=218?`Democrats take the House (${hd}–${435-hd})`:`Republicans hold the House (${435-hd}–${hd})`;
+  out.push(`<p><b>${senTxt}. ${houTxt}. Governors ${gD}–${gR} D–R.</b> That's the model at current settings; markets have Democrats ${window.MKT_SEN!=null?Math.round(window.MKT_SEN)+'%':'—'} for the Senate${window.MKT_HOU!=null?' and '+Math.round(window.MKT_HOU)+'% for the House':''}.</p>`);
+  // market move
+  if(window.MKT_SEN!=null&&window.MKT_BASE!=null){ const dm=window.MKT_SEN-window.MKT_BASE; if(Math.abs(dm)>=2) out.push(`<p>Prediction markets have moved <b>${dm>0?'toward Democrats':'toward Republicans'}</b> since this afternoon (Senate D ${Math.round(window.MKT_BASE)}% → ${Math.round(window.MKT_SEN)}%). Traders react to network calls and county returns within seconds, so this is usually the fastest read on the night.</p>`); else out.push(`<p>Markets have barely moved since this afternoon (Senate D ${Math.round(window.MKT_SEN)}%), so nothing so far has surprised traders.</p>`); }
+  // results so far
+  if(!R.length){ out.push(`<p>No mainland votes counted yet in the races we track. Until they are, every number here is the pre-election model: early-vote lens blended with polls, adjusted by the sliders.</p>`); }
+  else {
+    out.push(`<p><b>${R.length} race${R.length>1?'s':''} reporting, ${called.length} called.</b>${called.length?' Called: '+called.map(([k2,r])=>lab(k2)+' ('+r.called+')').join(', ')+'.':''}</p>`);
+    const items=[];
+    for(const [k2,r] of R){ const [st,t]=k2.split('-'); const x=rep(k2); let pre=null;
+      if(t==='SEN'){ const row=SEN.find(z=>z[0]===st); if(row) pre=senMarginRaw(st,row[4]); } else if(t==='GOV'){ pre=govMarginRaw(st); } else { const h=(HOUSE[st]||[]).find(z=>z[0]===k2); if(h) pre=distMargin(h[1]); }
+      if(pre==null||x.pct==null) continue; items.push({k2,x,pre,gap:x.m-pre}); }
+    items.sort((a,b)=>Math.abs(b.gap)-Math.abs(a.gap));
+    const notable=items.filter(i=>Math.abs(i.gap)>=3).slice(0,5);
+    if(notable.length){ out.push('<p>Running ahead of or behind the projection:</p><ul>'+notable.map(i=>{ const early=i.x.pct<60; const why=early?(i.gap>0?' Mostly early and mail ballots so far, which lean Democratic; expect it to tighten toward Republicans as Election Day votes are counted.':' Election Day votes may be counting first here; mail ballots could pull it back toward Democrats.'):(i.gap>0?' Most of the vote is in, so this is a real Democratic overperformance.':' Most of the vote is in, so this is a real Republican overperformance.'); return `<li><b>${lab(i.k2)}</b>: ${f(i.x.m)} with ${i.x.pct}% in vs ${f(i.pre)} projected.${why}</li>`; }).join('')+'</ul>'); }
+    else if(items.length) out.push(`<p>Every race reporting so far is landing within 3 points of the projection, so the pre-election read is holding.</p>`);
+    const sig=SIG_LIVE.find(x=>x.l.startsWith('Live results vs model'));
+    if(sig) out.push(`<p>Across races at least half counted, results are running <b>${sig.dem>0?'toward Democrats':'toward Republicans'}</b> relative to the model, so the turnout sliders have shifted ${sig.dem>0?'+'+sig.dem+' toward Democrats':'+'+sig.rep+' toward Republicans'}. That moves every uncalled race and the House estimate with it.</p>`);
+  }
+  // closest still open
+  const open=[...rows.map(r=>({k:r.st+'-SEN',m:r.m,l:(NAMES[r.st]||r.st)+' Senate'})),...grows.map(r=>({k:r.st+'-GOV',m:r.m,l:(NAMES[r.st]||r.st)+' governor'}))].filter(o=>{const x=RES.races&&RES.races[o.k]; return !(x&&x.called);}).sort((a,b)=>Math.abs(a.m)-Math.abs(b.m)).slice(0,5);
+  out.push(`<p><b>Closest races still open:</b> ${open.map(o=>{const x=rep(o.k); return `${o.l} ${f(o.m)}${x&&x.pct!=null?' ('+x.pct+'% in)':''}`;}).join(' · ')}.</p>`);
+  out.push(`<p class="sub" style="margin:0">Why the numbers move: each race blends the pre-election projection with the actual count, and the count's weight grows with the share reported (50% in → about 18% weight, 80% → 57%, 95% → 88%). Early counts are discounted because mail and early ballots usually come in first and lean Democratic. A called race locks to the winner.</p>`);
+  el.innerHTML=out.join('');
 }
 function fillFor(ab){
   const m=model(ab);
@@ -421,7 +457,7 @@ applyDefaults(true); idle();
   btn.addEventListener('click',()=>{ const n=cur()==='dark'?'light':'dark'; root.dataset.theme=n; try{localStorage.setItem('theme',n);}catch(e){} label(); if(typeof paint==='function') paint(); });
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{ if(!root.dataset.theme) label(); });
 })();
-const APP_VERSION='1103.1728';
+const APP_VERSION='1103.1745';
 const LIVE={at:null,src:{}};
 async function checkVersion(){
   try{ const r=await fetch('version.txt?t='+Date.now(),{cache:'no-store'}); if(!r.ok) return; const v=(await r.text()).trim();
@@ -442,6 +478,7 @@ function applyData(d){
     if(m.senate_d!=null){sen.push(+m.senate_d);} if(m.house_d!=null){hou.push(+m.house_d);}
     if(m.senate_d!=null||m.house_d!=null) names.push(k[0].toUpperCase()+k.slice(1)+(m.senate_d!=null?' '+pct(m.senate_d):''));
   }
+  if(sen.length){window.MKT_SEN=sen.reduce((a,b)=>a+b)/sen.length; window.MKT_BASE=(d.baseline&&d.baseline.senate_d)||76;} if(hou.length){window.MKT_HOU=hou.reduce((a,b)=>a+b)/hou.length;}
   if(sen.length){document.getElementById('mktSen').textContent=pct(sen.reduce((a,b)=>a+b)/sen.length)+'%';document.getElementById('mktSenSrc').textContent=names.join(' · ');}
   if(hou.length){document.getElementById('mktHou').textContent=pct(hou.reduce((a,b)=>a+b)/hou.length)+'%';document.getElementById('mktHouSrc').textContent=['kalshi','polymarket','predictit'].filter(k=>d[k]&&d[k].house_d!=null).map(k=>k[0].toUpperCase()+k.slice(1)+' '+pct(d[k].house_d)).join(' · ');}
   if(d.results){ RES=d.results; const races=Object.entries(RES.races||{}); const n=races.filter(([k,r])=>r.d||r.r).length;
