@@ -1,33 +1,38 @@
 {
- "generated": "2026-11-03T23:50:24+00:00",
+ "generated": "2026-11-04T00:00:31+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-03T23:50:28+00:00"
+   "at": "2026-11-04T00:00:35+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-03T23:50:28+00:00"
+   "at": "2026-11-04T00:00:35+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-03T23:50:28+00:00"
+   "at": "2026-11-04T00:00:35+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-03T23:50:29+00:00"
+   "at": "2026-11-04T00:00:35+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-03T23:50:29+00:00"
+   "at": "2026-11-04T00:00:36+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-03T23:50:29+00:00"
+   "at": "2026-11-04T00:00:36+00:00"
+  },
+  "results_auto": {
+   "ok": false,
+   "at": null,
+   "error": "civicAPI unreachable (102 failed)"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-03T23:50:29+00:00"
+   "at": "2026-11-04T00:00:57+00:00"
   }
  },
  "baseline": {
@@ -37,35 +42,33 @@
  },
  "kalshi": {
   "gov": {
-   "AZ": 94.5,
-   "FL": 37.0,
-   "GA": 75.0,
-   "IA": 90.7,
-   "ME": 96.8,
-   "MI": 96.8,
-   "MN": 97.4,
+   "AZ": 93.1,
+   "FL": 38.0,
+   "GA": 76.0,
+   "IA": 90.0,
+   "ME": 96.7,
+   "MI": 96.7,
+   "MN": 97.9,
    "NE": 13.0,
-   "NV": 86.0,
-   "NM": 95.4,
-   "NY": 97.0,
-   "OH": 85.0,
-   "PA": 99.0,
-   "VT": 38.0
+   "NV": 85.0,
+   "NM": 93.9,
+   "NY": 97.4,
+   "OR": 82.0,
+   "TX": 45.0
   },
   "sen": {
-   "IA": 63.0,
-   "MN": 93.7,
-   "NE": 0.6
+   "GA": 98.1,
+   "NC": 98.2
   },
-  "senate_d": 86.0,
-  "house_d": 97.0
+  "senate_d": 88.0,
+  "house_d": 97.1
  },
  "polymarket": {
-  "senate_d": 87.5,
+  "senate_d": 88.5,
   "house_d": 98.2
  },
  "predictit": {
-  "senate_d": 89.0
+  "senate_d": 88.0
  },
  "onpoint": {
   "states": {
@@ -618,9 +621,9 @@
   "generic": 8.1,
   "approval_net": -25.0
  },
+ "results_auto": null,
  "results": {
-  "updated": "2026-11-03T20:20:00Z",
-  "note": "Real vote counts. Key races as STATE-SEN, STATE-GOV, or STATE-NN (House district). Fields: d, r, o (raw votes), pct (percent reporting), called ('D', 'R', or omit). Edit by hand in the GitHub editor as AP/state SOS numbers come in; the next Action run folds it into data.json and the page picks it up within 30 s. Example: \"NC-SEN\": {\"d\": 1543210, \"r\": 1322100, \"o\": 21000, \"pct\": 62, \"called\": \"D\"}",
+  "updated": "2026-11-04T00:00:57+00:00",
   "races": {
    "GU-GOV": {
     "d": 14925,
@@ -638,7 +641,9 @@
     "called": "D",
     "note": "Limtiaco (D) unseats Moylan (R)"
    }
-  }
+  },
+  "auto_count": 0,
+  "manual_count": 2
  },
  "calls": {
   "note": "Hand-edit as AP calls races. The Action folds this into data.json; the page shows it in the AP-called tiles and marks called states on the map.",
