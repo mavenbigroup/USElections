@@ -235,7 +235,7 @@ def forecast():
     return out
 
 
-CIVIC = "https://civicapi.org/api/v1"
+CIVIC = "https://civicapi.org/api/v2"
 RES_SEN = ["AK","AL","AR","CO","DE","FL","GA","IA","ID","IL","KS","KY","LA","MA","ME","MI","MN","MS","MT","NC","NE","NH","NJ","NM","OH","OK","OR","RI","SC","SD","TN","TX","VA","WV","WY"]
 RES_GOV = ["AL","AK","AZ","AR","CA","CO","CT","FL","GA","HI","ID","IL","IA","KS","ME","MD","MA","MI","MN","NE","NV","NH","NM","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","VT","WI","WY"]
 RES_HOUSE = ["AK","AL","AZ","AR","CA","CO","FL","IA","IL","IN","KS","KY","ME","MI","MN","MO","MT","NC","NE","NH","NJ","NM","NV","NY","OH","PA","SC","TX","VA","WA","WI"]
@@ -287,23 +287,28 @@ def civic_tally(race):
 
 def results_auto():
     from concurrent.futures import ThreadPoolExecutor, as_completed
-    jobs = [(st, "senate") for st in RES_SEN] + [(st, "governor") for st in RES_GOV] + [(st, "house") for st in RES_HOUSE]
+    pri_sen = ["NC","OH","ME","AK","IA","KS","TX","MI","GA","NH","MN","SC","NE","FL","MS","LA","KY","MT"]
+    pri_gov = ["AZ","GA","NV","OH","WI","MI","KS","IA","TX","FL","OR","AK","NE","NH","ME","OK","SC","VT"]
+    jobs = [(st, "senate") for st in pri_sen] + [(st, "governor") for st in pri_gov] + [(st, "house") for st in RES_HOUSE] \
+         + [(st, "senate") for st in RES_SEN if st not in pri_sen] + [(st, "governor") for st in RES_GOV if st not in pri_gov]
     races, errors, ok = {}, 0, 0
     def pull(job):
         st, typ = job
-        req = urllib.request.Request(f"{CIVIC}/race/US/{st}/{typ}/2026", headers=UA)
-        with urllib.request.urlopen(req, timeout=6) as r:
+        req = urllib.request.Request(f"{CIVIC}/race/us/{st.lower()}/{typ}/2026", headers=UA)
+        with urllib.request.urlopen(req, timeout=25) as r:
             return job, civic_races(json.loads(r.read().decode("utf-8", "replace")))
     t0 = time.time()
     with ThreadPoolExecutor(max_workers=12) as ex:
         futs = [ex.submit(pull, j) for j in jobs]
         try:
-            for fu in as_completed(futs, timeout=60):
+            for fu in as_completed(futs, timeout=170):
                 try:
                     (st, typ), lst = fu.result()
                     ok += 1
-                except Exception:
+                except Exception as e:
                     errors += 1
+                    if errors <= 3:
+                        print("civicAPI error sample:", str(e)[:160])
                     continue
                 if typ in ("senate", "governor"):
                     for race in lst[:1]:
