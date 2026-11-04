@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-04T20:31:12+00:00",
+ "generated": "2026-11-04T20:32:12+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T20:31:16+00:00"
+   "at": "2026-11-04T20:32:16+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T20:31:16+00:00"
+   "at": "2026-11-04T20:32:16+00:00"
   },
   "predictit": {
    "ok": false,
@@ -16,23 +16,23 @@
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T20:31:17+00:00"
+   "at": "2026-11-04T20:32:17+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T20:31:17+00:00"
+   "at": "2026-11-04T20:32:17+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T20:31:17+00:00"
+   "at": "2026-11-04T20:32:17+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T20:31:17+00:00"
+   "at": "2026-11-04T20:32:17+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T20:31:17+00:00"
+   "at": "2026-11-04T20:32:17+00:00"
   }
  },
  "baseline": {
@@ -56,13 +56,15 @@
    "OH": 99.8,
    "OK": 0.4,
    "OR": 99.9,
-   "TX": 99.7
+   "SC": 1.9,
+   "WI": 98.6
   },
   "sen": {
-   "AK": 91.4,
-   "IA": 99.9,
+   "GA": 99.8,
+   "KS": 99.9,
    "MI": 99.9,
-   "NE": 0.1,
+   "NC": 99.8,
+   "NH": 99.9,
    "SC": 99.8
   },
   "senate_d": 99.9,
@@ -5130,20 +5132,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 156,
+   "fetched": 276,
    "total": null,
-   "updated": "2026-11-04T20:31:16+00:00",
+   "updated": "2026-11-04T20:32:15+00:00",
    "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-04T20:31:11+00:00",
+   "started": "2026-11-04T20:32:02+00:00",
    "types": {
+    "House of Representatives": 160,
     "Governor": 60,
-    "US Senate": 56,
-    "House of Representatives": 40
+    "US Senate": 56
    },
    "matched": 506,
    "matched_keys": [
@@ -5231,7 +5233,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T20:31:17+00:00",
+  "updated": "2026-11-04T20:32:17+00:00",
   "races": {
    "NY-02": {
     "d": 118680,
