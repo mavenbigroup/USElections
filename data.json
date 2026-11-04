@@ -1,37 +1,37 @@
 {
- "generated": "2026-11-04T06:20:37+00:00",
+ "generated": "2026-11-04T06:21:37+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T06:20:41+00:00"
+   "at": "2026-11-04T06:21:42+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T06:20:41+00:00"
+   "at": "2026-11-04T06:21:42+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T06:20:42+00:00"
+   "at": "2026-11-04T06:21:42+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T06:20:42+00:00"
+   "at": "2026-11-04T06:21:42+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T06:20:42+00:00"
+   "at": "2026-11-04T06:21:43+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T06:20:43+00:00"
+   "at": "2026-11-04T06:21:43+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T06:20:43+00:00"
+   "at": "2026-11-04T06:21:43+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T06:20:43+00:00"
+   "at": "2026-11-04T06:21:43+00:00"
   }
  },
  "baseline": {
@@ -56,14 +56,14 @@
    "OK": 0.4,
    "OR": 99.9,
    "PA": 99.9,
-   "SC": 1.9,
-   "WI": 98.6
+   "VT": 0.2
   },
   "sen": {
-   "GA": 99.8,
-   "KS": 99.9,
+   "AK": 97.0,
    "MI": 99.9,
-   "NE": 0.2
+   "NC": 99.8,
+   "NH": 99.9,
+   "SC": 99.8
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -915,38 +915,19 @@
   "matched": 33,
   "debug": {
    "mode": "full",
-   "fetched": 500,
+   "fetched": 20,
    "total": null,
-   "updated": "2026-11-04T06:20:08+00:00",
+   "updated": "2026-11-04T06:21:33+00:00",
    "final": true,
    "filters": {},
-   "started": "2026-11-04T06:17:38+00:00",
+   "started": "2026-11-04T06:20:23+00:00",
    "types": {
-    "Referendum": 129,
-    "Judicial": 57,
-    "State House": 47,
-    "State Senate": 43,
-    "Governor": 36,
-    "Attorney General": 29,
-    "Secretary of State": 23,
-    "State Treasurer": 16,
-    "Lieutenant Governor": 11,
-    "State Auditor": 10,
-    "Proposition": 9,
-    "Supreme Court": 7,
-    "Statewide": 6,
-    "Superintendent of Public Instruction": 4,
-    "Comptroller": 4,
-    "Insurance Commissioner": 4,
-    "State Supreme Court": 4,
-    "Judiciary": 4,
-    "Treasurer": 4,
-    "Public Service Commissioner": 3,
-    "Agriculture Commissioner": 3,
-    "University Board": 3,
-    "Trustee": 3,
-    "Court of Criminal Appeals": 3,
-    "Ballot Measure": 3
+    "Referendum": 11,
+    "State Senate": 3,
+    "State House": 3,
+    "Shadow Representative": 1,
+    "Shadow Senator": 1,
+    "Attorney General": 1
    },
    "matched": 33,
    "matched_keys": [
@@ -987,7 +968,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T06:20:43+00:00",
+  "updated": "2026-11-04T06:21:43+00:00",
   "races": {
    "FL-GOV": {
     "d": 4023425,
