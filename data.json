@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-04T22:03:45+00:00",
+ "generated": "2026-11-04T22:04:45+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T22:03:48+00:00"
+   "at": "2026-11-04T22:04:48+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T22:03:48+00:00"
+   "at": "2026-11-04T22:04:49+00:00"
   },
   "predictit": {
    "ok": false,
@@ -16,23 +16,23 @@
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T22:03:49+00:00"
+   "at": "2026-11-04T22:04:49+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T22:03:49+00:00"
+   "at": "2026-11-04T22:04:50+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T22:03:49+00:00"
+   "at": "2026-11-04T22:04:50+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T22:03:49+00:00"
+   "at": "2026-11-04T22:04:50+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T22:03:49+00:00"
+   "at": "2026-11-04T22:04:50+00:00"
   }
  },
  "baseline": {
@@ -53,11 +53,14 @@
    "NV": 99.9,
    "NM": 99.9,
    "NY": 99.8,
+   "OH": 99.8,
    "PA": 99.9,
-   "WI": 98.6
+   "VT": 0.2
   },
   "sen": {
-   "TX": 99.7
+   "GA": 99.8,
+   "KS": 99.9,
+   "MN": 99.9
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -5124,20 +5127,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 156,
+   "fetched": 136,
    "total": null,
-   "updated": "2026-11-04T22:03:48+00:00",
+   "updated": "2026-11-04T22:04:50+00:00",
    "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-04T22:03:39+00:00",
+   "started": "2026-11-04T22:04:44+00:00",
    "types": {
     "Governor": 60,
     "US Senate": 56,
-    "House of Representatives": 40
+    "House of Representatives": 20
    },
    "matched": 506,
    "matched_keys": [
@@ -5225,7 +5228,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T22:03:49+00:00",
+  "updated": "2026-11-04T22:04:50+00:00",
   "races": {
    "RI-GOV": {
     "d": 202877,
