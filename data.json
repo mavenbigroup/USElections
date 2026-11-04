@@ -1,37 +1,37 @@
 {
- "generated": "2026-11-04T14:38:33+00:00",
+ "generated": "2026-11-04T14:39:33+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T14:38:38+00:00"
+   "at": "2026-11-04T14:39:38+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T14:38:38+00:00"
+   "at": "2026-11-04T14:39:38+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T14:38:38+00:00"
+   "at": "2026-11-04T14:39:38+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T14:38:38+00:00"
+   "at": "2026-11-04T14:39:38+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T14:38:38+00:00"
+   "at": "2026-11-04T14:39:38+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T14:38:39+00:00"
+   "at": "2026-11-04T14:39:38+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T14:38:39+00:00"
+   "at": "2026-11-04T14:39:38+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T14:38:39+00:00"
+   "at": "2026-11-04T14:39:38+00:00"
   }
  },
  "baseline": {
@@ -54,14 +54,14 @@
    "NY": 99.8,
    "OH": 99.8,
    "OK": 0.4,
-   "PA": 99.9,
-   "TX": 99.7
+   "SC": 1.9,
+   "VT": 0.2
   },
   "sen": {
    "AK": 88.0,
    "IA": 99.9,
    "ME": 99.9,
-   "NC": 99.8,
+   "MN": 99.9,
    "NH": 99.9,
    "SC": 99.8
   },
@@ -5117,18 +5117,18 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 276,
+   "fetched": 572,
    "total": null,
-   "updated": "2026-11-04T14:38:38+00:00",
-   "final": false,
+   "updated": "2026-11-04T14:39:37+00:00",
+   "final": true,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-04T14:38:16+00:00",
+   "started": "2026-11-04T14:39:05+00:00",
    "types": {
-    "House of Representatives": 160,
+    "House of Representatives": 456,
     "Governor": 60,
     "US Senate": 56
    },
@@ -5218,7 +5218,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T14:38:39+00:00",
+  "updated": "2026-11-04T14:39:38+00:00",
   "races": {
    "RI-GOV": {
     "d": 202877,
