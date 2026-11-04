@@ -1,21 +1,21 @@
 {
- "generated": "2026-11-04T01:58:34+00:00",
+ "generated": "2026-11-04T01:59:33+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T01:58:36+00:00"
+   "at": "2026-11-04T01:59:35+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T01:58:36+00:00"
+   "at": "2026-11-04T01:59:35+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T01:58:36+00:00"
+   "at": "2026-11-04T01:59:35+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T01:58:36+00:00"
+   "at": "2026-11-04T01:59:36+00:00"
   },
   "polldesk": {
    "ok": false,
@@ -24,16 +24,15 @@
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T01:58:37+00:00"
+   "at": "2026-11-04T01:59:36+00:00"
   },
   "results_auto": {
-   "ok": false,
-   "at": "2026-11-04T01:48:09+00:00",
-   "error": "no civicAPI results yet (background scraper starting)"
+   "ok": true,
+   "at": "2026-11-04T01:59:36+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T01:58:37+00:00"
+   "at": "2026-11-04T01:59:36+00:00"
   }
  },
  "baseline": {
@@ -44,27 +43,28 @@
  "kalshi": {
   "gov": {
    "AZ": 96.1,
-   "FL": 1.1,
-   "GA": 97.5,
-   "IA": 95.1,
-   "ME": 98.3,
+   "FL": 0.7,
+   "GA": 96.9,
+   "IA": 95.7,
+   "ME": 98.9,
    "MI": 98.1,
    "MN": 98.5,
-   "NE": 35.0,
+   "NE": 36.0,
    "NV": 94.5,
-   "NM": 97.0,
-   "VT": 4.9
+   "NY": 98.9,
+   "WI": 94.0
   },
   "sen": {
-   "KS": 93.6,
-   "SC": 97.0
+   "KS": 93.5,
+   "NC": 99.8,
+   "SC": 97.1
   },
   "senate_d": 98.5,
   "house_d": 99.6
  },
  "polymarket": {
   "senate_d": 98.7,
-  "house_d": 99.6
+  "house_d": 99.8
  },
  "predictit": {
   "senate_d": 98.0
@@ -621,529 +621,25 @@
   "approval_net": -25.0
  },
  "results_auto": {
-  "races": {
-   "FL-08": {
-    "d": 145120,
-    "r": 166402,
-    "o": 0,
-    "pct": 96.0,
-    "src": "civicapi",
-    "raceId": 87047
-   },
-   "FL-04": {
-    "d": 143848,
-    "r": 150660,
-    "o": 4986,
-    "pct": 94.0,
-    "src": "civicapi",
-    "raceId": 87043
-   },
-   "FL-10": {
-    "d": 0,
-    "r": 0,
-    "o": 0,
-    "pct": 0.0,
-    "src": "civicapi",
-    "raceId": 87049,
-    "called": "D"
-   },
-   "FL-06": {
-    "d": 126010,
-    "r": 180643,
-    "o": 3576,
-    "pct": 92.0,
-    "src": "civicapi",
-    "raceId": 87045,
-    "called": "R"
-   },
-   "NJ-08": {
-    "d": 36725,
-    "r": 0,
-    "o": 4610,
-    "pct": 15.0,
-    "src": "civicapi",
-    "raceId": 87297
-   },
-   "NJ-10": {
-    "d": 44843,
-    "r": 6777,
-    "o": 22,
-    "pct": 20.0,
-    "src": "civicapi",
-    "raceId": 87299
-   },
-   "FL-01": {
-    "d": 97663,
-    "r": 168546,
-    "o": 4869,
-    "pct": 78.0,
-    "src": "civicapi",
-    "raceId": 87040
-   },
-   "NJ-12": {
-    "d": 50915,
-    "r": 16250,
-    "o": 1056,
-    "pct": 24.0,
-    "src": "civicapi",
-    "raceId": 87301
-   },
-   "FL-03": {
-    "d": 115156,
-    "r": 143443,
-    "o": 4790,
-    "pct": 80.0,
-    "src": "civicapi",
-    "raceId": 87042
-   },
-   "FL-09": {
-    "d": 142039,
-    "r": 141168,
-    "o": 0,
-    "pct": 87.0,
-    "src": "civicapi",
-    "raceId": 87048
-   },
-   "FL-05": {
-    "d": 143195,
-    "r": 184916,
-    "o": 491,
-    "pct": 99.0,
-    "src": "civicapi",
-    "raceId": 87044,
-    "called": "R"
-   },
-   "NJ-07": {
-    "d": 62398,
-    "r": 32706,
-    "o": 1137,
-    "pct": 32.0,
-    "src": "civicapi",
-    "raceId": 87296
-   },
-   "FL-11": {
-    "d": 166782,
-    "r": 192777,
-    "o": 3927,
-    "pct": 99.0,
-    "src": "civicapi",
-    "raceId": 87050
-   },
-   "FL-07": {
-    "d": 156541,
-    "r": 158505,
-    "o": 3391,
-    "pct": 99.0,
-    "src": "civicapi",
-    "raceId": 87046
-   },
-   "NJ-09": {
-    "d": 34473,
-    "r": 11888,
-    "o": 647,
-    "pct": 15.0,
-    "src": "civicapi",
-    "raceId": 87298
-   },
-   "NJ-11": {
-    "d": 54801,
-    "r": 24392,
-    "o": 625,
-    "pct": 27.0,
-    "src": "civicapi",
-    "raceId": 87300
-   },
-   "FL-02": {
-    "d": 143824,
-    "r": 156185,
-    "o": 0,
-    "pct": 92.0,
-    "src": "civicapi",
-    "raceId": 87041
-   },
-   "SC-SEN": {
-    "d": 563856,
-    "r": 495306,
-    "o": 18593,
-    "pct": 53.0,
-    "src": "civicapi",
-    "raceId": 87409
-   },
-   "NC-SEN": {
-    "d": 1677702,
-    "r": 939803,
-    "o": 47003,
-    "pct": 60.0,
-    "src": "civicapi",
-    "raceId": 87346
-   },
-   "KY-SEN": {
-    "d": 407651,
-    "r": 494943,
-    "o": 19198,
-    "pct": 56.0,
-    "src": "civicapi",
-    "raceId": 87174
-   },
-   "RI-SEN": {
-    "d": 125305,
-    "r": 60700,
-    "o": 8479,
-    "pct": 46.0,
-    "src": "civicapi",
-    "raceId": 87396,
-    "called": "D"
-   },
-   "NJ-SEN": {
-    "d": 317547,
-    "r": 94296,
-    "o": 11035,
-    "pct": 12.0,
-    "src": "civicapi",
-    "raceId": 87302,
-    "called": "D"
-   },
-   "KS-SEN": {
-    "d": 141665,
-    "r": 83658,
-    "o": 4738,
-    "pct": 20.0,
-    "src": "civicapi",
-    "raceId": 87162
-   },
-   "TX-SEN": {
-    "d": 1796831,
-    "r": 1224543,
-    "o": 47051,
-    "pct": 31.0,
-    "src": "civicapi",
-    "raceId": 87438
-   },
-   "FL-SEN": {
-    "d": 3868591,
-    "r": 4093085,
-    "o": 91565,
-    "pct": 90.0,
-    "src": "civicapi",
-    "raceId": 87068
-   },
-   "AR-SEN": {
-    "d": 418,
-    "r": 1076,
-    "o": 35,
-    "pct": 0.0,
-    "src": "civicapi",
-    "raceId": 86949
-   },
-   "AL-SEN": {
-    "d": 5138,
-    "r": 6057,
-    "o": 0,
-    "pct": 1.0,
-    "src": "civicapi",
-    "raceId": 86907
-   },
-   "GA-SEN": {
-    "d": 1657684,
-    "r": 1001750,
-    "o": 0,
-    "pct": 57.0,
-    "src": "civicapi",
-    "raceId": 87087,
-    "called": "D"
-   }
-  },
-  "count": 28,
-  "matched": 40,
+  "races": {},
+  "count": 0,
+  "matched": 0,
   "debug": {
-   "mode": null,
-   "fetched": 20,
+   "mode": "full",
+   "fetched": 0,
    "total": null,
-   "updated": "2026-11-04T01:48:06+00:00",
-   "final": false,
-   "filters": null,
-   "started": "2026-11-04T01:47:45+00:00",
-   "types": {
-    "US Senate": 20
-   },
-   "matched": 40,
-   "matched_keys": [
-    "AK-SEN",
-    "AL-SEN",
-    "AR-SEN",
-    "FL-01",
-    "FL-02",
-    "FL-03",
-    "FL-04",
-    "FL-05",
-    "FL-06",
-    "FL-07",
-    "FL-08",
-    "FL-09",
-    "FL-10",
-    "FL-11",
-    "FL-SEN",
-    "GA-SEN",
-    "IA-SEN",
-    "ID-SEN",
-    "IL-SEN",
-    "KS-SEN",
-    "KY-SEN",
-    "LA-SEN",
-    "ME-SEN",
-    "MS-SEN",
-    "NC-SEN",
-    "NJ-07",
-    "NJ-08",
-    "NJ-09",
-    "NJ-10",
-    "NJ-11",
-    "NJ-12",
-    "NJ-SEN",
-    "NY-01",
-    "NY-02",
-    "NY-03",
-    "OR-SEN",
-    "RI-SEN",
-    "SC-SEN",
-    "SD-SEN",
-    "TX-SEN"
-   ]
+   "updated": "2026-11-04T01:59:35+00:00",
+   "final": true,
+   "filters": {},
+   "started": "2026-11-04T01:59:35+00:00",
+   "types": {},
+   "matched": 0,
+   "matched_keys": []
   }
  },
  "results": {
-  "updated": "2026-11-04T01:58:37+00:00",
+  "updated": "2026-11-04T01:59:36+00:00",
   "races": {
-   "FL-08": {
-    "d": 145120,
-    "r": 166402,
-    "o": 0,
-    "pct": 96.0,
-    "src": "civicapi",
-    "raceId": 87047
-   },
-   "FL-04": {
-    "d": 143848,
-    "r": 150660,
-    "o": 4986,
-    "pct": 94.0,
-    "src": "civicapi",
-    "raceId": 87043
-   },
-   "FL-10": {
-    "d": 0,
-    "r": 0,
-    "o": 0,
-    "pct": 0.0,
-    "src": "civicapi",
-    "raceId": 87049,
-    "called": "D"
-   },
-   "FL-06": {
-    "d": 126010,
-    "r": 180643,
-    "o": 3576,
-    "pct": 92.0,
-    "src": "civicapi",
-    "raceId": 87045,
-    "called": "R"
-   },
-   "NJ-08": {
-    "d": 36725,
-    "r": 0,
-    "o": 4610,
-    "pct": 15.0,
-    "src": "civicapi",
-    "raceId": 87297
-   },
-   "NJ-10": {
-    "d": 44843,
-    "r": 6777,
-    "o": 22,
-    "pct": 20.0,
-    "src": "civicapi",
-    "raceId": 87299
-   },
-   "FL-01": {
-    "d": 97663,
-    "r": 168546,
-    "o": 4869,
-    "pct": 78.0,
-    "src": "civicapi",
-    "raceId": 87040
-   },
-   "NJ-12": {
-    "d": 50915,
-    "r": 16250,
-    "o": 1056,
-    "pct": 24.0,
-    "src": "civicapi",
-    "raceId": 87301
-   },
-   "FL-03": {
-    "d": 115156,
-    "r": 143443,
-    "o": 4790,
-    "pct": 80.0,
-    "src": "civicapi",
-    "raceId": 87042
-   },
-   "FL-09": {
-    "d": 142039,
-    "r": 141168,
-    "o": 0,
-    "pct": 87.0,
-    "src": "civicapi",
-    "raceId": 87048
-   },
-   "FL-05": {
-    "d": 143195,
-    "r": 184916,
-    "o": 491,
-    "pct": 99.0,
-    "src": "civicapi",
-    "raceId": 87044,
-    "called": "R"
-   },
-   "NJ-07": {
-    "d": 62398,
-    "r": 32706,
-    "o": 1137,
-    "pct": 32.0,
-    "src": "civicapi",
-    "raceId": 87296
-   },
-   "FL-11": {
-    "d": 166782,
-    "r": 192777,
-    "o": 3927,
-    "pct": 99.0,
-    "src": "civicapi",
-    "raceId": 87050
-   },
-   "FL-07": {
-    "d": 156541,
-    "r": 158505,
-    "o": 3391,
-    "pct": 99.0,
-    "src": "civicapi",
-    "raceId": 87046
-   },
-   "NJ-09": {
-    "d": 34473,
-    "r": 11888,
-    "o": 647,
-    "pct": 15.0,
-    "src": "civicapi",
-    "raceId": 87298
-   },
-   "NJ-11": {
-    "d": 54801,
-    "r": 24392,
-    "o": 625,
-    "pct": 27.0,
-    "src": "civicapi",
-    "raceId": 87300
-   },
-   "FL-02": {
-    "d": 143824,
-    "r": 156185,
-    "o": 0,
-    "pct": 92.0,
-    "src": "civicapi",
-    "raceId": 87041
-   },
-   "SC-SEN": {
-    "d": 563856,
-    "r": 495306,
-    "o": 18593,
-    "pct": 53.0,
-    "src": "civicapi",
-    "raceId": 87409
-   },
-   "NC-SEN": {
-    "d": 1677702,
-    "r": 939803,
-    "o": 47003,
-    "pct": 60.0,
-    "src": "civicapi",
-    "raceId": 87346
-   },
-   "KY-SEN": {
-    "d": 407651,
-    "r": 494943,
-    "o": 19198,
-    "pct": 56.0,
-    "src": "civicapi",
-    "raceId": 87174
-   },
-   "RI-SEN": {
-    "d": 125305,
-    "r": 60700,
-    "o": 8479,
-    "pct": 46.0,
-    "src": "civicapi",
-    "raceId": 87396,
-    "called": "D"
-   },
-   "NJ-SEN": {
-    "d": 317547,
-    "r": 94296,
-    "o": 11035,
-    "pct": 12.0,
-    "src": "civicapi",
-    "raceId": 87302,
-    "called": "D"
-   },
-   "KS-SEN": {
-    "d": 141665,
-    "r": 83658,
-    "o": 4738,
-    "pct": 20.0,
-    "src": "civicapi",
-    "raceId": 87162
-   },
-   "TX-SEN": {
-    "d": 1796831,
-    "r": 1224543,
-    "o": 47051,
-    "pct": 31.0,
-    "src": "civicapi",
-    "raceId": 87438
-   },
-   "FL-SEN": {
-    "d": 3868591,
-    "r": 4093085,
-    "o": 91565,
-    "pct": 90.0,
-    "src": "civicapi",
-    "raceId": 87068
-   },
-   "AR-SEN": {
-    "d": 418,
-    "r": 1076,
-    "o": 35,
-    "pct": 0.0,
-    "src": "civicapi",
-    "raceId": 86949
-   },
-   "AL-SEN": {
-    "d": 5138,
-    "r": 6057,
-    "o": 0,
-    "pct": 1.0,
-    "src": "civicapi",
-    "raceId": 86907
-   },
-   "GA-SEN": {
-    "d": 1657684,
-    "r": 1001750,
-    "o": 0,
-    "pct": 57.0,
-    "src": "civicapi",
-    "raceId": 87087,
-    "called": "D"
-   },
    "GU-GOV": {
     "d": 14925,
     "r": 15945,
@@ -1161,7 +657,7 @@
     "note": "Limtiaco (D) unseats Moylan (R)"
    }
   },
-  "auto_count": 28,
+  "auto_count": 0,
   "manual_count": 2
  },
  "calls": {
