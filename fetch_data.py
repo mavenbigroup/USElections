@@ -331,66 +331,73 @@ def classify(race):
     return None
 
 
+def classify2(race):
+    typ = str(race.get("type") or "").lower()
+    ab = str(race.get("province") or "").upper()
+    if ab not in STATES.values():
+        return classify(race)
+    if any(x in typ for x in ("shadow", "state senate", "state house", "lieutenant", "referendum", "proposition", "question", "judicial", "mayor", "assembly", "delegate")):
+        return None
+    if "senate" in typ:
+        return ab, "SEN", None
+    if "governor" in typ:
+        return ab, "GOV", None
+    if "representative" in typ or "house" in typ or "congress" in typ:
+        dist = race.get("district")
+        m = re.search(r"(\d{1,2})", str(dist or ""))
+        if m:
+            return ab, "HOUSE", f"{ab}-{int(m.group(1)):02d}"
+        return ab, "HOUSE", f"{ab}-AL"
+    return classify(race)
+
+
 def results_auto():
-    from concurrent.futures import ThreadPoolExecutor, as_completed
+    from concurrent.futures import ThreadPoolExecutor
     t0 = time.time()
-    raw = None
-    for q in ("/race/search?startDate=2026-11-03&endDate=2026-11-03", "/race/search?startDate=2026-11-03&endDate=2026-11-04&country=US", "/race/search?startDate=2026-11-03"):
-        try:
-            req = urllib.request.Request(CIVIC + q, headers=UA)
-            with urllib.request.urlopen(req, timeout=40) as r:
-                raw = json.loads(r.read().decode("utf-8", "replace"))
-            break
-        except Exception as e:
-            print("civicAPI search failed", q, str(e)[:120])
-    if raw is None:
-        raise RuntimeError("civicAPI race/search unreachable")
-    lst = raw if isinstance(raw, list) else next((v for v in raw.values() if isinstance(v, list)), []) if isinstance(raw, dict) else []
-    debug = {"top_keys": list(raw.keys())[:20] if isinstance(raw, dict) else "list", "count": len(lst), "sample": [json.dumps(x)[:700] for x in lst[:3]]}
-    wanted = {}
-    for race in lst:
+    base = CIVIC + "/race/search?startDate=2026-11-03&endDate=2026-11-03"
+    def page(off, lim):
+        req = urllib.request.Request(f"{base}&limit={lim}&offset={off}", headers=UA)
+        with urllib.request.urlopen(req, timeout=40) as r:
+            return json.loads(r.read().decode("utf-8", "replace"))
+    first = page(0, 200)
+    total = int(first.get("count") or 0)
+    lim = int(first.get("limit") or 20) or 20
+    allr = list(first.get("races") or [])
+    offs = list(range(len(allr), min(total, 4000), lim))
+    errors = 0
+    with ThreadPoolExecutor(max_workers=10) as ex:
+        for res in ex.map(lambda o: (lambda: page(o, lim))(), offs, timeout=150) if False else []:
+            pass
+        futs = [ex.submit(page, o, lim) for o in offs]
+        for fu in futs:
+            try:
+                allr.extend(fu.result(timeout=150).get("races") or [])
+            except Exception as e:
+                errors += 1
+                if errors <= 2: print("civicAPI page error", str(e)[:120])
+    types = {}
+    races = {}
+    for race in allr:
         if not isinstance(race, dict):
             continue
-        c = classify(race)
+        tkey = str(race.get("type"))
+        types[tkey] = types.get(tkey, 0) + 1
+        c = classify2(race)
         if not c:
             continue
         ab, kind, dist = c
         key = dist if kind == "HOUSE" else f"{ab}-{kind}"
-        rid = race.get("raceId") or race.get("race_id") or race.get("id")
-        wanted[key] = (rid, race)
-    races, ok, errors = {}, 0, 0
-    def detail(item):
-        key, (rid, race) = item
-        if race.get("candidates") and any((c.get("votes") or 0) for c in race["candidates"]):
-            return key, race
-        if rid is None:
-            return key, race
-        req = urllib.request.Request(f"{CIVIC}/race/{rid}", headers=UA)
-        with urllib.request.urlopen(req, timeout=25) as r:
-            d = json.loads(r.read().decode("utf-8", "replace"))
-        d = d.get("data", d) if isinstance(d, dict) else d
-        return key, d
-    with ThreadPoolExecutor(max_workers=12) as ex:
-        futs = [ex.submit(detail, it) for it in wanted.items()]
-        try:
-            for fu in as_completed(futs, timeout=150):
-                try:
-                    key, race = fu.result(); ok += 1
-                except Exception as e:
-                    errors += 1
-                    if errors <= 2: print("civicAPI race error", str(e)[:150])
-                    continue
-                tl = civic_tally(race)
-                tl["raceId"] = race.get("raceId") or race.get("race_id") or race.get("id")
-                if tl["d"] or tl["r"] or tl.get("called"):
-                    races[key] = tl
-        except Exception:
-            pass
-    if lst and not debug["sample"]:
-        pass
-    debug["matched"] = len(wanted); debug["matched_keys"] = sorted(wanted)[:60]
-    print(f"civicAPI: search {len(lst)} races, matched {len(wanted)}, details ok {ok} / err {errors}, {len(races)} with votes, {time.time()-t0:.1f}s")
-    return {"races": races, "count": len(races), "ok": ok, "errors": errors, "debug": debug}
+        tl = civic_tally(race)
+        tl["raceId"] = race.get("id")
+        prev = races.get(key)
+        if prev is None or (tl["d"] + tl["r"]) >= (prev["d"] + prev["r"]):
+            races[key] = tl
+    with_votes = {k: v for k, v in races.items() if v["d"] or v["r"] or v.get("called")}
+    debug = {"total": total, "fetched": len(allr), "page_limit": lim, "page_errors": errors, "types": dict(sorted(types.items(), key=lambda x: -x[1])[:25]), "matched": len(races), "matched_keys": sorted(races)[:80]}
+    print(f"civicAPI: {len(allr)}/{total} races fetched, {len(races)} matched, {len(with_votes)} with votes, {errors} page errors, {time.time()-t0:.1f}s")
+    if not allr:
+        raise RuntimeError("civicAPI search returned nothing")
+    return {"races": with_votes, "count": len(with_votes), "matched": len(races), "debug": debug}
 
 
 def uf_total():
