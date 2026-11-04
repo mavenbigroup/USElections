@@ -25,6 +25,7 @@ jobs:
         run: |
           git config user.name "board-bot"
           git config user.email "board-bot@users.noreply.github.com"
+          ( while true; do timeout 200 python fetch_results.py || true; sleep 15; done ) &
           start=$(date +%s)
           while [ $(( $(date +%s) - start )) -lt 540 ]; do
             t0=$(date +%s)

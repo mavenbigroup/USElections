@@ -352,52 +352,16 @@ def classify2(race):
 
 
 def results_auto():
-    from concurrent.futures import ThreadPoolExecutor
-    t0 = time.time()
-    base = CIVIC + "/race/search?startDate=2026-11-03&endDate=2026-11-03"
-    def page(off, lim):
-        req = urllib.request.Request(f"{base}&limit={lim}&offset={off}", headers=UA)
-        with urllib.request.urlopen(req, timeout=40) as r:
-            return json.loads(r.read().decode("utf-8", "replace"))
-    first = page(0, 200)
-    total = int(first.get("count") or 0)
-    lim = int(first.get("limit") or 20) or 20
-    allr = list(first.get("races") or [])
-    offs = list(range(len(allr), min(total, 4000), lim))
-    errors = 0
-    with ThreadPoolExecutor(max_workers=10) as ex:
-        for res in ex.map(lambda o: (lambda: page(o, lim))(), offs, timeout=150) if False else []:
-            pass
-        futs = [ex.submit(page, o, lim) for o in offs]
-        for fu in futs:
-            try:
-                allr.extend(fu.result(timeout=150).get("races") or [])
-            except Exception as e:
-                errors += 1
-                if errors <= 2: print("civicAPI page error", str(e)[:120])
-    types = {}
-    races = {}
-    for race in allr:
-        if not isinstance(race, dict):
-            continue
-        tkey = str(race.get("type"))
-        types[tkey] = types.get(tkey, 0) + 1
-        c = classify2(race)
-        if not c:
-            continue
-        ab, kind, dist = c
-        key = dist if kind == "HOUSE" else f"{ab}-{kind}"
-        tl = civic_tally(race)
-        tl["raceId"] = race.get("id")
-        prev = races.get(key)
-        if prev is None or (tl["d"] + tl["r"]) >= (prev["d"] + prev["r"]):
-            races[key] = tl
-    with_votes = {k: v for k, v in races.items() if v["d"] or v["r"] or v.get("called")}
-    debug = {"total": total, "fetched": len(allr), "page_limit": lim, "page_errors": errors, "types": dict(sorted(types.items(), key=lambda x: -x[1])[:25]), "matched": len(races), "matched_keys": sorted(races)[:80]}
-    print(f"civicAPI: {len(allr)}/{total} races fetched, {len(races)} matched, {len(with_votes)} with votes, {errors} page errors, {time.time()-t0:.1f}s")
-    if not allr:
-        raise RuntimeError("civicAPI search returned nothing")
-    return {"races": with_votes, "count": len(with_votes), "matched": len(races), "debug": debug}
+    """Read the background scraper's latest output (results_auto.json)."""
+    p = ROOT / "results_auto.json"
+    if not p.exists():
+        raise RuntimeError("no civicAPI results yet (background scraper starting)")
+    st = json.loads(p.read_text())
+    races = {k: v for k, v in (st.get("races") or {}).items() if v.get("d") or v.get("r") or v.get("called")}
+    debug = {k: st.get(k) for k in ("mode", "fetched", "total", "updated", "final")}
+    debug["types"] = dict(sorted((st.get("types") or {}).items(), key=lambda x: -x[1])[:25])
+    debug["matched"] = len(st.get("races") or {}); debug["matched_keys"] = sorted(st.get("races") or {})[:80]
+    return {"races": races, "count": len(races), "matched": debug["matched"], "debug": debug}
 
 
 def uf_total():
