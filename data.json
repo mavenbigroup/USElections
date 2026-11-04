@@ -1,37 +1,37 @@
 {
- "generated": "2026-11-04T05:29:07+00:00",
+ "generated": "2026-11-04T05:30:07+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T05:29:10+00:00"
+   "at": "2026-11-04T05:30:10+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T05:29:10+00:00"
+   "at": "2026-11-04T05:30:10+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T05:29:10+00:00"
+   "at": "2026-11-04T05:30:10+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T05:29:10+00:00"
+   "at": "2026-11-04T05:30:10+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T05:29:10+00:00"
+   "at": "2026-11-04T05:30:10+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T05:29:11+00:00"
+   "at": "2026-11-04T05:30:10+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T05:29:11+00:00"
+   "at": "2026-11-04T05:30:10+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T05:29:11+00:00"
+   "at": "2026-11-04T05:30:10+00:00"
   }
  },
  "baseline": {
@@ -46,16 +46,17 @@
    "GA": 99.8,
    "IA": 99.8,
    "ME": 99.7,
-   "MI": 99.4,
+   "MI": 99.6,
    "MN": 99.5,
-   "NE": 1.2,
-   "NV": 97.6,
+   "NE": 0.8,
+   "NV": 97.4,
+   "NM": 99.9,
    "NY": 99.8,
-   "TX": 99.7
+   "OK": 0.4,
+   "VT": 0.2
   },
   "sen": {
-   "ME": 99.9,
-   "NC": 99.8
+   "ME": 99.9
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -790,14 +791,21 @@
   "count": 19,
   "matched": 19,
   "debug": {
-   "mode": null,
-   "fetched": 0,
+   "mode": "full",
+   "fetched": 20,
    "total": null,
-   "updated": "2026-11-04T05:29:02+00:00",
-   "final": false,
-   "filters": null,
+   "updated": "2026-11-04T05:29:48+00:00",
+   "final": true,
+   "filters": {},
    "started": "2026-11-04T05:28:44+00:00",
-   "types": {},
+   "types": {
+    "Referendum": 11,
+    "State Senate": 3,
+    "State House": 3,
+    "Shadow Representative": 1,
+    "Shadow Senator": 1,
+    "Attorney General": 1
+   },
    "matched": 19,
    "matched_keys": [
     "AL-GOV",
@@ -823,7 +831,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T05:29:11+00:00",
+  "updated": "2026-11-04T05:30:10+00:00",
   "races": {
    "HI-GOV": {
     "d": 0,
