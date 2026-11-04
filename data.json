@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-04T20:12:42+00:00",
+ "generated": "2026-11-04T20:13:42+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T20:12:44+00:00"
+   "at": "2026-11-04T20:13:44+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T20:12:44+00:00"
+   "at": "2026-11-04T20:13:45+00:00"
   },
   "predictit": {
    "ok": false,
@@ -16,23 +16,23 @@
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T20:12:45+00:00"
+   "at": "2026-11-04T20:13:45+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T20:12:45+00:00"
+   "at": "2026-11-04T20:13:45+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T20:12:45+00:00"
+   "at": "2026-11-04T20:13:45+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T20:12:45+00:00"
+   "at": "2026-11-04T20:13:45+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T20:12:45+00:00"
+   "at": "2026-11-04T20:13:45+00:00"
   }
  },
  "baseline": {
@@ -54,12 +54,12 @@
    "NM": 99.9,
    "NY": 99.8,
    "OH": 99.8,
-   "SC": 1.9
+   "TX": 99.7
   },
   "sen": {
    "GA": 99.8,
    "ME": 99.9,
-   "NH": 99.9
+   "NC": 99.8
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -5125,20 +5125,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 572,
+   "fetched": 80,
    "total": null,
-   "updated": "2026-11-04T20:12:36+00:00",
-   "final": true,
+   "updated": "2026-11-04T20:13:44+00:00",
+   "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-04T20:12:27+00:00",
+   "started": "2026-11-04T20:13:42+00:00",
    "types": {
-    "House of Representatives": 456,
-    "Governor": 60,
-    "US Senate": 56
+    "US Senate": 40,
+    "Governor": 20,
+    "House of Representatives": 20
    },
    "matched": 506,
    "matched_keys": [
@@ -5226,7 +5226,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T20:12:45+00:00",
+  "updated": "2026-11-04T20:13:45+00:00",
   "races": {
    "FL-09": {
     "d": 143037,
