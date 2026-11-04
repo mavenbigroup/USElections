@@ -1,21 +1,21 @@
 {
- "generated": "2026-11-04T02:02:33+00:00",
+ "generated": "2026-11-04T02:03:33+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T02:02:35+00:00"
+   "at": "2026-11-04T02:03:34+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T02:02:35+00:00"
+   "at": "2026-11-04T02:03:34+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T02:02:35+00:00"
+   "at": "2026-11-04T02:03:35+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T02:02:35+00:00"
+   "at": "2026-11-04T02:03:35+00:00"
   },
   "polldesk": {
    "ok": false,
@@ -24,15 +24,15 @@
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T02:02:35+00:00"
+   "at": "2026-11-04T02:03:35+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T02:02:35+00:00"
+   "at": "2026-11-04T02:03:35+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T02:02:35+00:00"
+   "at": "2026-11-04T02:03:35+00:00"
   }
  },
  "baseline": {
@@ -42,23 +42,23 @@
  },
  "kalshi": {
   "gov": {
-   "AZ": 95.6,
-   "FL": 1.1,
-   "GA": 96.7,
+   "AZ": 95.7,
+   "FL": 1.0,
+   "GA": 97.8,
    "IA": 94.1,
    "ME": 98.9,
    "MI": 98.0,
    "MN": 99.0,
-   "NE": 49.0,
+   "NE": 42.0,
    "NV": 94.9,
-   "NY": 99.5,
-   "WI": 92.8
+   "OH": 96.9
   },
   "sen": {
-   "ME": 89.0
+   "AK": 88.0,
+   "MI": 95.4
   },
-  "senate_d": 99.1,
-  "house_d": 99.5
+  "senate_d": 99.3,
+  "house_d": 99.6
  },
  "polymarket": {
   "senate_d": 99.0,
@@ -623,27 +623,20 @@
   "count": 0,
   "matched": 0,
   "debug": {
-   "mode": "full",
-   "fetched": 20,
+   "mode": null,
+   "fetched": 0,
    "total": null,
-   "updated": "2026-11-04T02:02:21+00:00",
-   "final": true,
-   "filters": {},
-   "started": "2026-11-04T02:01:18+00:00",
-   "types": {
-    "Referendum": 11,
-    "State Senate": 3,
-    "State House": 3,
-    "Shadow Senator": 1,
-    "Attorney General": 1,
-    "Shadow Representative": 1
-   },
+   "updated": "2026-11-04T02:03:32+00:00",
+   "final": false,
+   "filters": null,
+   "started": "2026-11-04T02:03:12+00:00",
+   "types": {},
    "matched": 0,
    "matched_keys": []
   }
  },
  "results": {
-  "updated": "2026-11-04T02:02:35+00:00",
+  "updated": "2026-11-04T02:03:35+00:00",
   "races": {
    "GU-GOV": {
     "d": 14925,
