@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-04T19:18:05+00:00",
+ "generated": "2026-11-04T19:19:05+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T19:18:09+00:00"
+   "at": "2026-11-04T19:19:09+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T19:18:09+00:00"
+   "at": "2026-11-04T19:19:10+00:00"
   },
   "predictit": {
    "ok": false,
@@ -16,23 +16,23 @@
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T19:18:09+00:00"
+   "at": "2026-11-04T19:19:10+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T19:18:10+00:00"
+   "at": "2026-11-04T19:19:11+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T19:18:11+00:00"
+   "at": "2026-11-04T19:19:11+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T19:18:11+00:00"
+   "at": "2026-11-04T19:19:11+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T19:18:11+00:00"
+   "at": "2026-11-04T19:19:11+00:00"
   }
  },
  "baseline": {
@@ -53,10 +53,17 @@
    "NV": 99.9,
    "NM": 99.9,
    "NY": 99.8,
+   "OH": 99.8,
+   "OK": 0.4,
    "PA": 99.9,
-   "WI": 98.6
+   "VT": 0.2
   },
-  "sen": {},
+  "sen": {
+   "GA": 99.8,
+   "KS": 99.9,
+   "NH": 99.9,
+   "SC": 99.8
+  },
   "senate_d": 99.9,
   "house_d": 99.9
  },
@@ -5118,20 +5125,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 156,
+   "fetched": 80,
    "total": null,
-   "updated": "2026-11-04T19:18:10+00:00",
+   "updated": "2026-11-04T19:19:11+00:00",
    "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-04T19:18:02+00:00",
+   "started": "2026-11-04T19:19:07+00:00",
    "types": {
-    "Governor": 60,
-    "US Senate": 56,
-    "House of Representatives": 40
+    "US Senate": 40,
+    "Governor": 20,
+    "House of Representatives": 20
    },
    "matched": 506,
    "matched_keys": [
@@ -5219,7 +5226,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T19:18:11+00:00",
+  "updated": "2026-11-04T19:19:11+00:00",
   "races": {
    "AZ-GOV": {
     "d": 1193939,
