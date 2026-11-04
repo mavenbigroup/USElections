@@ -1,21 +1,21 @@
 {
- "generated": "2026-11-04T01:07:01+00:00",
+ "generated": "2026-11-04T01:08:01+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T01:07:05+00:00"
+   "at": "2026-11-04T01:08:04+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T01:07:05+00:00"
+   "at": "2026-11-04T01:08:04+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T01:07:05+00:00"
+   "at": "2026-11-04T01:08:05+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T01:07:05+00:00"
+   "at": "2026-11-04T01:08:05+00:00"
   },
   "polldesk": {
    "ok": false,
@@ -24,15 +24,15 @@
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T01:07:06+00:00"
+   "at": "2026-11-04T01:08:05+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T01:07:06+00:00"
+   "at": "2026-11-04T01:08:05+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T01:07:06+00:00"
+   "at": "2026-11-04T01:08:05+00:00"
   }
  },
  "baseline": {
@@ -42,28 +42,23 @@
  },
  "kalshi": {
   "gov": {
-   "AZ": 95.0,
-   "FL": 6.3,
-   "GA": 87.0,
-   "IA": 91.8,
+   "AZ": 95.8,
+   "FL": 8.2,
+   "GA": 86.0,
+   "IA": 91.7,
    "ME": 96.8,
    "MI": 97.1,
-   "MN": 97.4,
-   "NE": 8.9,
-   "NV": 89.0,
-   "NM": 95.7,
-   "NY": 96.9,
-   "OK": 14.0,
-   "SC": 9.0
+   "MN": 97.5,
+   "NE": 11.0,
+   "NV": 90.2,
+   "NM": 95.6,
+   "NY": 97.1,
+   "PA": 99.8,
+   "WI": 90.0
   },
-  "sen": {
-   "AK": 77.0,
-   "IA": 68.0,
-   "ME": 82.0,
-   "NE": 0.6
-  },
+  "sen": {},
   "senate_d": 94.5,
-  "house_d": 98.0
+  "house_d": 98.2
  },
  "polymarket": {
   "senate_d": 92.5,
@@ -624,25 +619,110 @@
   "approval_net": -25.0
  },
  "results_auto": {
-  "races": {},
-  "count": 0,
-  "matched": 0,
+  "races": {
+   "SC-GOV": {
+    "d": 168420,
+    "r": 178049,
+    "o": 3786,
+    "pct": 17.0,
+    "src": "civicapi",
+    "raceId": 87410
+   },
+   "GA-GOV": {
+    "d": 1045895,
+    "r": 770033,
+    "o": 0,
+    "pct": 39.0,
+    "src": "civicapi",
+    "raceId": 87088
+   },
+   "OH-GOV": {
+    "d": 849049,
+    "r": 486545,
+    "o": 30432,
+    "pct": 29.0,
+    "src": "civicapi",
+    "raceId": 87365
+   },
+   "FL-GOV": {
+    "d": 3264282,
+    "r": 3288346,
+    "o": 85326,
+    "pct": 74.0,
+    "src": "civicapi",
+    "raceId": 87069
+   }
+  },
+  "count": 4,
+  "matched": 19,
   "debug": {
-   "mode": "full",
+   "mode": null,
    "fetched": 0,
    "total": null,
-   "updated": "2026-11-04T01:06:43+00:00",
-   "final": true,
-   "filters": {},
-   "started": "2026-11-04T01:05:58+00:00",
+   "updated": "2026-11-04T01:07:54+00:00",
+   "final": false,
+   "filters": null,
+   "started": "2026-11-04T01:07:33+00:00",
    "types": {},
-   "matched": 0,
-   "matched_keys": []
+   "matched": 19,
+   "matched_keys": [
+    "AL-GOV",
+    "AZ-GOV",
+    "FL-GOV",
+    "GA-GOV",
+    "HI-GOV",
+    "IA-GOV",
+    "ID-GOV",
+    "IL-GOV",
+    "KS-GOV",
+    "ME-GOV",
+    "NY-GOV",
+    "OH-GOV",
+    "OK-GOV",
+    "OR-GOV",
+    "PA-GOV",
+    "RI-GOV",
+    "SC-GOV",
+    "SD-GOV",
+    "TX-GOV"
+   ]
   }
  },
  "results": {
-  "updated": "2026-11-04T01:07:06+00:00",
+  "updated": "2026-11-04T01:08:05+00:00",
   "races": {
+   "SC-GOV": {
+    "d": 168420,
+    "r": 178049,
+    "o": 3786,
+    "pct": 17.0,
+    "src": "civicapi",
+    "raceId": 87410
+   },
+   "GA-GOV": {
+    "d": 1045895,
+    "r": 770033,
+    "o": 0,
+    "pct": 39.0,
+    "src": "civicapi",
+    "raceId": 87088
+   },
+   "OH-GOV": {
+    "d": 849049,
+    "r": 486545,
+    "o": 30432,
+    "pct": 29.0,
+    "src": "civicapi",
+    "raceId": 87365
+   },
+   "FL-GOV": {
+    "d": 3264282,
+    "r": 3288346,
+    "o": 85326,
+    "pct": 74.0,
+    "src": "civicapi",
+    "raceId": 87069
+   },
    "GU-GOV": {
     "d": 14925,
     "r": 15945,
@@ -660,7 +740,7 @@
     "note": "Limtiaco (D) unseats Moylan (R)"
    }
   },
-  "auto_count": 0,
+  "auto_count": 4,
   "manual_count": 2
  },
  "calls": {
