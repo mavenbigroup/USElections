@@ -1,38 +1,37 @@
 {
- "generated": "2026-11-04T00:14:29+00:00",
+ "generated": "2026-11-04T00:15:30+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T00:14:33+00:00"
+   "at": "2026-11-04T00:15:33+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T00:14:33+00:00"
+   "at": "2026-11-04T00:15:33+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T00:14:33+00:00"
+   "at": "2026-11-04T00:15:33+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T00:14:33+00:00"
+   "at": "2026-11-04T00:15:34+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T00:14:33+00:00"
+   "at": "2026-11-04T00:15:34+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T00:14:34+00:00"
+   "at": "2026-11-04T00:15:34+00:00"
   },
   "results_auto": {
-   "ok": false,
-   "at": null,
-   "error": "civicAPI unreachable (102 failed)"
+   "ok": true,
+   "at": "2026-11-04T00:15:52+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T00:15:23+00:00"
+   "at": "2026-11-04T00:15:52+00:00"
   }
  },
  "baseline": {
@@ -42,31 +41,33 @@
  },
  "kalshi": {
   "gov": {
-   "AZ": 93.7,
-   "FL": 6.8,
-   "GA": 90.0,
-   "IA": 89.0,
+   "AZ": 93.8,
+   "FL": 8.8,
+   "GA": 87.0,
+   "IA": 88.0,
    "ME": 96.7,
-   "MI": 96.3,
+   "MI": 96.2,
    "MN": 97.3,
    "NE": 11.0,
    "NV": 86.0,
    "NM": 96.2,
    "NY": 97.3,
-   "OR": 83.0,
-   "TX": 31.0
+   "OH": 82.0,
+   "SC": 6.8
   },
   "sen": {
-   "ME": 70.0,
-   "MN": 93.5,
-   "NE": 0.2,
-   "TX": 74.0
+   "AK": 71.0,
+   "IA": 58.0,
+   "KS": 70.0,
+   "MI": 82.0,
+   "MN": 93.4,
+   "SC": 31.0
   },
   "senate_d": 81.0,
   "house_d": 96.9
  },
  "polymarket": {
-  "senate_d": 83.5,
+  "senate_d": 82.5,
   "house_d": 98.1
  },
  "predictit": {
@@ -623,9 +624,30 @@
   "generic": 8.1,
   "approval_net": -25.0
  },
- "results_auto": null,
+ "results_auto": {
+  "races": {},
+  "count": 0,
+  "ok": 0,
+  "errors": 0,
+  "debug": {
+   "top_keys": [
+    "count",
+    "offset",
+    "limit",
+    "races"
+   ],
+   "count": 20,
+   "sample": [
+    "{\"id\": 181006, \"type\": \"Shadow Representative\", \"country\": \"US\", \"province\": \"DC\", \"district\": null, \"municipality\": null, \"election_name\": \"DC Shadow US Representative\", \"election_type\": \"Statewide\", \"election_date\": \"2026-11-03T05:00:00.000Z\", \"has_breakdown\": true, \"has_map\": true, \"percent_reporting\": 0, \"candidates\": [{\"name\": \"Ciprian Ivanof\", \"candidate_id\": 23472819, \"party\": \"Republican\", \"color\": \"#c6606b\", \"votes\": 0, \"percent\": 0, \"winner\": false}, {\"name\": \"Franklin Garcia\", \"candidate_id\": 23472820, \"party\": \"Democratic\", \"color\": \"#4874a3\", \"votes\": 0, \"percent\": 0, \"winner\": false}, {\"name\": \"Write-in\", \"candidate_id\": 23472821, \"party\": \"Nonpartisan\", \"color\": \"#9A36FF\", \"vo",
+    "{\"id\": 179724, \"type\": \"Referendum\", \"country\": \"US\", \"province\": \"RI\", \"district\": null, \"municipality\": null, \"election_name\": \"Rhode Island Question 1: Higher Education Facilities - $275,000,000\", \"election_type\": \"Statewide\", \"election_date\": \"2026-11-03T05:00:00.000Z\", \"has_breakdown\": true, \"has_map\": true, \"percent_reporting\": 0, \"candidates\": [{\"name\": \"Yes\", \"candidate_id\": 22610358, \"party\": \"Nonpartisan\", \"color\": \"#63c660\", \"votes\": 0, \"percent\": 0, \"winner\": false}, {\"name\": \"No\", \"candidate_id\": 22610359, \"party\": \"Nonpartisan\", \"color\": \"#c6606b\", \"votes\": 0, \"percent\": 0, \"winner\": false}]}",
+    "{\"id\": 155920, \"type\": \"Referendum\", \"country\": \"US\", \"province\": \"MI\", \"district\": null, \"municipality\": null, \"election_name\": \"Michigan Proposal 2\", \"election_type\": \"Statewide\", \"election_date\": \"2026-11-03T05:00:00.000Z\", \"has_breakdown\": true, \"has_map\": true, \"percent_reporting\": 0, \"candidates\": [{\"name\": \"Yes\", \"candidate_id\": 376992, \"party\": \"Nonpartisan\", \"color\": \"#63c660\", \"votes\": 0, \"percent\": 0, \"winner\": false}, {\"name\": \"No\", \"candidate_id\": 376993, \"party\": \"Nonpartisan\", \"color\": \"#c6606b\", \"votes\": 0, \"percent\": 0, \"winner\": false}]}"
+   ],
+   "matched": 0,
+   "matched_keys": []
+  }
+ },
  "results": {
-  "updated": "2026-11-04T00:15:23+00:00",
+  "updated": "2026-11-04T00:15:52+00:00",
   "races": {
    "GU-GOV": {
     "d": 14925,
