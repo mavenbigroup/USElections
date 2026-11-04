@@ -1,37 +1,37 @@
 {
- "generated": "2026-11-04T14:03:23+00:00",
+ "generated": "2026-11-04T14:04:23+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T14:03:26+00:00"
+   "at": "2026-11-04T14:04:26+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T14:03:26+00:00"
+   "at": "2026-11-04T14:04:26+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T14:03:27+00:00"
+   "at": "2026-11-04T14:04:26+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T14:03:27+00:00"
+   "at": "2026-11-04T14:04:27+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T14:03:27+00:00"
+   "at": "2026-11-04T14:04:27+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T14:03:27+00:00"
+   "at": "2026-11-04T14:04:27+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T14:03:27+00:00"
+   "at": "2026-11-04T14:04:27+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T14:03:27+00:00"
+   "at": "2026-11-04T14:04:27+00:00"
   }
  },
  "baseline": {
@@ -51,13 +51,13 @@
    "NE": 0.7,
    "NV": 99.9,
    "NM": 99.9,
-   "NY": 99.8,
    "OH": 99.8,
    "TX": 99.7
   },
   "sen": {
-   "KS": 99.9,
-   "TX": 99.7
+   "GA": 99.8,
+   "NE": 0.1,
+   "SC": 99.8
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -641,10 +641,10 @@
     "called": "R"
    },
    "ME-GOV": {
-    "d": 365067,
-    "r": 243710,
-    "o": 53296,
-    "pct": 89.0,
+    "d": 366016,
+    "r": 244217,
+    "o": 53523,
+    "pct": 90.0,
     "src": "civicapi",
     "raceId": 87189,
     "called": "D"
@@ -5111,20 +5111,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 572,
+   "fetched": 156,
    "total": null,
-   "updated": "2026-11-04T14:03:22+00:00",
-   "final": true,
+   "updated": "2026-11-04T14:04:19+00:00",
+   "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-04T14:02:11+00:00",
+   "started": "2026-11-04T14:03:37+00:00",
    "types": {
-    "House of Representatives": 456,
     "Governor": 60,
-    "US Senate": 56
+    "US Senate": 56,
+    "House of Representatives": 40
    },
    "matched": 506,
    "matched_keys": [
@@ -5212,7 +5212,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T14:03:27+00:00",
+  "updated": "2026-11-04T14:04:27+00:00",
   "races": {
    "OH-GOV": {
     "d": 2404178,
@@ -5233,10 +5233,10 @@
     "called": "R"
    },
    "ME-GOV": {
-    "d": 365067,
-    "r": 243710,
-    "o": 53296,
-    "pct": 89.0,
+    "d": 366016,
+    "r": 244217,
+    "o": 53523,
+    "pct": 90.0,
     "src": "civicapi",
     "raceId": 87189,
     "called": "D"
