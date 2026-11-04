@@ -1,37 +1,37 @@
 {
- "generated": "2026-11-04T02:40:36+00:00",
+ "generated": "2026-11-04T02:41:35+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-04T02:40:40+00:00"
+   "at": "2026-11-04T02:41:39+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-04T02:40:40+00:00"
+   "at": "2026-11-04T02:41:39+00:00"
   },
   "predictit": {
    "ok": true,
-   "at": "2026-11-04T02:40:41+00:00"
+   "at": "2026-11-04T02:41:39+00:00"
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-04T02:40:41+00:00"
+   "at": "2026-11-04T02:41:40+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-04T02:40:41+00:00"
+   "at": "2026-11-04T02:41:40+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-04T02:40:42+00:00"
+   "at": "2026-11-04T02:41:40+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-04T02:40:42+00:00"
+   "at": "2026-11-04T02:41:40+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-04T02:40:42+00:00"
+   "at": "2026-11-04T02:41:40+00:00"
   }
  },
  "baseline": {
@@ -41,31 +41,30 @@
  },
  "kalshi": {
   "gov": {
-   "AZ": 97.9,
+   "AZ": 97.4,
    "FL": 0.2,
    "GA": 99.8,
-   "IA": 97.8,
+   "IA": 98.5,
    "ME": 98.9,
    "MI": 98.7,
-   "MN": 99.2,
-   "NE": 12.0,
+   "MN": 99.5,
+   "NE": 13.0,
    "NV": 97.5,
    "NM": 98.7,
    "NY": 99.8,
    "OH": 98.3,
    "OK": 1.9,
-   "OR": 95.1,
-   "PA": 99.9,
-   "VT": 1.1
+   "SC": 3.8,
+   "WI": 94.0
   },
   "sen": {
-   "IA": 94.1,
-   "ME": 90.7,
-   "MN": 98.2,
-   "NE": 0.6
+   "GA": 99.8,
+   "MI": 97.5,
+   "NC": 99.8,
+   "SC": 98.4
   },
-  "senate_d": 99.3,
-  "house_d": 99.6
+  "senate_d": 99.2,
+  "house_d": 99.7
  },
  "polymarket": {
   "senate_d": 99.2,
@@ -757,14 +756,21 @@
   "count": 15,
   "matched": 20,
   "debug": {
-   "mode": null,
-   "fetched": 0,
+   "mode": "full",
+   "fetched": 20,
    "total": null,
-   "updated": "2026-11-04T02:40:40+00:00",
-   "final": false,
-   "filters": null,
+   "updated": "2026-11-04T02:41:24+00:00",
+   "final": true,
+   "filters": {},
    "started": "2026-11-04T02:40:20+00:00",
-   "types": {},
+   "types": {
+    "Referendum": 11,
+    "State Senate": 3,
+    "State House": 3,
+    "Shadow Senator": 1,
+    "Attorney General": 1,
+    "Shadow Representative": 1
+   },
    "matched": 20,
    "matched_keys": [
     "AK-SEN",
@@ -791,7 +797,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-04T02:40:42+00:00",
+  "updated": "2026-11-04T02:41:40+00:00",
   "races": {
    "TX-SEN": {
     "d": 3286120,
