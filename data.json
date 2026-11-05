@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-05T06:54:29+00:00",
+ "generated": "2026-11-05T06:55:29+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-05T06:54:31+00:00"
+   "at": "2026-11-05T06:55:31+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-05T06:54:31+00:00"
+   "at": "2026-11-05T06:55:31+00:00"
   },
   "predictit": {
    "ok": false,
@@ -16,23 +16,23 @@
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-05T06:54:32+00:00"
+   "at": "2026-11-05T06:55:31+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-05T06:54:32+00:00"
+   "at": "2026-11-05T06:55:31+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-05T06:54:32+00:00"
+   "at": "2026-11-05T06:55:31+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-05T06:54:32+00:00"
+   "at": "2026-11-05T06:55:31+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-05T06:54:32+00:00"
+   "at": "2026-11-05T06:55:31+00:00"
   }
  },
  "baseline": {
@@ -51,11 +51,13 @@
    "MN": 99.5,
    "NE": 0.7,
    "NV": 99.9,
-   "NY": 99.8,
-   "PA": 99.9
+   "OH": 99.8,
+   "WI": 98.6
   },
   "sen": {
-   "TX": 99.7
+   "KS": 99.9,
+   "NC": 99.8,
+   "SC": 99.8
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -4964,30 +4966,183 @@
     "src": "civicapi",
     "raceId": 87285,
     "called": "D"
+   },
+   "CT-GOV": {
+    "d": 677760,
+    "r": 485405,
+    "o": 47,
+    "pct": 81.0,
+    "src": "civicapi",
+    "raceId": 87026,
+    "called": "D"
+   },
+   "WY-GOV": {
+    "d": 27469,
+    "r": 128480,
+    "o": 31430,
+    "pct": 86.0,
+    "src": "civicapi",
+    "raceId": 87497,
+    "called": "R"
+   },
+   "MD-GOV": {
+    "d": 1165429,
+    "r": 617673,
+    "o": 79745,
+    "pct": 74.0,
+    "src": "civicapi",
+    "raceId": 87198,
+    "called": "D"
+   },
+   "NV-GOV": {
+    "d": 512710,
+    "r": 443270,
+    "o": 41517,
+    "pct": 81.0,
+    "src": "civicapi",
+    "raceId": 87260,
+    "called": "D"
+   },
+   "TN-GOV": {
+    "d": 902546,
+    "r": 955259,
+    "o": 241168,
+    "pct": 91.0,
+    "src": "civicapi",
+    "raceId": 87476,
+    "called": "R"
+   },
+   "NH-GOV": {
+    "d": 291444,
+    "r": 320828,
+    "o": 10147,
+    "pct": 90.0,
+    "src": "civicapi",
+    "raceId": 87284,
+    "called": "R"
+   },
+   "AK-GOV": {
+    "d": 104046,
+    "r": 107799,
+    "o": 0,
+    "pct": 73.0,
+    "src": "civicapi",
+    "raceId": 148898
+   },
+   "CO-GOV": {
+    "d": 1319781,
+    "r": 728650,
+    "o": 117206,
+    "pct": 76.0,
+    "src": "civicapi",
+    "raceId": 87018,
+    "called": "D"
+   },
+   "MN-GOV": {
+    "d": 1569097,
+    "r": 1205800,
+    "o": 53859,
+    "pct": 100.0,
+    "src": "civicapi",
+    "raceId": 87230,
+    "called": "D"
+   },
+   "NM-GOV": {
+    "d": 412834,
+    "r": 308315,
+    "o": 0,
+    "pct": 89.0,
+    "src": "civicapi",
+    "raceId": 87289,
+    "called": "D"
+   },
+   "VT-GOV": {
+    "d": 141467,
+    "r": 161853,
+    "o": 5613,
+    "pct": 100.0,
+    "src": "civicapi",
+    "raceId": 87503,
+    "called": "R"
+   },
+   "CA-GOV": {
+    "d": 5186352,
+    "r": 2894119,
+    "o": 0,
+    "pct": 100.0,
+    "src": "civicapi",
+    "raceId": 86952,
+    "called": "D"
+   },
+   "MA-GOV": {
+    "d": 1476171,
+    "r": 818818,
+    "o": 80346,
+    "pct": 83.0,
+    "src": "civicapi",
+    "raceId": 87276,
+    "called": "D"
+   },
+   "WI-GOV": {
+    "d": 1438721,
+    "r": 1221668,
+    "o": 144,
+    "pct": 89.0,
+    "src": "civicapi",
+    "raceId": 87491,
+    "called": "D"
+   },
+   "AR-GOV": {
+    "d": 341645,
+    "r": 477090,
+    "o": 66880,
+    "pct": 100.0,
+    "src": "civicapi",
+    "raceId": 86938,
+    "called": "R"
+   },
+   "NE-GOV": {
+    "d": 312633,
+    "r": 376242,
+    "o": 52274,
+    "pct": 100.0,
+    "src": "civicapi",
+    "raceId": 87255,
+    "called": "R"
+   },
+   "MI-GOV": {
+    "d": 2591316,
+    "r": 2078052,
+    "o": 84426,
+    "pct": 96.0,
+    "src": "civicapi",
+    "raceId": 87215,
+    "called": "D"
    }
   },
-  "count": 489,
-  "matched": 489,
+  "count": 506,
+  "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 80,
+   "fetched": 572,
    "total": null,
-   "updated": "2026-11-05T06:54:25+00:00",
-   "final": false,
+   "updated": "2026-11-05T06:55:17+00:00",
+   "final": true,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-05T06:54:20+00:00",
+   "started": "2026-11-05T06:55:08+00:00",
    "types": {
-    "US Senate": 40,
-    "Governor": 20,
-    "House of Representatives": 20
+    "House of Representatives": 456,
+    "Governor": 60,
+    "US Senate": 56
    },
-   "matched": 489,
+   "matched": 506,
    "matched_keys": [
     "AK-AL",
+    "AK-GOV",
     "AK-SEN",
     "AL-01",
     "AL-02",
@@ -5002,6 +5157,7 @@
     "AR-02",
     "AR-03",
     "AR-04",
+    "AR-GOV",
     "AR-SEN",
     "AZ-01",
     "AZ-02",
@@ -5064,14 +5220,12 @@
     "CA-49",
     "CA-50",
     "CA-51",
-    "CA-52",
-    "CO-01",
-    "CO-02"
+    "CA-52"
    ]
   }
  },
  "results": {
-  "updated": "2026-11-05T06:54:32+00:00",
+  "updated": "2026-11-05T06:55:31+00:00",
   "races": {
    "LA-SEN": {
     "d": 720106,
@@ -9418,6 +9572,158 @@
     "raceId": 87285,
     "called": "D"
    },
+   "CT-GOV": {
+    "d": 677760,
+    "r": 485405,
+    "o": 47,
+    "pct": 81.0,
+    "src": "civicapi",
+    "raceId": 87026,
+    "called": "D"
+   },
+   "WY-GOV": {
+    "d": 27469,
+    "r": 128480,
+    "o": 31430,
+    "pct": 86.0,
+    "src": "civicapi",
+    "raceId": 87497,
+    "called": "R"
+   },
+   "MD-GOV": {
+    "d": 1165429,
+    "r": 617673,
+    "o": 79745,
+    "pct": 74.0,
+    "src": "civicapi",
+    "raceId": 87198,
+    "called": "D"
+   },
+   "NV-GOV": {
+    "d": 512710,
+    "r": 443270,
+    "o": 41517,
+    "pct": 81.0,
+    "src": "civicapi",
+    "raceId": 87260,
+    "called": "D"
+   },
+   "TN-GOV": {
+    "d": 902546,
+    "r": 955259,
+    "o": 241168,
+    "pct": 91.0,
+    "src": "civicapi",
+    "raceId": 87476,
+    "called": "R"
+   },
+   "NH-GOV": {
+    "d": 291444,
+    "r": 320828,
+    "o": 10147,
+    "pct": 90.0,
+    "src": "civicapi",
+    "raceId": 87284,
+    "called": "R"
+   },
+   "AK-GOV": {
+    "d": 104046,
+    "r": 107799,
+    "o": 0,
+    "pct": 73.0,
+    "src": "civicapi",
+    "raceId": 148898
+   },
+   "CO-GOV": {
+    "d": 1319781,
+    "r": 728650,
+    "o": 117206,
+    "pct": 76.0,
+    "src": "civicapi",
+    "raceId": 87018,
+    "called": "D"
+   },
+   "MN-GOV": {
+    "d": 1569097,
+    "r": 1205800,
+    "o": 53859,
+    "pct": 100.0,
+    "src": "civicapi",
+    "raceId": 87230,
+    "called": "D"
+   },
+   "NM-GOV": {
+    "d": 412834,
+    "r": 308315,
+    "o": 0,
+    "pct": 89.0,
+    "src": "civicapi",
+    "raceId": 87289,
+    "called": "D"
+   },
+   "VT-GOV": {
+    "d": 141467,
+    "r": 161853,
+    "o": 5613,
+    "pct": 100.0,
+    "src": "civicapi",
+    "raceId": 87503,
+    "called": "R"
+   },
+   "CA-GOV": {
+    "d": 5186352,
+    "r": 2894119,
+    "o": 0,
+    "pct": 100.0,
+    "src": "civicapi",
+    "raceId": 86952,
+    "called": "D"
+   },
+   "MA-GOV": {
+    "d": 1476171,
+    "r": 818818,
+    "o": 80346,
+    "pct": 83.0,
+    "src": "civicapi",
+    "raceId": 87276,
+    "called": "D"
+   },
+   "WI-GOV": {
+    "d": 1438721,
+    "r": 1221668,
+    "o": 144,
+    "pct": 89.0,
+    "src": "civicapi",
+    "raceId": 87491,
+    "called": "D"
+   },
+   "AR-GOV": {
+    "d": 341645,
+    "r": 477090,
+    "o": 66880,
+    "pct": 100.0,
+    "src": "civicapi",
+    "raceId": 86938,
+    "called": "R"
+   },
+   "NE-GOV": {
+    "d": 312633,
+    "r": 376242,
+    "o": 52274,
+    "pct": 100.0,
+    "src": "civicapi",
+    "raceId": 87255,
+    "called": "R"
+   },
+   "MI-GOV": {
+    "d": 2591316,
+    "r": 2078052,
+    "o": 84426,
+    "pct": 96.0,
+    "src": "civicapi",
+    "raceId": 87215,
+    "called": "D"
+   },
    "GU-GOV": {
     "d": 14925,
     "r": 15945,
@@ -9435,7 +9741,7 @@
     "note": "Limtiaco (D) unseats Moylan (R)"
    }
   },
-  "auto_count": 489,
+  "auto_count": 506,
   "manual_count": 2
  },
  "calls": {
