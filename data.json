@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-05T13:44:57+00:00",
+ "generated": "2026-11-05T13:45:58+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-05T13:45:02+00:00"
+   "at": "2026-11-05T13:46:04+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-05T13:45:02+00:00"
+   "at": "2026-11-05T13:46:04+00:00"
   },
   "predictit": {
    "ok": false,
@@ -16,23 +16,23 @@
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-05T13:45:03+00:00"
+   "at": "2026-11-05T13:46:04+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-05T13:45:03+00:00"
+   "at": "2026-11-05T13:46:04+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-05T13:45:04+00:00"
+   "at": "2026-11-05T13:46:05+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-05T13:45:04+00:00"
+   "at": "2026-11-05T13:46:05+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-05T13:45:04+00:00"
+   "at": "2026-11-05T13:46:05+00:00"
   }
  },
  "baseline": {
@@ -57,13 +57,14 @@
    "OK": 0.4,
    "OR": 99.9,
    "PA": 99.9,
+   "SC": 1.9,
    "TX": 99.7,
+   "VT": 0.2,
    "WI": 98.6
   },
   "sen": {
-   "GA": 99.8,
-   "MN": 99.9,
-   "NE": 0.1,
+   "AK": 93.5,
+   "NC": 99.8,
    "SC": 99.8,
    "TX": 99.7
   },
@@ -5132,20 +5133,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 572,
+   "fetched": 80,
    "total": null,
-   "updated": "2026-11-05T13:44:50+00:00",
-   "final": true,
+   "updated": "2026-11-05T13:46:04+00:00",
+   "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-05T13:44:40+00:00",
+   "started": "2026-11-05T13:46:02+00:00",
    "types": {
-    "House of Representatives": 456,
-    "Governor": 60,
-    "US Senate": 56
+    "US Senate": 40,
+    "Governor": 20,
+    "House of Representatives": 20
    },
    "matched": 506,
    "matched_keys": [
@@ -5233,7 +5234,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-05T13:45:04+00:00",
+  "updated": "2026-11-05T13:46:05+00:00",
   "races": {
    "IL-GOV": {
     "d": 2339182,
