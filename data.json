@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-05T12:09:20+00:00",
+ "generated": "2026-11-05T12:10:20+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-05T12:09:23+00:00"
+   "at": "2026-11-05T12:10:22+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-05T12:09:23+00:00"
+   "at": "2026-11-05T12:10:22+00:00"
   },
   "predictit": {
    "ok": false,
@@ -16,23 +16,23 @@
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-05T12:09:23+00:00"
+   "at": "2026-11-05T12:10:25+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-05T12:09:23+00:00"
+   "at": "2026-11-05T12:10:26+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-05T12:09:24+00:00"
+   "at": "2026-11-05T12:10:26+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-05T12:09:24+00:00"
+   "at": "2026-11-05T12:10:26+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-05T12:09:24+00:00"
+   "at": "2026-11-05T12:10:26+00:00"
   }
  },
  "baseline": {
@@ -52,15 +52,11 @@
    "NE": 0.7,
    "NV": 99.9,
    "NM": 99.9,
-   "NY": 99.8,
-   "OH": 99.8,
-   "PA": 99.9,
-   "WI": 98.6
+   "OK": 0.4
   },
   "sen": {
-   "IA": 99.9,
-   "MN": 99.9,
-   "TX": 99.7
+   "AK": 93.6,
+   "KS": 99.9
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -290,10 +286,10 @@
     "requested": 2189090
    },
    "VA": {
-    "ballots": 1658889,
-    "mail": 345624,
-    "inperson": 1313265,
-    "requested": 450285
+    "ballots": 1667904,
+    "mail": 354641,
+    "inperson": 1313263,
+    "requested": 450159
    },
    "AZ": {
     "ballots": 1655577,
@@ -398,10 +394,10 @@
     "requested": 658748
    },
    "MT": {
-    "ballots": 407301,
-    "mail": 407301,
+    "ballots": 407328,
+    "mail": 407328,
     "inperson": null,
-    "requested": 535395
+    "requested": 535394
    },
    "HI": {
     "ballots": 369087,
@@ -1493,7 +1489,7 @@
    "FL-19": {
     "d": 122351,
     "r": 198668,
-    "o": 4038,
+    "o": 3996,
     "pct": 100.0,
     "src": "civicapi",
     "raceId": 87058,
@@ -5127,20 +5123,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 572,
+   "fetched": 156,
    "total": null,
-   "updated": "2026-11-05T12:09:21+00:00",
-   "final": true,
+   "updated": "2026-11-05T12:10:26+00:00",
+   "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-05T12:09:11+00:00",
+   "started": "2026-11-05T12:10:23+00:00",
    "types": {
-    "House of Representatives": 456,
     "Governor": 60,
-    "US Senate": 56
+    "US Senate": 56,
+    "House of Representatives": 40
    },
    "matched": 506,
    "matched_keys": [
@@ -5228,7 +5224,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-05T12:09:24+00:00",
+  "updated": "2026-11-05T12:10:26+00:00",
   "races": {
    "NY-01": {
     "d": 145869,
@@ -6098,7 +6094,7 @@
    "FL-19": {
     "d": 122351,
     "r": 198668,
-    "o": 4038,
+    "o": 3996,
     "pct": 100.0,
     "src": "civicapi",
     "raceId": 87058,
