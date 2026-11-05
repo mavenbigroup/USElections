@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-05T01:40:56+00:00",
+ "generated": "2026-11-05T01:41:57+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-05T01:40:58+00:00"
+   "at": "2026-11-05T01:41:58+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-05T01:40:58+00:00"
+   "at": "2026-11-05T01:41:59+00:00"
   },
   "predictit": {
    "ok": false,
@@ -16,23 +16,23 @@
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-05T01:40:59+00:00"
+   "at": "2026-11-05T01:42:00+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-05T01:40:59+00:00"
+   "at": "2026-11-05T01:42:00+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-05T01:40:59+00:00"
+   "at": "2026-11-05T01:42:00+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-05T01:40:59+00:00"
+   "at": "2026-11-05T01:42:00+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-05T01:40:59+00:00"
+   "at": "2026-11-05T01:42:00+00:00"
   }
  },
  "baseline": {
@@ -52,10 +52,11 @@
    "NE": 0.7,
    "NV": 99.9,
    "NM": 99.9,
-   "OK": 0.4
+   "PA": 99.9
   },
   "sen": {
-   "MI": 99.9
+   "NC": 99.8,
+   "SC": 99.8
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -4693,9 +4694,9 @@
     "called": "D"
    },
    "WA-03": {
-    "d": 154652,
-    "r": 126288,
-    "o": 2485,
+    "d": 157007,
+    "r": 129809,
+    "o": 2545,
     "pct": 99.0,
     "src": "civicapi",
     "raceId": 87516,
@@ -5122,20 +5123,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 80,
+   "fetched": 572,
    "total": null,
-   "updated": "2026-11-05T01:40:59+00:00",
-   "final": false,
+   "updated": "2026-11-05T01:41:50+00:00",
+   "final": true,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-05T01:40:54+00:00",
+   "started": "2026-11-05T01:41:39+00:00",
    "types": {
-    "US Senate": 40,
-    "Governor": 20,
-    "House of Representatives": 20
+    "House of Representatives": 456,
+    "Governor": 60,
+    "US Senate": 56
    },
    "matched": 506,
    "matched_keys": [
@@ -5223,7 +5224,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-05T01:40:59+00:00",
+  "updated": "2026-11-05T01:42:00+00:00",
   "races": {
    "FL-SEN": {
     "d": 3969303,
@@ -9298,9 +9299,9 @@
     "called": "D"
    },
    "WA-03": {
-    "d": 154652,
-    "r": 126288,
-    "o": 2485,
+    "d": 157007,
+    "r": 129809,
+    "o": 2545,
     "pct": 99.0,
     "src": "civicapi",
     "raceId": 87516,
