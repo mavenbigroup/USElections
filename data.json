@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-05T14:56:25+00:00",
+ "generated": "2026-11-05T14:57:25+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-05T14:56:28+00:00"
+   "at": "2026-11-05T14:57:28+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-05T14:56:29+00:00"
+   "at": "2026-11-05T14:57:28+00:00"
   },
   "predictit": {
    "ok": false,
@@ -16,23 +16,24 @@
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-05T14:56:29+00:00"
+   "at": "2026-11-05T14:57:30+00:00"
   },
   "polldesk": {
-   "ok": true,
-   "at": "2026-11-05T14:56:29+00:00"
+   "ok": false,
+   "at": "2026-11-05T14:56:29+00:00",
+   "error": "IncompleteRead(32767 bytes read)"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-05T14:56:30+00:00"
+   "at": "2026-11-05T14:57:31+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-05T14:56:30+00:00"
+   "at": "2026-11-05T14:57:31+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-05T14:56:30+00:00"
+   "at": "2026-11-05T14:57:31+00:00"
   }
  },
  "baseline": {
@@ -56,8 +57,7 @@
    "TX": 99.7
   },
   "sen": {
-   "MI": 99.9,
-   "TX": 99.7
+   "MI": 99.9
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -5124,18 +5124,18 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 276,
+   "fetched": 572,
    "total": null,
-   "updated": "2026-11-05T14:56:29+00:00",
-   "final": false,
+   "updated": "2026-11-05T14:57:16+00:00",
+   "final": true,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-05T14:56:20+00:00",
+   "started": "2026-11-05T14:57:09+00:00",
    "types": {
-    "House of Representatives": 160,
+    "House of Representatives": 456,
     "Governor": 60,
     "US Senate": 56
    },
@@ -5225,7 +5225,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-05T14:56:30+00:00",
+  "updated": "2026-11-05T14:57:31+00:00",
   "races": {
    "SD-GOV": {
     "d": 111502,
