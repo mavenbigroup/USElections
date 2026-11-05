@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-05T07:29:27+00:00",
+ "generated": "2026-11-05T07:30:27+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-05T07:29:31+00:00"
+   "at": "2026-11-05T07:30:30+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-05T07:29:31+00:00"
+   "at": "2026-11-05T07:30:30+00:00"
   },
   "predictit": {
    "ok": false,
@@ -16,24 +16,24 @@
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-05T07:29:32+00:00"
+   "at": "2026-11-05T07:30:31+00:00"
   },
   "polldesk": {
    "ok": false,
    "at": "2026-11-05T07:15:06+00:00",
-   "error": "The read operation timed out"
+   "error": "HTTP Error 502: Bad Gateway"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-05T07:29:52+00:00"
+   "at": "2026-11-05T07:30:32+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-05T07:29:52+00:00"
+   "at": "2026-11-05T07:30:32+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-05T07:29:52+00:00"
+   "at": "2026-11-05T07:30:32+00:00"
   }
  },
  "baseline": {
@@ -54,13 +54,11 @@
    "NV": 99.9,
    "NM": 99.9,
    "NY": 99.8,
-   "OH": 99.8,
    "PA": 99.9,
    "WI": 98.6
   },
   "sen": {
-   "KS": 99.9,
-   "SC": 99.8
+   "GA": 99.8
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -628,12 +626,12 @@
   "count": 0,
   "matched": 0,
   "debug": {
-   "mode": null,
+   "mode": "full",
    "fetched": 0,
    "total": null,
-   "updated": "2026-11-05T07:29:47+00:00",
-   "final": false,
-   "filters": null,
+   "updated": "2026-11-05T07:30:07+00:00",
+   "final": true,
+   "filters": {},
    "started": "2026-11-05T07:29:27+00:00",
    "types": {},
    "matched": 0,
@@ -641,7 +639,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-05T07:29:52+00:00",
+  "updated": "2026-11-05T07:30:32+00:00",
   "races": {
    "GU-GOV": {
     "d": 14925,
