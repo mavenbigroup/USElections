@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-05T06:40:57+00:00",
+ "generated": "2026-11-05T06:41:57+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-05T06:40:59+00:00"
+   "at": "2026-11-05T06:41:59+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-05T06:40:59+00:00"
+   "at": "2026-11-05T06:41:59+00:00"
   },
   "predictit": {
    "ok": false,
@@ -16,23 +16,23 @@
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-05T06:40:59+00:00"
+   "at": "2026-11-05T06:41:59+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-05T06:41:00+00:00"
+   "at": "2026-11-05T06:41:59+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-05T06:41:00+00:00"
+   "at": "2026-11-05T06:42:00+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-05T06:41:00+00:00"
+   "at": "2026-11-05T06:42:00+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-05T06:41:00+00:00"
+   "at": "2026-11-05T06:42:00+00:00"
   }
  },
  "baseline": {
@@ -51,11 +51,11 @@
    "MN": 99.5,
    "NE": 0.7,
    "NV": 99.9,
-   "NM": 99.9,
-   "SC": 1.9
+   "NY": 99.8
   },
   "sen": {
-   "IA": 99.9
+   "AK": 95.9,
+   "NH": 99.9
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -5121,17 +5121,21 @@
   "count": 506,
   "matched": 506,
   "debug": {
-   "mode": null,
-   "fetched": 60,
+   "mode": "filtered",
+   "fetched": 572,
    "total": null,
-   "updated": "2026-11-05T06:40:56+00:00",
-   "final": false,
-   "filters": null,
+   "updated": "2026-11-05T06:41:56+00:00",
+   "final": true,
+   "filters": {
+    "senate": "US Senate",
+    "governor": "Governor",
+    "house": "House of Representatives"
+   },
    "started": "2026-11-05T06:40:52+00:00",
    "types": {
-    "House of Representatives": 20,
-    "Governor": 20,
-    "US Senate": 20
+    "House of Representatives": 456,
+    "Governor": 60,
+    "US Senate": 56
    },
    "matched": 506,
    "matched_keys": [
@@ -5219,7 +5223,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-05T06:41:00+00:00",
+  "updated": "2026-11-05T06:42:00+00:00",
   "races": {
    "KS-GOV": {
     "d": 549974,
