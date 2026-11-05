@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-05T02:39:22+00:00",
+ "generated": "2026-11-05T02:40:22+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-05T02:39:26+00:00"
+   "at": "2026-11-05T02:40:25+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-05T02:39:26+00:00"
+   "at": "2026-11-05T02:40:25+00:00"
   },
   "predictit": {
    "ok": false,
@@ -16,23 +16,23 @@
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-05T02:39:27+00:00"
+   "at": "2026-11-05T02:40:26+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-05T02:39:27+00:00"
+   "at": "2026-11-05T02:40:26+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-05T02:39:28+00:00"
+   "at": "2026-11-05T02:40:26+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-05T02:39:28+00:00"
+   "at": "2026-11-05T02:40:26+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-05T02:39:28+00:00"
+   "at": "2026-11-05T02:40:26+00:00"
   }
  },
  "baseline": {
@@ -53,14 +53,11 @@
    "NV": 99.9,
    "NM": 99.9,
    "NY": 99.8,
-   "OH": 99.8,
    "PA": 99.9,
-   "VT": 0.2
+   "WI": 98.6
   },
   "sen": {
-   "GA": 99.8,
-   "MI": 99.9,
-   "NC": 99.8
+   "MN": 99.9
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -5127,18 +5124,18 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 572,
+   "fetched": 396,
    "total": null,
-   "updated": "2026-11-05T02:39:12+00:00",
-   "final": true,
+   "updated": "2026-11-05T02:40:25+00:00",
+   "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-05T02:39:03+00:00",
+   "started": "2026-11-05T02:40:17+00:00",
    "types": {
-    "House of Representatives": 456,
+    "House of Representatives": 280,
     "Governor": 60,
     "US Senate": 56
    },
@@ -5228,7 +5225,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-05T02:39:28+00:00",
+  "updated": "2026-11-05T02:40:26+00:00",
   "races": {
    "ME-GOV": {
     "d": 371732,
