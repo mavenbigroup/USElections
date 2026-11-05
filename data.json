@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-05T16:34:57+00:00",
+ "generated": "2026-11-05T16:35:57+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-05T16:35:01+00:00"
+   "at": "2026-11-05T16:36:01+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-05T16:35:01+00:00"
+   "at": "2026-11-05T16:36:01+00:00"
   },
   "predictit": {
    "ok": false,
@@ -16,23 +16,23 @@
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-05T16:35:01+00:00"
+   "at": "2026-11-05T16:36:02+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-05T16:35:02+00:00"
+   "at": "2026-11-05T16:36:02+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-05T16:35:02+00:00"
+   "at": "2026-11-05T16:36:02+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-05T16:35:02+00:00"
+   "at": "2026-11-05T16:36:02+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-05T16:35:02+00:00"
+   "at": "2026-11-05T16:36:02+00:00"
   }
  },
  "baseline": {
@@ -59,11 +59,10 @@
    "SC": 1.9
   },
   "sen": {
-   "AK": 95.7,
+   "AK": 95.6,
    "IA": 99.9,
-   "MN": 99.9,
-   "NE": 0.1,
-   "SC": 99.8
+   "ME": 99.9,
+   "MN": 99.9
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -233,10 +232,10 @@
     "requested": null
    },
    "FL": {
-    "ballots": 5545784,
-    "mail": 2077687,
-    "inperson": 3468097,
-    "requested": 390976
+    "ballots": 5545851,
+    "mail": 2077740,
+    "inperson": 3468111,
+    "requested": 390973
    },
    "WA": {
     "ballots": 3045918,
@@ -263,8 +262,8 @@
     "requested": 156771
    },
    "IL": {
-    "ballots": 2056314,
-    "mail": 893486,
+    "ballots": 2057093,
+    "mail": 894265,
     "inperson": 1162828,
     "requested": 1343941
    },
@@ -382,6 +381,12 @@
     "inperson": 344986,
     "requested": 161763
    },
+   "MD": {
+    "ballots": 466403,
+    "mail": 466403,
+    "inperson": null,
+    "requested": 658748
+   },
    "NM": {
     "ballots": 459897,
     "mail": 74727,
@@ -393,12 +398,6 @@
     "mail": 47866,
     "inperson": 390736,
     "requested": 66866
-   },
-   "MD": {
-    "ballots": 429972,
-    "mail": 429972,
-    "inperson": null,
-    "requested": 658748
    },
    "MT": {
     "ballots": 407328,
@@ -736,8 +735,8 @@
     "called": "D"
    },
    "PA-GOV": {
-    "d": 3006217,
-    "r": 1907214,
+    "d": 3006242,
+    "r": 1907223,
     "o": 64439,
     "pct": 82.0,
     "src": "civicapi",
@@ -5130,18 +5129,18 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 572,
+   "fetched": 276,
    "total": null,
-   "updated": "2026-11-05T16:34:57+00:00",
-   "final": true,
+   "updated": "2026-11-05T16:36:02+00:00",
+   "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-05T16:34:47+00:00",
+   "started": "2026-11-05T16:35:57+00:00",
    "types": {
-    "House of Representatives": 456,
+    "House of Representatives": 160,
     "Governor": 60,
     "US Senate": 56
    },
@@ -5231,7 +5230,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-05T16:35:02+00:00",
+  "updated": "2026-11-05T16:36:02+00:00",
   "races": {
    "KS-GOV": {
     "d": 549974,
@@ -5341,8 +5340,8 @@
     "called": "D"
    },
    "PA-GOV": {
-    "d": 3006217,
-    "r": 1907214,
+    "d": 3006242,
+    "r": 1907223,
     "o": 64439,
     "pct": 82.0,
     "src": "civicapi",
