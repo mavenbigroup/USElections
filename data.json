@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-05T00:31:04+00:00",
+ "generated": "2026-11-05T00:32:05+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-05T00:31:07+00:00"
+   "at": "2026-11-05T00:32:08+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-05T00:31:08+00:00"
+   "at": "2026-11-05T00:32:08+00:00"
   },
   "predictit": {
    "ok": false,
@@ -16,23 +16,23 @@
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-05T00:31:09+00:00"
+   "at": "2026-11-05T00:32:09+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-05T00:31:09+00:00"
+   "at": "2026-11-05T00:32:09+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-05T00:31:09+00:00"
+   "at": "2026-11-05T00:32:09+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-05T00:31:09+00:00"
+   "at": "2026-11-05T00:32:09+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-05T00:31:09+00:00"
+   "at": "2026-11-05T00:32:09+00:00"
   }
  },
  "baseline": {
@@ -1315,8 +1315,8 @@
     "called": "R"
    },
    "CA-GOV": {
-    "d": 4992161,
-    "r": 2815459,
+    "d": 5094070,
+    "r": 2842556,
     "o": 0,
     "pct": 100.0,
     "src": "civicapi",
@@ -5139,20 +5139,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 116,
+   "fetched": 276,
    "total": null,
-   "updated": "2026-11-05T00:31:08+00:00",
+   "updated": "2026-11-05T00:32:09+00:00",
    "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-05T00:31:03+00:00",
+   "started": "2026-11-05T00:32:00+00:00",
    "types": {
-    "US Senate": 56,
-    "Governor": 40,
-    "House of Representatives": 20
+    "House of Representatives": 160,
+    "Governor": 60,
+    "US Senate": 56
    },
    "matched": 506,
    "matched_keys": [
@@ -5240,7 +5240,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-05T00:31:09+00:00",
+  "updated": "2026-11-05T00:32:09+00:00",
   "races": {
    "NJ-11": {
     "d": 162759,
@@ -5920,8 +5920,8 @@
     "called": "R"
    },
    "CA-GOV": {
-    "d": 4992161,
-    "r": 2815459,
+    "d": 5094070,
+    "r": 2842556,
     "o": 0,
     "pct": 100.0,
     "src": "civicapi",
