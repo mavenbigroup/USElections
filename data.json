@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-05T14:24:07+00:00",
+ "generated": "2026-11-05T14:25:07+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-05T14:24:08+00:00"
+   "at": "2026-11-05T14:25:08+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-05T14:24:08+00:00"
+   "at": "2026-11-05T14:25:08+00:00"
   },
   "predictit": {
    "ok": false,
@@ -16,23 +16,23 @@
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-05T14:24:09+00:00"
+   "at": "2026-11-05T14:25:09+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-05T14:24:09+00:00"
+   "at": "2026-11-05T14:25:09+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-05T14:24:09+00:00"
+   "at": "2026-11-05T14:25:09+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-05T14:24:09+00:00"
+   "at": "2026-11-05T14:25:09+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-05T14:24:09+00:00"
+   "at": "2026-11-05T14:25:09+00:00"
   }
  },
  "baseline": {
@@ -52,11 +52,10 @@
    "NE": 0.7,
    "NV": 99.9,
    "NM": 99.9,
-   "SC": 1.9
+   "PA": 99.9
   },
   "sen": {
-   "KS": 99.9,
-   "NE": 0.1
+   "MN": 99.9
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -5123,20 +5122,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 156,
+   "fetched": 572,
    "total": null,
-   "updated": "2026-11-05T14:24:09+00:00",
-   "final": false,
+   "updated": "2026-11-05T14:24:56+00:00",
+   "final": true,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-05T14:24:06+00:00",
+   "started": "2026-11-05T14:24:49+00:00",
    "types": {
+    "House of Representatives": 456,
     "Governor": 60,
-    "US Senate": 56,
-    "House of Representatives": 40
+    "US Senate": 56
    },
    "matched": 506,
    "matched_keys": [
@@ -5224,7 +5223,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-05T14:24:09+00:00",
+  "updated": "2026-11-05T14:25:09+00:00",
   "races": {
    "SD-GOV": {
     "d": 111502,
