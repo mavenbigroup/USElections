@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-06T09:50:14+00:00",
+ "generated": "2026-11-06T09:51:14+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-06T09:50:17+00:00"
+   "at": "2026-11-06T09:51:17+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-06T09:50:17+00:00"
+   "at": "2026-11-06T09:51:17+00:00"
   },
   "predictit": {
    "ok": false,
@@ -16,23 +16,23 @@
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-06T09:50:18+00:00"
+   "at": "2026-11-06T09:51:18+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-06T09:50:18+00:00"
+   "at": "2026-11-06T09:51:18+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-06T09:50:18+00:00"
+   "at": "2026-11-06T09:51:18+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-06T09:50:18+00:00"
+   "at": "2026-11-06T09:51:18+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-06T09:50:18+00:00"
+   "at": "2026-11-06T09:51:18+00:00"
   }
  },
  "baseline": {
@@ -52,13 +52,13 @@
    "NE": 0.7,
    "NV": 99.9,
    "NM": 99.9,
-   "NY": 99.8,
-   "OR": 99.9,
-   "VT": 0.2
+   "OH": 99.8,
+   "SC": 1.9
   },
   "sen": {
-   "GA": 99.8,
-   "MI": 99.9
+   "AK": 96.7,
+   "ME": 99.9,
+   "TX": 99.7
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -5149,20 +5149,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 572,
+   "fetched": 116,
    "total": null,
-   "updated": "2026-11-06T09:50:09+00:00",
-   "final": true,
+   "updated": "2026-11-06T09:51:09+00:00",
+   "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-06T09:50:01+00:00",
+   "started": "2026-11-06T09:51:04+00:00",
    "types": {
-    "House of Representatives": 456,
-    "Governor": 60,
-    "US Senate": 56
+    "US Senate": 56,
+    "Governor": 40,
+    "House of Representatives": 20
    },
    "matched": 506,
    "matched_keys": [
@@ -5250,7 +5250,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-06T09:50:18+00:00",
+  "updated": "2026-11-06T09:51:18+00:00",
   "races": {
    "ME-GOV": {
     "d": 386970,
