@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-07T07:54:09+00:00",
+ "generated": "2026-11-07T07:55:09+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-07T07:54:12+00:00"
+   "at": "2026-11-07T07:55:12+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-07T07:54:12+00:00"
+   "at": "2026-11-07T07:55:13+00:00"
   },
   "predictit": {
    "ok": false,
@@ -16,23 +16,23 @@
   },
   "onpoint": {
    "ok": true,
-   "at": "2026-11-07T07:54:13+00:00"
+   "at": "2026-11-07T07:55:13+00:00"
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-07T07:54:13+00:00"
+   "at": "2026-11-07T07:55:13+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-07T07:54:13+00:00"
+   "at": "2026-11-07T07:55:14+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-07T07:54:13+00:00"
+   "at": "2026-11-07T07:55:14+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-07T07:54:13+00:00"
+   "at": "2026-11-07T07:55:14+00:00"
   }
  },
  "baseline": {
@@ -58,10 +58,10 @@
    "OR": 99.9,
    "PA": 99.9,
    "SC": 1.9,
-   "TX": 99.7
+   "VT": 0.2
   },
   "sen": {
-   "AK": 96.3,
+   "AK": 96.4,
    "GA": 99.8,
    "IA": 99.9,
    "KS": 99.9,
@@ -5180,20 +5180,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 396,
+   "fetched": 80,
    "total": null,
-   "updated": "2026-11-07T07:54:12+00:00",
+   "updated": "2026-11-07T07:55:13+00:00",
    "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-07T07:54:07+00:00",
+   "started": "2026-11-07T07:55:12+00:00",
    "types": {
-    "House of Representatives": 280,
-    "Governor": 60,
-    "US Senate": 56
+    "US Senate": 40,
+    "Governor": 20,
+    "House of Representatives": 20
    },
    "matched": 506,
    "matched_keys": [
@@ -5281,7 +5281,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-07T07:54:13+00:00",
+  "updated": "2026-11-07T07:55:14+00:00",
   "races": {
    "IL-GOV": {
     "d": 2456413,
