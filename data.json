@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-09T10:30:17+00:00",
+ "generated": "2026-11-09T10:31:17+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-09T10:30:21+00:00"
+   "at": "2026-11-09T10:31:21+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-09T10:30:21+00:00"
+   "at": "2026-11-09T10:31:21+00:00"
   },
   "predictit": {
    "ok": false,
@@ -21,19 +21,19 @@
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-09T10:30:22+00:00"
+   "at": "2026-11-09T10:31:22+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-09T10:30:22+00:00"
+   "at": "2026-11-09T10:31:22+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-09T10:30:22+00:00"
+   "at": "2026-11-09T10:31:22+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-09T10:30:22+00:00"
+   "at": "2026-11-09T10:31:22+00:00"
   }
  },
  "baseline": {
@@ -58,8 +58,9 @@
    "TX": 99.7
   },
   "sen": {
-   "KS": 99.9,
-   "NH": 99.9
+   "AK": 97.3,
+   "ME": 99.9,
+   "SC": 99.8
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -5068,14 +5069,14 @@
    "mode": "filtered",
    "fetched": 572,
    "total": null,
-   "updated": "2026-11-09T10:30:17+00:00",
+   "updated": "2026-11-09T10:31:20+00:00",
    "final": true,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-09T10:30:12+00:00",
+   "started": "2026-11-09T10:31:13+00:00",
    "types": {
     "House of Representatives": 456,
     "Governor": 60,
@@ -5167,7 +5168,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-09T10:30:22+00:00",
+  "updated": "2026-11-09T10:31:22+00:00",
   "races": {
    "RI-GOV": {
     "d": 207216,
