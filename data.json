@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-11T18:32:14+00:00",
+ "generated": "2026-11-11T18:33:14+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-11T18:32:19+00:00"
+   "at": "2026-11-11T18:33:19+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-11T18:32:19+00:00"
+   "at": "2026-11-11T18:33:19+00:00"
   },
   "predictit": {
    "ok": false,
@@ -21,19 +21,19 @@
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-11T18:32:21+00:00"
+   "at": "2026-11-11T18:33:20+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-11T18:32:21+00:00"
+   "at": "2026-11-11T18:33:20+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-11T18:32:21+00:00"
+   "at": "2026-11-11T18:33:20+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-11T18:32:21+00:00"
+   "at": "2026-11-11T18:33:20+00:00"
   }
  },
  "baseline": {
@@ -58,14 +58,14 @@
    "OK": 0.4,
    "OR": 99.9,
    "SC": 1.9,
-   "VT": 0.2
+   "WI": 98.6
   },
   "sen": {
-   "AK": 98.9,
    "IA": 99.9,
    "ME": 99.9,
-   "NC": 99.8,
-   "NH": 99.9
+   "MN": 99.9,
+   "NH": 99.9,
+   "SC": 99.8
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -5082,21 +5082,16 @@
   "count": 506,
   "matched": 506,
   "debug": {
-   "mode": "filtered",
-   "fetched": 572,
+   "mode": null,
+   "fetched": 40,
    "total": null,
-   "updated": "2026-11-11T18:32:18+00:00",
-   "final": true,
-   "filters": {
-    "senate": "US Senate",
-    "governor": "Governor",
-    "house": "House of Representatives"
-   },
-   "started": "2026-11-11T18:32:12+00:00",
+   "updated": "2026-11-11T18:33:15+00:00",
+   "final": false,
+   "filters": null,
+   "started": "2026-11-11T18:32:55+00:00",
    "types": {
-    "House of Representatives": 456,
-    "Governor": 60,
-    "US Senate": 56
+    "Governor": 20,
+    "US Senate": 20
    },
    "matched": 506,
    "matched_keys": [
@@ -5184,7 +5179,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-11T18:32:21+00:00",
+  "updated": "2026-11-11T18:33:20+00:00",
   "races": {
    "RI-SEN": {
     "d": 240686,
