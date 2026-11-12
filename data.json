@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-12T16:50:46+00:00",
+ "generated": "2026-11-12T16:51:46+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-12T16:50:49+00:00"
+   "at": "2026-11-12T16:51:49+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-12T16:50:49+00:00"
+   "at": "2026-11-12T16:51:50+00:00"
   },
   "predictit": {
    "ok": false,
@@ -21,19 +21,19 @@
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-12T16:50:50+00:00"
+   "at": "2026-11-12T16:51:50+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-12T16:50:50+00:00"
+   "at": "2026-11-12T16:51:51+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-12T16:50:50+00:00"
+   "at": "2026-11-12T16:51:51+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-12T16:50:50+00:00"
+   "at": "2026-11-12T16:51:51+00:00"
   }
  },
  "baseline": {
@@ -54,12 +54,11 @@
    "NV": 99.9,
    "NM": 99.9,
    "NY": 99.8,
-   "OK": 0.4,
+   "OR": 99.9,
    "TX": 99.7
   },
   "sen": {
-   "IA": 99.9,
-   "NE": 0.1,
+   "MN": 99.9,
    "TX": 99.7
   },
   "senate_d": 99.9,
@@ -2275,8 +2274,8 @@
     "called": "D"
    },
    "IL-17": {
-    "d": 142005,
-    "r": 94022,
+    "d": 142041,
+    "r": 94042,
     "o": 0,
     "pct": 91.0,
     "src": "civicapi",
@@ -2356,8 +2355,8 @@
     "called": "D"
    },
    "IL-16": {
-    "d": 121383,
-    "r": 173228,
+    "d": 121569,
+    "r": 173330,
     "o": 0,
     "pct": 92.0,
     "src": "civicapi",
@@ -5080,20 +5079,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 156,
+   "fetched": 572,
    "total": null,
-   "updated": "2026-11-12T16:50:49+00:00",
-   "final": false,
+   "updated": "2026-11-12T16:51:36+00:00",
+   "final": true,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-12T16:50:46+00:00",
+   "started": "2026-11-12T16:51:29+00:00",
    "types": {
+    "House of Representatives": 456,
     "Governor": 60,
-    "US Senate": 56,
-    "House of Representatives": 40
+    "US Senate": 56
    },
    "matched": 506,
    "matched_keys": [
@@ -5181,7 +5180,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-12T16:50:50+00:00",
+  "updated": "2026-11-12T16:51:51+00:00",
   "races": {
    "OK-GOV": {
     "d": 514776,
@@ -6925,8 +6924,8 @@
     "called": "D"
    },
    "IL-17": {
-    "d": 142005,
-    "r": 94022,
+    "d": 142041,
+    "r": 94042,
     "o": 0,
     "pct": 91.0,
     "src": "civicapi",
@@ -7006,8 +7005,8 @@
     "called": "D"
    },
    "IL-16": {
-    "d": 121383,
-    "r": 173228,
+    "d": 121569,
+    "r": 173330,
     "o": 0,
     "pct": 92.0,
     "src": "civicapi",
