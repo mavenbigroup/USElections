@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-13T17:51:51+00:00",
+ "generated": "2026-11-13T17:52:51+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-13T17:51:54+00:00"
+   "at": "2026-11-13T17:52:55+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-13T17:51:54+00:00"
+   "at": "2026-11-13T17:52:55+00:00"
   },
   "predictit": {
    "ok": false,
@@ -21,19 +21,19 @@
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-13T17:51:55+00:00"
+   "at": "2026-11-13T17:52:56+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-13T17:51:56+00:00"
+   "at": "2026-11-13T17:52:57+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-13T17:51:56+00:00"
+   "at": "2026-11-13T17:52:57+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-13T17:51:56+00:00"
+   "at": "2026-11-13T17:52:57+00:00"
   }
  },
  "baseline": {
@@ -54,12 +54,14 @@
    "NV": 99.9,
    "NM": 99.9,
    "NY": 99.8,
-   "OR": 99.9,
-   "VT": 0.2
+   "OH": 99.8,
+   "SC": 1.9,
+   "WI": 98.6
   },
   "sen": {
-   "NE": 0.1,
-   "TX": 99.7
+   "KS": 99.9,
+   "NC": 99.8,
+   "NH": 99.9
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -5081,20 +5083,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 572,
+   "fetched": 116,
    "total": null,
-   "updated": "2026-11-13T17:51:40+00:00",
-   "final": true,
+   "updated": "2026-11-13T17:52:56+00:00",
+   "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-13T17:51:35+00:00",
+   "started": "2026-11-13T17:52:55+00:00",
    "types": {
-    "House of Representatives": 456,
-    "Governor": 60,
-    "US Senate": 56
+    "US Senate": 56,
+    "Governor": 40,
+    "House of Representatives": 20
    },
    "matched": 506,
    "matched_keys": [
@@ -5182,7 +5184,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-13T17:51:56+00:00",
+  "updated": "2026-11-13T17:52:57+00:00",
   "races": {
    "IL-GOV": {
     "d": 2537294,
