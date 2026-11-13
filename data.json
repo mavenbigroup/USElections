@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-13T23:02:03+00:00",
+ "generated": "2026-11-13T23:03:02+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-13T23:02:06+00:00"
+   "at": "2026-11-13T23:03:06+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-13T23:02:07+00:00"
+   "at": "2026-11-13T23:03:07+00:00"
   },
   "predictit": {
    "ok": false,
@@ -21,19 +21,19 @@
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-13T23:02:08+00:00"
+   "at": "2026-11-13T23:03:07+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-13T23:02:09+00:00"
+   "at": "2026-11-13T23:03:08+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-13T23:02:09+00:00"
+   "at": "2026-11-13T23:03:08+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-13T23:02:09+00:00"
+   "at": "2026-11-13T23:03:08+00:00"
   }
  },
  "baseline": {
@@ -55,15 +55,15 @@
    "NM": 99.9,
    "NY": 99.8,
    "OH": 99.8,
-   "OR": 99.9,
-   "TX": 99.7,
-   "WI": 98.6
+   "OK": 0.4,
+   "PA": 99.9,
+   "TX": 99.7
   },
   "sen": {
-   "GA": 99.8,
+   "AK": 99.5,
    "KS": 99.9,
-   "MI": 99.9,
    "NC": 99.8,
+   "NH": 99.9,
    "SC": 99.8
   },
   "senate_d": 99.9,
@@ -5086,20 +5086,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 96,
+   "fetched": 572,
    "total": null,
-   "updated": "2026-11-13T23:02:08+00:00",
-   "final": false,
+   "updated": "2026-11-13T23:02:53+00:00",
+   "final": true,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-13T23:02:07+00:00",
+   "started": "2026-11-13T23:02:47+00:00",
    "types": {
-    "US Senate": 56,
-    "Governor": 20,
-    "House of Representatives": 20
+    "House of Representatives": 456,
+    "Governor": 60,
+    "US Senate": 56
    },
    "matched": 506,
    "matched_keys": [
@@ -5187,7 +5187,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-13T23:02:09+00:00",
+  "updated": "2026-11-13T23:03:08+00:00",
   "races": {
    "AZ-GOV": {
     "d": 1434822,
