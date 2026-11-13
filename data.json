@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-13T17:49:52+00:00",
+ "generated": "2026-11-13T17:50:51+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-13T17:49:56+00:00"
+   "at": "2026-11-13T17:50:54+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-13T17:49:56+00:00"
+   "at": "2026-11-13T17:50:55+00:00"
   },
   "predictit": {
    "ok": false,
@@ -21,19 +21,19 @@
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-13T17:49:57+00:00"
+   "at": "2026-11-13T17:50:55+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-13T17:49:57+00:00"
+   "at": "2026-11-13T17:50:56+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-13T17:49:57+00:00"
+   "at": "2026-11-13T17:50:56+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-13T17:49:57+00:00"
+   "at": "2026-11-13T17:50:56+00:00"
   }
  },
  "baseline": {
@@ -54,15 +54,12 @@
    "NV": 99.9,
    "NM": 99.9,
    "NY": 99.8,
-   "OH": 99.8,
    "OR": 99.9,
    "TX": 99.7
   },
   "sen": {
-   "IA": 99.9,
-   "ME": 99.9,
-   "NE": 0.1,
-   "TX": 99.7
+   "MN": 99.9,
+   "NE": 0.1
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -4583,28 +4580,523 @@
     "src": "civicapi",
     "raceId": 86995,
     "called": "D"
+   },
+   "CA-06": {
+    "d": 142647,
+    "r": 0,
+    "o": 98368,
+    "pct": 81.0,
+    "src": "civicapi",
+    "raceId": 87006,
+    "called": "D"
+   },
+   "CA-51": {
+    "d": 184748,
+    "r": 95532,
+    "o": 0,
+    "pct": 96.0,
+    "src": "civicapi",
+    "raceId": 87003,
+    "called": "D"
+   },
+   "CA-08": {
+    "d": 187772,
+    "r": 68203,
+    "o": 0,
+    "pct": 95.0,
+    "src": "civicapi",
+    "raceId": 87008,
+    "called": "D"
+   },
+   "WA-03": {
+    "d": 189565,
+    "r": 160383,
+    "o": 3289,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87516,
+    "called": "D"
+   },
+   "CA-50": {
+    "d": 190261,
+    "r": 109853,
+    "o": 0,
+    "pct": 93.0,
+    "src": "civicapi",
+    "raceId": 87002,
+    "called": "D"
+   },
+   "CO-01": {
+    "d": 238122,
+    "r": 42940,
+    "o": 22893,
+    "pct": 91.0,
+    "src": "civicapi",
+    "raceId": 87010,
+    "called": "D"
+   },
+   "WA-05": {
+    "d": 149609,
+    "r": 163507,
+    "o": 1140,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87518,
+    "called": "R"
+   },
+   "NV-04": {
+    "d": 152277,
+    "r": 95090,
+    "o": 4822,
+    "pct": 81.0,
+    "src": "civicapi",
+    "raceId": 87259,
+    "called": "D"
+   },
+   "WA-07": {
+    "d": 321249,
+    "r": 44313,
+    "o": 1309,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87520,
+    "called": "D"
+   },
+   "CA-05": {
+    "d": 124042,
+    "r": 156990,
+    "o": 0,
+    "pct": 90.0,
+    "src": "civicapi",
+    "raceId": 87005,
+    "called": "R"
+   },
+   "NV-03": {
+    "d": 161418,
+    "r": 103197,
+    "o": 6345,
+    "pct": 89.0,
+    "src": "civicapi",
+    "raceId": 87258,
+    "called": "D"
+   },
+   "CA-07": {
+    "d": 233256,
+    "r": 0,
+    "o": 0,
+    "pct": 81.0,
+    "src": "civicapi",
+    "raceId": 87007,
+    "called": "D"
+   },
+   "WA-02": {
+    "d": 230002,
+    "r": 114352,
+    "o": 1335,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87515,
+    "called": "D"
+   },
+   "CA-09": {
+    "d": 140542,
+    "r": 69377,
+    "o": 0,
+    "pct": 92.0,
+    "src": "civicapi",
+    "raceId": 87009,
+    "called": "D"
+   },
+   "WA-04": {
+    "d": 110633,
+    "r": 130151,
+    "o": 554,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87517,
+    "called": "R"
+   },
+   "WA-01": {
+    "d": 197228,
+    "r": 94469,
+    "o": 896,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87514,
+    "called": "D"
+   },
+   "WA-06": {
+    "d": 221487,
+    "r": 131937,
+    "o": 785,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87519,
+    "called": "D"
+   },
+   "CA-52": {
+    "d": 152372,
+    "r": 60587,
+    "o": 0,
+    "pct": 97.0,
+    "src": "civicapi",
+    "raceId": 87004,
+    "called": "D"
+   },
+   "OK-05": {
+    "d": 127687,
+    "r": 131023,
+    "o": 6074,
+    "pct": 91.0,
+    "src": "civicapi",
+    "raceId": 87513,
+    "called": "R"
+   },
+   "WA-08": {
+    "d": 192727,
+    "r": 144639,
+    "o": 914,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87521,
+    "called": "D"
+   },
+   "CO-07": {
+    "d": 228404,
+    "r": 135919,
+    "o": 11722,
+    "pct": 96.0,
+    "src": "civicapi",
+    "raceId": 87016,
+    "called": "D"
+   },
+   "MA-01": {
+    "d": 177556,
+    "r": 0,
+    "o": 93791,
+    "pct": 84.0,
+    "src": "civicapi",
+    "raceId": 87266,
+    "called": "D"
+   },
+   "MA-09": {
+    "d": 213587,
+    "r": 137282,
+    "o": 0,
+    "pct": 93.0,
+    "src": "civicapi",
+    "raceId": 87274,
+    "called": "D"
+   },
+   "MA-05": {
+    "d": 206925,
+    "r": 0,
+    "o": 0,
+    "pct": 75.0,
+    "src": "civicapi",
+    "raceId": 87270,
+    "called": "D"
+   },
+   "WA-10": {
+    "d": 173416,
+    "r": 96600,
+    "o": 1751,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87523,
+    "called": "D"
+   },
+   "MA-07": {
+    "d": 158384,
+    "r": 0,
+    "o": 0,
+    "pct": 72.0,
+    "src": "civicapi",
+    "raceId": 87272,
+    "called": "D"
+   },
+   "CO-04": {
+    "d": 186259,
+    "r": 182943,
+    "o": 12619,
+    "pct": 91.0,
+    "src": "civicapi",
+    "raceId": 87013,
+    "called": "D"
+   },
+   "WA-09": {
+    "d": 187404,
+    "r": 58709,
+    "o": 1765,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87522,
+    "called": "D"
+   },
+   "CT-01": {
+    "d": 170480,
+    "r": 78461,
+    "o": 4452,
+    "pct": 80.0,
+    "src": "civicapi",
+    "raceId": 87023,
+    "called": "D"
+   },
+   "CO-06": {
+    "d": 194585,
+    "r": 92127,
+    "o": 9324,
+    "pct": 92.0,
+    "src": "civicapi",
+    "raceId": 87015,
+    "called": "D"
+   },
+   "CO-03": {
+    "d": 157909,
+    "r": 164242,
+    "o": 10905,
+    "pct": 92.0,
+    "src": "civicapi",
+    "raceId": 87012,
+    "called": "R"
+   },
+   "CO-08": {
+    "d": 158784,
+    "r": 116602,
+    "o": 11116,
+    "pct": 98.0,
+    "src": "civicapi",
+    "raceId": 87017,
+    "called": "D"
+   },
+   "MA-04": {
+    "d": 192770,
+    "r": 97619,
+    "o": 0,
+    "pct": 85.0,
+    "src": "civicapi",
+    "raceId": 87269,
+    "called": "D"
+   },
+   "CO-02": {
+    "d": 273421,
+    "r": 86448,
+    "o": 6932,
+    "pct": 94.0,
+    "src": "civicapi",
+    "raceId": 87011,
+    "called": "D"
+   },
+   "MA-06": {
+    "d": 206308,
+    "r": 119144,
+    "o": 0,
+    "pct": 86.0,
+    "src": "civicapi",
+    "raceId": 87271,
+    "called": "D"
+   },
+   "MA-03": {
+    "d": 174853,
+    "r": 78849,
+    "o": 6488,
+    "pct": 77.0,
+    "src": "civicapi",
+    "raceId": 87268,
+    "called": "D"
+   },
+   "MA-08": {
+    "d": 195606,
+    "r": 75619,
+    "o": 10579,
+    "pct": 83.0,
+    "src": "civicapi",
+    "raceId": 87273,
+    "called": "D"
+   },
+   "CO-05": {
+    "d": 155598,
+    "r": 141074,
+    "o": 11323,
+    "pct": 95.0,
+    "src": "civicapi",
+    "raceId": 87014,
+    "called": "D"
+   },
+   "MA-02": {
+    "d": 198782,
+    "r": 0,
+    "o": 0,
+    "pct": 74.0,
+    "src": "civicapi",
+    "raceId": 87267,
+    "called": "D"
+   },
+   "NJ-03": {
+    "d": 173675,
+    "r": 97630,
+    "o": 5627,
+    "pct": 83.0,
+    "src": "civicapi",
+    "raceId": 87292,
+    "called": "D"
+   },
+   "CT-03": {
+    "d": 151261,
+    "r": 87885,
+    "o": 7985,
+    "pct": 94.0,
+    "src": "civicapi",
+    "raceId": 87028,
+    "called": "D"
+   },
+   "NJ-01": {
+    "d": 181836,
+    "r": 76463,
+    "o": 283,
+    "pct": 83.0,
+    "src": "civicapi",
+    "raceId": 87290,
+    "called": "D"
+   },
+   "NH-01": {
+    "d": 180683,
+    "r": 136041,
+    "o": 508,
+    "pct": 93.0,
+    "src": "civicapi",
+    "raceId": 87281,
+    "called": "D"
+   },
+   "NJ-04": {
+    "d": 109668,
+    "r": 157739,
+    "o": 327,
+    "pct": 84.0,
+    "src": "civicapi",
+    "raceId": 87293,
+    "called": "R"
+   },
+   "NM-01": {
+    "d": 179858,
+    "r": 102778,
+    "o": 0,
+    "pct": 91.0,
+    "src": "civicapi",
+    "raceId": 87285,
+    "called": "D"
+   },
+   "DE-AL": {
+    "d": 243687,
+    "r": 135016,
+    "o": 0,
+    "pct": 91.0,
+    "src": "civicapi",
+    "raceId": 87035,
+    "called": "D"
+   },
+   "NH-02": {
+    "d": 187657,
+    "r": 122645,
+    "o": 7712,
+    "pct": 91.0,
+    "src": "civicapi",
+    "raceId": 87282,
+    "called": "D"
+   },
+   "NJ-05": {
+    "d": 170168,
+    "r": 94149,
+    "o": 8143,
+    "pct": 81.0,
+    "src": "civicapi",
+    "raceId": 87294,
+    "called": "D"
+   },
+   "NM-02": {
+    "d": 123753,
+    "r": 86875,
+    "o": 0,
+    "pct": 88.0,
+    "src": "civicapi",
+    "raceId": 87286,
+    "called": "D"
+   },
+   "CT-04": {
+    "d": 157485,
+    "r": 78059,
+    "o": 4594,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87024,
+    "called": "D"
+   },
+   "NJ-02": {
+    "d": 137722,
+    "r": 130305,
+    "o": 2950,
+    "pct": 85.0,
+    "src": "civicapi",
+    "raceId": 87291,
+    "called": "D"
+   },
+   "CT-02": {
+    "d": 182381,
+    "r": 109653,
+    "o": 30,
+    "pct": 83.0,
+    "src": "civicapi",
+    "raceId": 87027,
+    "called": "D"
+   },
+   "NJ-06": {
+    "d": 148155,
+    "r": 65247,
+    "o": 898,
+    "pct": 82.0,
+    "src": "civicapi",
+    "raceId": 87295,
+    "called": "D"
+   },
+   "NM-03": {
+    "d": 141444,
+    "r": 87964,
+    "o": 0,
+    "pct": 86.0,
+    "src": "civicapi",
+    "raceId": 87287,
+    "called": "D"
+   },
+   "CT-05": {
+    "d": 146353,
+    "r": 106667,
+    "o": 46,
+    "pct": 93.0,
+    "src": "civicapi",
+    "raceId": 87025,
+    "called": "D"
    }
   },
-  "count": 451,
-  "matched": 451,
+  "count": 506,
+  "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 516,
+   "fetched": 80,
    "total": null,
-   "updated": "2026-11-13T17:49:57+00:00",
+   "updated": "2026-11-13T17:50:55+00:00",
    "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-13T17:49:52+00:00",
+   "started": "2026-11-13T17:50:54+00:00",
    "types": {
-    "House of Representatives": 400,
-    "Governor": 60,
-    "US Senate": 56
+    "US Senate": 40,
+    "Governor": 20,
+    "House of Representatives": 20
    },
-   "matched": 451,
+   "matched": 506,
    "matched_keys": [
     "AK-AL",
     "AK-GOV",
@@ -4638,6 +5130,11 @@
     "CA-02",
     "CA-03",
     "CA-04",
+    "CA-05",
+    "CA-06",
+    "CA-07",
+    "CA-08",
+    "CA-09",
     "CA-10",
     "CA-11",
     "CA-12",
@@ -4678,19 +5175,14 @@
     "CA-47",
     "CA-48",
     "CA-49",
-    "CA-GOV",
-    "CO-GOV",
-    "CO-SEN",
-    "CT-GOV",
-    "DE-SEN",
-    "FL-01",
-    "FL-02",
-    "FL-03"
+    "CA-50",
+    "CA-51",
+    "CA-52"
    ]
   }
  },
  "results": {
-  "updated": "2026-11-13T17:49:57+00:00",
+  "updated": "2026-11-13T17:50:56+00:00",
   "races": {
    "IL-GOV": {
     "d": 2537294,
@@ -8741,6 +9233,501 @@
     "raceId": 86995,
     "called": "D"
    },
+   "CA-06": {
+    "d": 142647,
+    "r": 0,
+    "o": 98368,
+    "pct": 81.0,
+    "src": "civicapi",
+    "raceId": 87006,
+    "called": "D"
+   },
+   "CA-51": {
+    "d": 184748,
+    "r": 95532,
+    "o": 0,
+    "pct": 96.0,
+    "src": "civicapi",
+    "raceId": 87003,
+    "called": "D"
+   },
+   "CA-08": {
+    "d": 187772,
+    "r": 68203,
+    "o": 0,
+    "pct": 95.0,
+    "src": "civicapi",
+    "raceId": 87008,
+    "called": "D"
+   },
+   "WA-03": {
+    "d": 189565,
+    "r": 160383,
+    "o": 3289,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87516,
+    "called": "D"
+   },
+   "CA-50": {
+    "d": 190261,
+    "r": 109853,
+    "o": 0,
+    "pct": 93.0,
+    "src": "civicapi",
+    "raceId": 87002,
+    "called": "D"
+   },
+   "CO-01": {
+    "d": 238122,
+    "r": 42940,
+    "o": 22893,
+    "pct": 91.0,
+    "src": "civicapi",
+    "raceId": 87010,
+    "called": "D"
+   },
+   "WA-05": {
+    "d": 149609,
+    "r": 163507,
+    "o": 1140,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87518,
+    "called": "R"
+   },
+   "NV-04": {
+    "d": 152277,
+    "r": 95090,
+    "o": 4822,
+    "pct": 81.0,
+    "src": "civicapi",
+    "raceId": 87259,
+    "called": "D"
+   },
+   "WA-07": {
+    "d": 321249,
+    "r": 44313,
+    "o": 1309,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87520,
+    "called": "D"
+   },
+   "CA-05": {
+    "d": 124042,
+    "r": 156990,
+    "o": 0,
+    "pct": 90.0,
+    "src": "civicapi",
+    "raceId": 87005,
+    "called": "R"
+   },
+   "NV-03": {
+    "d": 161418,
+    "r": 103197,
+    "o": 6345,
+    "pct": 89.0,
+    "src": "civicapi",
+    "raceId": 87258,
+    "called": "D"
+   },
+   "CA-07": {
+    "d": 233256,
+    "r": 0,
+    "o": 0,
+    "pct": 81.0,
+    "src": "civicapi",
+    "raceId": 87007,
+    "called": "D"
+   },
+   "WA-02": {
+    "d": 230002,
+    "r": 114352,
+    "o": 1335,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87515,
+    "called": "D"
+   },
+   "CA-09": {
+    "d": 140542,
+    "r": 69377,
+    "o": 0,
+    "pct": 92.0,
+    "src": "civicapi",
+    "raceId": 87009,
+    "called": "D"
+   },
+   "WA-04": {
+    "d": 110633,
+    "r": 130151,
+    "o": 554,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87517,
+    "called": "R"
+   },
+   "WA-01": {
+    "d": 197228,
+    "r": 94469,
+    "o": 896,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87514,
+    "called": "D"
+   },
+   "WA-06": {
+    "d": 221487,
+    "r": 131937,
+    "o": 785,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87519,
+    "called": "D"
+   },
+   "CA-52": {
+    "d": 152372,
+    "r": 60587,
+    "o": 0,
+    "pct": 97.0,
+    "src": "civicapi",
+    "raceId": 87004,
+    "called": "D"
+   },
+   "OK-05": {
+    "d": 127687,
+    "r": 131023,
+    "o": 6074,
+    "pct": 91.0,
+    "src": "civicapi",
+    "raceId": 87513,
+    "called": "R"
+   },
+   "WA-08": {
+    "d": 192727,
+    "r": 144639,
+    "o": 914,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87521,
+    "called": "D"
+   },
+   "CO-07": {
+    "d": 228404,
+    "r": 135919,
+    "o": 11722,
+    "pct": 96.0,
+    "src": "civicapi",
+    "raceId": 87016,
+    "called": "D"
+   },
+   "MA-01": {
+    "d": 177556,
+    "r": 0,
+    "o": 93791,
+    "pct": 84.0,
+    "src": "civicapi",
+    "raceId": 87266,
+    "called": "D"
+   },
+   "MA-09": {
+    "d": 213587,
+    "r": 137282,
+    "o": 0,
+    "pct": 93.0,
+    "src": "civicapi",
+    "raceId": 87274,
+    "called": "D"
+   },
+   "MA-05": {
+    "d": 206925,
+    "r": 0,
+    "o": 0,
+    "pct": 75.0,
+    "src": "civicapi",
+    "raceId": 87270,
+    "called": "D"
+   },
+   "WA-10": {
+    "d": 173416,
+    "r": 96600,
+    "o": 1751,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87523,
+    "called": "D"
+   },
+   "MA-07": {
+    "d": 158384,
+    "r": 0,
+    "o": 0,
+    "pct": 72.0,
+    "src": "civicapi",
+    "raceId": 87272,
+    "called": "D"
+   },
+   "CO-04": {
+    "d": 186259,
+    "r": 182943,
+    "o": 12619,
+    "pct": 91.0,
+    "src": "civicapi",
+    "raceId": 87013,
+    "called": "D"
+   },
+   "WA-09": {
+    "d": 187404,
+    "r": 58709,
+    "o": 1765,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87522,
+    "called": "D"
+   },
+   "CT-01": {
+    "d": 170480,
+    "r": 78461,
+    "o": 4452,
+    "pct": 80.0,
+    "src": "civicapi",
+    "raceId": 87023,
+    "called": "D"
+   },
+   "CO-06": {
+    "d": 194585,
+    "r": 92127,
+    "o": 9324,
+    "pct": 92.0,
+    "src": "civicapi",
+    "raceId": 87015,
+    "called": "D"
+   },
+   "CO-03": {
+    "d": 157909,
+    "r": 164242,
+    "o": 10905,
+    "pct": 92.0,
+    "src": "civicapi",
+    "raceId": 87012,
+    "called": "R"
+   },
+   "CO-08": {
+    "d": 158784,
+    "r": 116602,
+    "o": 11116,
+    "pct": 98.0,
+    "src": "civicapi",
+    "raceId": 87017,
+    "called": "D"
+   },
+   "MA-04": {
+    "d": 192770,
+    "r": 97619,
+    "o": 0,
+    "pct": 85.0,
+    "src": "civicapi",
+    "raceId": 87269,
+    "called": "D"
+   },
+   "CO-02": {
+    "d": 273421,
+    "r": 86448,
+    "o": 6932,
+    "pct": 94.0,
+    "src": "civicapi",
+    "raceId": 87011,
+    "called": "D"
+   },
+   "MA-06": {
+    "d": 206308,
+    "r": 119144,
+    "o": 0,
+    "pct": 86.0,
+    "src": "civicapi",
+    "raceId": 87271,
+    "called": "D"
+   },
+   "MA-03": {
+    "d": 174853,
+    "r": 78849,
+    "o": 6488,
+    "pct": 77.0,
+    "src": "civicapi",
+    "raceId": 87268,
+    "called": "D"
+   },
+   "MA-08": {
+    "d": 195606,
+    "r": 75619,
+    "o": 10579,
+    "pct": 83.0,
+    "src": "civicapi",
+    "raceId": 87273,
+    "called": "D"
+   },
+   "CO-05": {
+    "d": 155598,
+    "r": 141074,
+    "o": 11323,
+    "pct": 95.0,
+    "src": "civicapi",
+    "raceId": 87014,
+    "called": "D"
+   },
+   "MA-02": {
+    "d": 198782,
+    "r": 0,
+    "o": 0,
+    "pct": 74.0,
+    "src": "civicapi",
+    "raceId": 87267,
+    "called": "D"
+   },
+   "NJ-03": {
+    "d": 173675,
+    "r": 97630,
+    "o": 5627,
+    "pct": 83.0,
+    "src": "civicapi",
+    "raceId": 87292,
+    "called": "D"
+   },
+   "CT-03": {
+    "d": 151261,
+    "r": 87885,
+    "o": 7985,
+    "pct": 94.0,
+    "src": "civicapi",
+    "raceId": 87028,
+    "called": "D"
+   },
+   "NJ-01": {
+    "d": 181836,
+    "r": 76463,
+    "o": 283,
+    "pct": 83.0,
+    "src": "civicapi",
+    "raceId": 87290,
+    "called": "D"
+   },
+   "NH-01": {
+    "d": 180683,
+    "r": 136041,
+    "o": 508,
+    "pct": 93.0,
+    "src": "civicapi",
+    "raceId": 87281,
+    "called": "D"
+   },
+   "NJ-04": {
+    "d": 109668,
+    "r": 157739,
+    "o": 327,
+    "pct": 84.0,
+    "src": "civicapi",
+    "raceId": 87293,
+    "called": "R"
+   },
+   "NM-01": {
+    "d": 179858,
+    "r": 102778,
+    "o": 0,
+    "pct": 91.0,
+    "src": "civicapi",
+    "raceId": 87285,
+    "called": "D"
+   },
+   "DE-AL": {
+    "d": 243687,
+    "r": 135016,
+    "o": 0,
+    "pct": 91.0,
+    "src": "civicapi",
+    "raceId": 87035,
+    "called": "D"
+   },
+   "NH-02": {
+    "d": 187657,
+    "r": 122645,
+    "o": 7712,
+    "pct": 91.0,
+    "src": "civicapi",
+    "raceId": 87282,
+    "called": "D"
+   },
+   "NJ-05": {
+    "d": 170168,
+    "r": 94149,
+    "o": 8143,
+    "pct": 81.0,
+    "src": "civicapi",
+    "raceId": 87294,
+    "called": "D"
+   },
+   "NM-02": {
+    "d": 123753,
+    "r": 86875,
+    "o": 0,
+    "pct": 88.0,
+    "src": "civicapi",
+    "raceId": 87286,
+    "called": "D"
+   },
+   "CT-04": {
+    "d": 157485,
+    "r": 78059,
+    "o": 4594,
+    "pct": 99.0,
+    "src": "civicapi",
+    "raceId": 87024,
+    "called": "D"
+   },
+   "NJ-02": {
+    "d": 137722,
+    "r": 130305,
+    "o": 2950,
+    "pct": 85.0,
+    "src": "civicapi",
+    "raceId": 87291,
+    "called": "D"
+   },
+   "CT-02": {
+    "d": 182381,
+    "r": 109653,
+    "o": 30,
+    "pct": 83.0,
+    "src": "civicapi",
+    "raceId": 87027,
+    "called": "D"
+   },
+   "NJ-06": {
+    "d": 148155,
+    "r": 65247,
+    "o": 898,
+    "pct": 82.0,
+    "src": "civicapi",
+    "raceId": 87295,
+    "called": "D"
+   },
+   "NM-03": {
+    "d": 141444,
+    "r": 87964,
+    "o": 0,
+    "pct": 86.0,
+    "src": "civicapi",
+    "raceId": 87287,
+    "called": "D"
+   },
+   "CT-05": {
+    "d": 146353,
+    "r": 106667,
+    "o": 46,
+    "pct": 93.0,
+    "src": "civicapi",
+    "raceId": 87025,
+    "called": "D"
+   },
    "GU-GOV": {
     "d": 14925,
     "r": 15945,
@@ -8758,7 +9745,7 @@
     "note": "Limtiaco (D) unseats Moylan (R)"
    }
   },
-  "auto_count": 451,
+  "auto_count": 506,
   "manual_count": 2
  },
  "calls": {
