@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-13T23:00:02+00:00",
+ "generated": "2026-11-13T23:01:02+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-13T23:00:06+00:00"
+   "at": "2026-11-13T23:01:06+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-13T23:00:06+00:00"
+   "at": "2026-11-13T23:01:06+00:00"
   },
   "predictit": {
    "ok": false,
@@ -21,19 +21,19 @@
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-13T23:00:07+00:00"
+   "at": "2026-11-13T23:01:07+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-13T23:00:08+00:00"
+   "at": "2026-11-13T23:01:08+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-13T23:00:08+00:00"
+   "at": "2026-11-13T23:01:08+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-13T23:00:08+00:00"
+   "at": "2026-11-13T23:01:08+00:00"
   }
  },
  "baseline": {
@@ -55,13 +55,16 @@
    "NM": 99.9,
    "NY": 99.8,
    "OH": 99.8,
-   "OR": 99.9,
-   "TX": 99.7
+   "OK": 0.4,
+   "SC": 1.9,
+   "WI": 98.6
   },
   "sen": {
-   "AK": 99.5,
-   "IA": 99.9,
-   "NE": 0.1
+   "GA": 99.8,
+   "KS": 99.9,
+   "MI": 99.9,
+   "NE": 0.1,
+   "SC": 99.8
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -5083,20 +5086,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 116,
+   "fetched": 80,
    "total": null,
-   "updated": "2026-11-13T23:00:08+00:00",
+   "updated": "2026-11-13T23:01:08+00:00",
    "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-13T23:00:06+00:00",
+   "started": "2026-11-13T23:01:06+00:00",
    "types": {
-    "US Senate": 56,
-    "Governor": 40,
-    "House of Representatives": 20
+    "US Senate": 40,
+    "House of Representatives": 20,
+    "Governor": 20
    },
    "matched": 506,
    "matched_keys": [
@@ -5184,7 +5187,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-13T23:00:08+00:00",
+  "updated": "2026-11-13T23:01:08+00:00",
   "races": {
    "AZ-GOV": {
     "d": 1434822,
