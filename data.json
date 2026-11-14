@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-14T02:59:06+00:00",
+ "generated": "2026-11-14T03:00:06+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-14T02:59:08+00:00"
+   "at": "2026-11-14T03:00:09+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-14T02:59:09+00:00"
+   "at": "2026-11-14T03:00:10+00:00"
   },
   "predictit": {
    "ok": false,
@@ -21,19 +21,19 @@
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-14T02:59:10+00:00"
+   "at": "2026-11-14T03:00:11+00:00"
   },
   "forecast": {
    "ok": true,
-   "at": "2026-11-14T02:59:10+00:00"
+   "at": "2026-11-14T03:00:11+00:00"
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-14T02:59:10+00:00"
+   "at": "2026-11-14T03:00:11+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-14T02:59:10+00:00"
+   "at": "2026-11-14T03:00:11+00:00"
   }
  },
  "baseline": {
@@ -54,13 +54,13 @@
    "NV": 99.9,
    "NM": 99.9,
    "NY": 99.8,
-   "OK": 0.4,
+   "OH": 99.8,
    "TX": 99.7
   },
   "sen": {
-   "GA": 99.8,
-   "ME": 99.9,
-   "NC": 99.8
+   "KS": 99.9,
+   "MN": 99.9,
+   "NH": 99.9
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -2638,7 +2638,7 @@
    "MS-02": {
     "d": 168760,
     "r": 73898,
-    "o": 6011,
+    "o": 5998,
     "pct": 99.0,
     "src": "civicapi",
     "raceId": 81001,
@@ -5083,20 +5083,20 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 156,
+   "fetched": 276,
    "total": null,
-   "updated": "2026-11-14T02:59:09+00:00",
+   "updated": "2026-11-14T03:00:11+00:00",
    "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-14T02:59:06+00:00",
+   "started": "2026-11-14T03:00:07+00:00",
    "types": {
+    "House of Representatives": 160,
     "Governor": 60,
-    "US Senate": 56,
-    "House of Representatives": 40
+    "US Senate": 56
    },
    "matched": 506,
    "matched_keys": [
@@ -5184,7 +5184,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-14T02:59:10+00:00",
+  "updated": "2026-11-14T03:00:11+00:00",
   "races": {
    "OK-GOV": {
     "d": 514776,
@@ -7291,7 +7291,7 @@
    "MS-02": {
     "d": 168760,
     "r": 73898,
-    "o": 6011,
+    "o": 5998,
     "pct": 99.0,
     "src": "civicapi",
     "raceId": 81001,
