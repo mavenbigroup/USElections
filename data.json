@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-16T22:56:55+00:00",
+ "generated": "2026-11-16T22:57:55+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-16T22:56:59+00:00"
+   "at": "2026-11-16T22:57:59+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-16T22:56:59+00:00"
+   "at": "2026-11-16T22:57:59+00:00"
   },
   "predictit": {
    "ok": false,
@@ -21,7 +21,7 @@
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-16T22:57:00+00:00"
+   "at": "2026-11-16T22:58:00+00:00"
   },
   "forecast": {
    "ok": false,
@@ -30,11 +30,11 @@
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-16T22:57:01+00:00"
+   "at": "2026-11-16T22:58:01+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-16T22:57:01+00:00"
+   "at": "2026-11-16T22:58:01+00:00"
   }
  },
  "baseline": {
@@ -62,9 +62,8 @@
   },
   "sen": {
    "ME": 99.9,
-   "MN": 99.9,
-   "NE": 0.1,
-   "TX": 99.7
+   "NH": 99.9,
+   "SC": 99.8
   },
   "senate_d": 99.9,
   "house_d": 99.9
@@ -5092,14 +5091,14 @@
    "mode": "filtered",
    "fetched": 572,
    "total": null,
-   "updated": "2026-11-16T22:56:53+00:00",
+   "updated": "2026-11-16T22:57:59+00:00",
    "final": true,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-16T22:56:46+00:00",
+   "started": "2026-11-16T22:57:52+00:00",
    "types": {
     "House of Representatives": 456,
     "Governor": 60,
@@ -5191,7 +5190,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-16T22:57:01+00:00",
+  "updated": "2026-11-16T22:58:01+00:00",
   "races": {
    "SC-GOV": {
     "d": 960556,
