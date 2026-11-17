@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-17T13:55:56+00:00",
+ "generated": "2026-11-17T13:56:56+00:00",
  "sources": {
   "kalshi": {
    "ok": true,
-   "at": "2026-11-17T13:56:00+00:00"
+   "at": "2026-11-17T13:57:00+00:00"
   },
   "polymarket": {
    "ok": true,
-   "at": "2026-11-17T13:56:01+00:00"
+   "at": "2026-11-17T13:57:01+00:00"
   },
   "predictit": {
    "ok": false,
@@ -21,7 +21,7 @@
   },
   "polldesk": {
    "ok": true,
-   "at": "2026-11-17T13:56:01+00:00"
+   "at": "2026-11-17T13:57:01+00:00"
   },
   "forecast": {
    "ok": false,
@@ -30,11 +30,11 @@
   },
   "results_auto": {
    "ok": true,
-   "at": "2026-11-17T13:56:02+00:00"
+   "at": "2026-11-17T13:57:02+00:00"
   },
   "results": {
    "ok": true,
-   "at": "2026-11-17T13:56:02+00:00"
+   "at": "2026-11-17T13:57:02+00:00"
   }
  },
  "baseline": {
@@ -58,12 +58,13 @@
    "OH": 99.8,
    "OK": 0.4,
    "SC": 1.9,
-   "VT": 0.2
+   "WI": 98.6
   },
   "sen": {
    "IA": 99.9,
    "ME": 99.9,
    "NC": 99.8,
+   "NH": 99.9,
    "TX": 99.7
   },
   "senate_d": 99.9,
@@ -5091,18 +5092,18 @@
   "matched": 506,
   "debug": {
    "mode": "filtered",
-   "fetched": 572,
+   "fetched": 396,
    "total": null,
-   "updated": "2026-11-17T13:56:02+00:00",
-   "final": true,
+   "updated": "2026-11-17T13:57:01+00:00",
+   "final": false,
    "filters": {
     "senate": "US Senate",
     "governor": "Governor",
     "house": "House of Representatives"
    },
-   "started": "2026-11-17T13:55:56+00:00",
+   "started": "2026-11-17T13:56:57+00:00",
    "types": {
-    "House of Representatives": 456,
+    "House of Representatives": 280,
     "Governor": 60,
     "US Senate": 56
    },
@@ -5192,7 +5193,7 @@
   }
  },
  "results": {
-  "updated": "2026-11-17T13:56:02+00:00",
+  "updated": "2026-11-17T13:57:02+00:00",
   "races": {
    "SC-GOV": {
     "d": 960556,
